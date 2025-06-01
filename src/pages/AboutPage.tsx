@@ -81,12 +81,17 @@ const mapTerritoryData = [
 ];
 
 const AboutPage: React.FC = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const territoryParam = searchParams.get('territory');
   
   const selectedTerritory = territoryParam 
     ? mapTerritoryData.find(t => t.id === territoryParam) 
     : null;
+
+  const handleTerritoryClick = (e: React.MouseEvent, territoryId: string) => {
+    e.preventDefault();
+    setSearchParams({ territory: territoryId });
+  };
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
