@@ -458,7 +458,7 @@ const HomePage: React.FC = () => {
                 <p className="text-gray-600 mb-4">
                   Strategic partnerships with existing solar EPC companies to maximize tax benefits and project success.
                 </p>
-                <Link to="/services/collaborations" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                <Link to="/services/options/collaborations" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                   Learn More <span className="ml-1">→</span>
                 </Link>
               </div>
