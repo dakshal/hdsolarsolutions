@@ -61,7 +61,7 @@ const AboutPage: React.FC = () => {
       >
        <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
        <p className="text-lg text-gray-600 mb-6">
-        At SolarEnergy, we're committed to accelerating the transition to sustainable energy through innovative solar solutions that make renewable power accessible to all.
+        At H&D Solar Solutions, we're committed to accelerating the transition to sustainable energy through innovative solar solutions that make renewable power accessible to all.
        </p>
        <p className="text-lg text-gray-600 mb-6">
         Founded in 2024, we've grown from a small residential installer to a comprehensive solar provider serving residential, commercial, and government clients across seven states.
