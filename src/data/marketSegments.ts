@@ -4,7 +4,7 @@ export type MarketSegment = {
   id: string;
   name: string;
   icon: Icon;
-  summary: string;
+  description: string;
   features: string[];
   details: Detail;
 };
@@ -25,8 +25,8 @@ export const marketSegments: MarketSegment[] = [
     id: 'residential',
     name: 'Residential',
     icon: Home,
-    summary: 'Custom solar solutions for homeowners that reduce electricity bills and increase property value while contributing to a sustainable future.',
-    features: [
+    description: 'Custom solar solutions for homeowners that reduce electricity bills and increase property value while contributing to a sustainable future.',
+    be: [
       'Systems sized from 5kW to 15kW',
       'Rooftop and ground mount options',
       'Battery backup available',
