@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CreditCard, Clock, DollarSign, Lightbulb, Home, Building2, Landmark, Battery, ArrowLeft } from 'lucide-react';
 import { serviceOptions } from '../data/serviceOptions';
-import { marketSegments } from '../data/marketSegment';
+import { marketSegments } from '../data/marketSegments';
 
 // This is the detail page component
 const ServiceDetailPage = ({ serviceId, onBackClick }) => {
