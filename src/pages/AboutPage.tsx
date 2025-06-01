@@ -186,29 +186,6 @@ const AboutPage: React.FC = () => {
                 />
               </div>
               {/* Mapping over territories to place pins */}
-              {/*
-              {territories.map((territory, index) => (
-                <Link
-                  key={territory.id}
-                  to={`/about?territory=${territory.id}`}
-                  className={`absolute w-8 h-8 flex items-center justify-center bg-primary-600 text-white rounded-full border-2 border-white shadow-lg transition-all hover:w-auto hover:px-2 hover:bg-primary-700 ${
-                    territory.id === selectedTerritory?.id ? 'w-auto px-2 bg-primary-700' : ''
-                  }`}
-                  style={{
-                    // Random positioning for demonstration
-                    top: `${20 + (index * 10)}%`,
-                    left: `${15 + (index * 9)}%`,
-                  }}
-                >
-                  <MapPin className="w-4 h-4 min-w-4" />
-                  <span className={`ml-1 whitespace-nowrap overflow-hidden transition-all ${
-                    territory.id === selectedTerritory?.id ? 'max-w-40' : 'max-w-0'
-                  }`}>
-                    {territory.name}
-                  </span>
-                </Link>
-              ))}
-              */}
               {mapTerritoryData.map((territory) => (
                 <Link
                   key={territory.id}
