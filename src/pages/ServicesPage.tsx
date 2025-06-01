@@ -108,7 +108,7 @@ const ServicesPage: React.FC = () => {
       <section className="section bg-white">
         <div className="container-custom">
           <div className="max-w-3xl mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Financing Options</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Solar Solutions By Market</h2>
             <p className="text-lg text-gray-600">
               We offer flexible financing options to make solar accessible for everyone. Choose the option that best fits your financial goals.
             </p>
