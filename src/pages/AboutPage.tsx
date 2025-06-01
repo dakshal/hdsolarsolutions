@@ -14,7 +14,7 @@ const AboutPage: React.FC = () => {
    maryland: { top: '50%', left: '45%' },
    dc: { top: '65%', left: '48%' },
    newjersey: { top: '58%', left: '70%' },
-   delaware: { top: '58%', left: '60%' }
+   delaware: { top: '68%', left: '60%' }
  };
   
   // Combine territory data with map coordinates
