@@ -4,6 +4,74 @@ import { motion } from 'framer-motion';
 import { CreditCard, Clock, DollarSign, Lightbulb, Home, Building2, Landmark, Battery } from 'lucide-react';
 import { serviceOptions } from '../data/serviceOptions';
 
+// This is the detail page component
+const ServiceDetailPage = ({ serviceId, onBackClick }) => {
+  const service = marketSegments.find(s => s.id === serviceId);
+
+  if (!service) {
+    return (
+      <div className="text-center py-20">
+        <p>Service not found.</p>
+        <button onClick={onBackClick} className="mt-4 text-blue-600 hover:underline">Back to Services</button>
+      </div>
+    );
+  }
+
+  return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+      {/* Detail Hero Section */}
+      <section className="relative bg-gray-800 text-white pt-32 pb-16 h-80 flex items-center justify-center">
+        <div className="absolute inset-0">
+          <img src={service.details.imageUrl} alt={service.details.title} className="w-full h-full object-cover opacity-40"/>
+        </div>
+        <div className="container mx-auto px-4 relative z-10 text-center">
+           <h1 className="text-4xl md:text-5xl font-bold">{service.details.title}</h1>
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="container mx-auto px-4">
+            <button onClick={onBackClick} className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8 font-medium">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to All Services
+            </button>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div className="md:col-span-2">
+                    <h2 className="text-3xl font-bold mb-4">A Solution for {service.name} Needs</h2>
+                    <p className="text-lg text-gray-600 mb-8">{service.details.description}</p>
+                    <h3 className="text-2xl font-bold mb-6">Key Offerings</h3>
+                    <div className="space-y-6">
+                        {service.details.keyOfferings.map((offering, index) => (
+                            <div key={index} className="flex items-start">
+                                <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <Lightbulb className="w-5 h-5"/>
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-semibold">{offering.name}</h4>
+                                    <p className="text-gray-600">{offering.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-6 h-fit">
+                    <h3 className="text-xl font-bold mb-4">Service Highlights</h3>
+                    <ul className="space-y-3">
+                        {service.features.map((feature, index) => (
+                             <li key={index} className="flex items-start">
+                                <span className="text-blue-500 mr-2 mt-1">&#10003;</span>
+                                <span>{feature}</span>
+                             </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+      </section>
+    </motion.div>
+  );
+};
+
 const ServicesPage: React.FC = () => {
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
