@@ -148,7 +148,7 @@ const AboutPage: React.FC = () => {
       >
        <div className="absolute inset-0">
         <img
-         src="https://i.pinimg.com/736x/ec/f1/2c/ecf12c366e981c272e119c1cbcb75179.jpg"
+         src="https://www.worldatlas.com/r/w960-q80/upload/60/76/ca/mid-atlantic-states.png"
          alt="Map of the United States showing service territories"
          className="w-full h-full object-cover"
         />
