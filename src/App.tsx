@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
+import MarketSegmentDetails from './pages/MarketSegmentDetails';
 import ProjectsPage from './pages/ProjectsPage';
 import TaxCreditsPage from './pages/TaxCreditsPage';
 import SalesRepPage from './pages/SalesRepPage';
