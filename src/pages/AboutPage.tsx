@@ -160,7 +160,7 @@ const AboutPage: React.FC = () => {
                 <img 
                   src="https://i.pinimg.com/736x/ec/f1/2c/ecf12c366e981c272e119c1cbcb75179.jpg" 
                   alt="Map of the United States showing service territories" 
-                  className="w-full h-full object-cover"
+                  className="w-90 h-full object-cover"
                 />
               </div>
               {territories.map((territory, index) => (
