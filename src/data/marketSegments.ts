@@ -56,7 +56,7 @@ export const marketSegments: MarketSegment[] = [
       'Average payback period: 4-7 years'
     ],
     details: {
-      imageUrl: 'https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      imageUrl: 'https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       title: 'Smart Energy for Your Business',
       description: 'Lower your operating expenses and demonstrate your commitment to sustainability with our commercial solar solutions. We provide comprehensive energy analysis to design a system that maximizes your return on investment. Solar energy can provide your business with predictable energy costs for decades, protecting you from volatile utility rates.',
       keyOfferings: [
@@ -79,7 +79,7 @@ export const marketSegments: MarketSegment[] = [
       'Average payback period: 5-10 years'
     ],
     details: {
-      imageUrl: 'https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      imageUrl: 'https://d3i6fh83elv35t.cloudfront.net/static/2023/12/pentagon-1024x683.jpg',
       title: 'Resilient and Sustainable Public Infrastructure',
       description: 'We partner with federal, state, and local government entities to deploy reliable and cost-effective solar energy solutions. Our projects help public institutions reduce their carbon footprint, achieve energy security, and redirect budget savings to essential public services. We are experienced in navigating government procurement processes and securing specialized financing.',
       keyOfferings: [
