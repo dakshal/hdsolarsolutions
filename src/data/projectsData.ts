@@ -19,7 +19,7 @@ export const projects: Project[] = [
     systemSize: '8.5 kW',
     savings: '$1,850 annually',
     description: 'A complete rooftop solar installation for a modern family home in Baltimore, Maryland. The system includes 24 high-efficiency panels and provides nearly 100% of the family\'s electricity needs.',
-    imageUrl: 'https://images.pexels.com/photos/159160/solar-panel-array-power-sun-electricity-159160.jpeg',
+    imageUrl: 'https://t4.ftcdn.net/jpg/11/68/75/85/360_F_1168758564_HkQpcZSgfACwDCvU8DLeFmWDkTZhkgko.jpg',
     features: [
       '24 high-efficiency solar panels',
       'Integrated monitoring system',
