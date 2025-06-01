@@ -41,7 +41,7 @@ const AboutPage: React.FC = () => {
     <div className="container-custom">
      <div className="max-w-3xl">
       <h1 className="text-4xl md:text-5xl font-bold mb-6">
-       About SolarEnergy
+       About H&D Solar Solutions
       </h1>
       <p className="text-xl mb-8 text-gray-100">
        Leading the renewable energy revolution with innovative solar solutions since 2015.
