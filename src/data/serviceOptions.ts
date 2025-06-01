@@ -202,5 +202,66 @@ export const serviceOptions: ServiceOption[] = [
       min: 25,
       max: 40
     }
+  },
+  {
+    id: 'battery',
+    name: 'Battery Backup Solutions',
+    description: 'Integrated battery systems to power your home during outages and charge your EV efficiently.',
+    benefits: [
+      'Maintain power during grid outages for essential appliances',
+      'Increase energy independence and resilience',
+      'Optimize self-consumption of your solar energy',
+      'Potential savings by avoiding peak utility rates (Time-of-Use shifting)',
+      'Provides clean, quiet power with no fossil fuels',
+      'Seamlessly integrates with new or existing solar panel systems'
+    ],
+    process: [
+      {
+        title: 'Backup Needs Consultation',
+        description: 'We assess your critical power needs, energy goals, and existing electrical setup.',
+        leadTime: '1-2 days'
+      },
+      {
+        title: 'System Sizing & Design',
+        description: 'Our team designs a battery system appropriately sized for your requirements, integrated with your home and solar array.',
+        leadTime: '2-4 days'
+      },
+      {
+        title: 'Proposal and Contract',
+        description: 'We provide a detailed proposal covering battery specs, costs, and backup performance expectations.',
+        leadTime: '1-2 days'
+      },
+      {
+        title: 'Electrical Permitting',
+        description: 'We secure all necessary electrical permits for the battery installation.',
+        leadTime: '1-3 weeks'
+      },
+      {
+        title: 'Installation & Integration',
+        description: 'Our certified electricians install the battery system and integrate it with your main electrical panel.',
+        leadTime: '1-2 days'
+      },
+      {
+        title: 'Inspection and Commissioning',
+        description: 'The system undergoes a final inspection and we commission it to ensure optimal performance.',
+        leadTime: '1-2 weeks'
+      },
+      {
+        title: 'Customer Walkthrough',
+        description: 'We demonstrate how to monitor and manage your new battery backup system.',
+        leadTime: '1 hour'
+      }
+    ],
+    documentation: [
+      'Proof of property ownership',
+      'Recent electric bills (to analyze usage patterns)',
+      'Photo ID',
+      'Details of main electrical panel',
+      'Specifications of existing solar system (if applicable)'
+    ],
+    reduction: {
+      min: 0,
+      max: 20
+    }
   }
 ];
