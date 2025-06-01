@@ -1,3 +1,5 @@
+import { Home, Building2, Landmark } from 'lucide-react';
+
 export type MarketSegment = {
   id: string;
   name: string;
