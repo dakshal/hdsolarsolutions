@@ -9,12 +9,12 @@ const AboutPage: React.FC = () => {
  const territoryParam = searchParams.get('territory');
  // Map coordinates for each territory
  const mapCoordinates = {
-   pennsylvania: { top: '25%', left: '40%' },
+   pennsylvania: { top: '50%', left: '45%' },
    virginia: { top: '75%', left: '35%' },
-   maryland: { top: '50%', left: '45%' },
+   maryland: { top: '60%', left: '52%' },
    dc: { top: '65%', left: '48%' },
    newjersey: { top: '58%', left: '70%' },
-   delaware: { top: '65%', left: '64%' }
+   delaware: { top: '65%', left: '63%' }
  };
   
   // Combine territory data with map coordinates
