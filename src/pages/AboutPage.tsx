@@ -4,6 +4,82 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { territories } from '../data/territoryData';
 import { MapPin, Sun, Award, Users, Clock, Target } from 'lucide-react';
 
+// Data for each service territory, with updated map coordinates.
+const territories = [
+  {
+    id: 'pa',
+    name: 'Pennsylvania',
+    top: '25%', // Adjusted for new map
+    left: '40%', // Adjusted for new map
+    description: "In Pennsylvania, we leverage the state's growing solar market to provide robust residential and commercial installations, helping customers take advantage of local SREC programs.",
+    incentives: [
+      "Solar Renewable Energy Credits (SREC)",
+      "State-level tax credits",
+      "Net metering policies"
+    ],
+  },
+  {
+    id: 'va',
+    name: 'Virginia',
+    top: '75%',
+    left: '35%',
+    description: "Virginia's commitment to clean energy makes it a prime location for solar. We offer tailored solutions that align with the Virginia Clean Economy Act.",
+    incentives: [
+      "Property Tax Exemption",
+      "Renewable Energy Portfolio Standard (RPS)",
+      "Federal Solar Investment Tax Credit (ITC)"
+    ],
+  },
+  {
+    id: 'md',
+    name: 'Maryland',
+    top: '50%',
+    left: '45%',
+    description: "We are a leading provider in Maryland, helping clients navigate the state's strong solar incentives and residential grant programs to maximize their investment.",
+    incentives: [
+      "Residential Clean Energy Grant Program",
+      "Solar Renewable Energy Credits (SRECs)",
+      "Local property and income tax credits"
+    ],
+  },
+  {
+    id: 'dc',
+    name: 'Washington DC',
+    top: '65%',
+    left: '48%',
+    description: "In Washington D.C., we specialize in urban solar solutions, including rooftop installations for residential and commercial buildings in the nation's capital.",
+    incentives: [
+        "Nation's leading SREC market",
+        "Solar for All program",
+        "Federal tax credits"
+    ],
+  },
+  {
+    id: 'nj',
+    name: 'New Jersey',
+    top: '35%',
+    left: '80%',
+    description: "New Jersey is one of the nation's top solar states. Our expertise ensures customers benefit from the Transition Renewable Energy Certificate (TREC) program.",
+    incentives: [
+      "Successor Solar Incentive (SuSI) Program",
+      "Property tax exemption",
+      "Zero sales tax on solar equipment"
+    ],
+  },
+  {
+    id: 'de',
+    name: 'Delaware',
+    top: '58%',
+    left: '70%',
+    description: "In the first state, we offer leading solar technology, taking advantage of Delaware's Green Energy Program and excellent net metering policies.",
+    incentives: [
+      "Delmarva Power & Light Green Energy Program",
+      "State-funded grants and rebates",
+      "Favorable net metering rules"
+    ],
+  }
+];
+
 const AboutPage: React.FC = () => {
   const [searchParams] = useSearchParams();
   const territoryParam = searchParams.get('territory');
@@ -149,7 +225,7 @@ const AboutPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -157,32 +233,35 @@ const AboutPage: React.FC = () => {
               className="bg-gray-100 rounded-xl p-6 h-[400px] md:h-[500px] relative overflow-hidden"
             >
               <div className="absolute inset-0">
-                <img 
-                  src="https://i.pinimg.com/736x/ec/f1/2c/ecf12c366e981c272e119c1cbcb75179.jpg" 
-                  alt="Map of the United States showing service territories" 
-                  className="w-full h-full object-cover"
+                <img
+                  src="https://www.worldatlas.com/r/w960-q80/upload/60/76/ca/mid-atlantic-states.png"
+                  alt="Map of the Mid-Atlantic states: PA, NJ, DE, MD, VA, and DC"
+                  className="w-full h-full object-contain"
                 />
               </div>
-              {territories.map((territory, index) => (
-                <Link
+              {/* Mapping over territories to place pins */}
+              {territories.map((territory) => (
+                <a
                   key={territory.id}
-                  to={`/about?territory=${territory.id}`}
-                  className={`absolute w-8 h-8 flex items-center justify-center bg-primary-600 text-white rounded-full border-2 border-white shadow-lg transition-all hover:w-auto hover:px-2 hover:bg-primary-700 ${
-                    territory.id === selectedTerritory?.id ? 'w-auto px-2 bg-primary-700' : ''
+                  href="#"
+                  onClick={(e) => handleTerritoryClick(e, territory.id)}
+                  className={`absolute flex items-center justify-center bg-blue-600 text-white rounded-full border-2 border-white shadow-lg transition-all duration-300 ease-in-out hover:bg-blue-700 hover:w-auto hover:px-2 group ${
+                    territory.id === selectedTerritory?.id ? 'w-auto px-2 bg-blue-700' : 'w-8 h-8'
                   }`}
                   style={{
-                    // Random positioning for demonstration
-                    top: `${20 + (index * 10)}%`,
-                    left: `${15 + (index * 9)}%`,
+                    top: territory.top,
+                    left: territory.left,
+                    transform: 'translate(-50%, -50%)', // Center the pin on the coordinates
                   }}
+                  title={territory.name}
                 >
                   <MapPin className="w-4 h-4 min-w-4" />
-                  <span className={`ml-1 whitespace-nowrap overflow-hidden transition-all ${
-                    territory.id === selectedTerritory?.id ? 'max-w-40' : 'max-w-0'
-                  }`}>
-                    {territory.name}
-                  </span>
-                </Link>
+                   <span className={`ml-1 whitespace-nowrap overflow-hidden transition-all duration-300 ${
+                       territory.id === selectedTerritory?.id ? 'max-w-40' : 'max-w-0 group-hover:max-w-40'
+                     }`}>
+                     {territory.name}
+                   </span>
+                </a>
               ))}
             </motion.div>
             
