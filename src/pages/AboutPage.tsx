@@ -5,7 +5,7 @@ import { territories } from '../data/territoryData';
 import { MapPin, Sun, Award, Users, Clock, Target } from 'lucide-react';
 
 // Data for each service territory, with updated map coordinates.
-const territories = [
+const mapTerritoryData = [
   {
     id: 'pa',
     name: 'Pennsylvania',
@@ -85,7 +85,7 @@ const AboutPage: React.FC = () => {
   const territoryParam = searchParams.get('territory');
   
   const selectedTerritory = territoryParam 
-    ? territories.find(t => t.id === territoryParam) 
+    ? mapTerritoryData.find(t => t.id === territoryParam) 
     : null;
 
   const fadeIn = {
@@ -240,7 +240,7 @@ const AboutPage: React.FC = () => {
                 />
               </div>
               {/* Mapping over territories to place pins */}
-              {territories.map((territory) => (
+              {mapTerritoryData.map((territory) => (
                 <a
                   key={territory.id}
                   href="#"
@@ -352,7 +352,7 @@ const AboutPage: React.FC = () => {
                   </p>
                   
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
-                    {territories.map((territory) => (
+                    {mapTerritoryData.map((territory) => (
                       <Link
                         key={territory.id}
                         to={`/about?territory=${territory.id}`}
