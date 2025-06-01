@@ -1,122 +1,26 @@
-// Note: This immersive contains two files.
-// 1. data/serviceOptions.ts (scroll down)
-// 2. ServicesPage.tsx (the main component)
-
-// =================================================================================
-// File: ServicesPage.tsx
-// Description: The main React component for the "Services" page.
-// It now imports all data from the separate data file.
-// =================================================================================
-
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { CreditCard, Clock, DollarSign, Lightbulb, Home, Building2, Landmark, Battery, ArrowLeft } from 'lucide-react';
+import { CreditCard, Clock, DollarSign, Lightbulb, Home, Building2, Landmark, Battery } from 'lucide-react';
 import { serviceOptions } from '../data/serviceOptions';
 import { marketSegments } from '../data/marketSegments';
 
-// This is the detail page component
-const ServiceDetailPage = ({ serviceId, onBackClick }) => {
-  const service = marketSegments.find(s => s.id === serviceId);
-
-  if (!service) {
-    return (
-      <div className="text-center py-20">
-        <p>Service not found.</p>
-        <button onClick={onBackClick} className="mt-4 text-blue-600 hover:underline">Back to Services</button>
-      </div>
-    );
-  }
-
-  return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-      {/* Detail Hero Section */}
-      <section className="relative bg-gray-800 text-white pt-32 pb-16 h-80 flex items-center justify-center">
-        <div className="absolute inset-0">
-          <img src={service.details.imageUrl} alt={service.details.title} className="w-full h-full object-cover opacity-40"/>
-        </div>
-        <div className="container mx-auto px-4 relative z-10 text-center">
-           <h1 className="text-4xl md:text-5xl font-bold">{service.details.title}</h1>
-        </div>
-      </section>
-
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="container mx-auto px-4">
-            <button onClick={onBackClick} className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8 font-medium">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to All Services
-            </button>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div className="md:col-span-2">
-                    <h2 className="text-3xl font-bold mb-4">A Solution for {service.name} Needs</h2>
-                    <p className="text-lg text-gray-600 mb-8">{service.details.description}</p>
-                    <h3 className="text-2xl font-bold mb-6">Key Offerings</h3>
-                    <div className="space-y-6">
-                        {service.details.keyOfferings.map((offering, index) => (
-                            <div key={index} className="flex items-start">
-                                <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
-                                    <Lightbulb className="w-5 h-5"/>
-                                </div>
-                                <div>
-                                    <h4 className="text-xl font-semibold">{offering.name}</h4>
-                                    <p className="text-gray-600">{offering.description}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-6 h-fit">
-                    <h3 className="text-xl font-bold mb-4">Service Highlights</h3>
-                    <ul className="space-y-3">
-                        {service.features.map((feature, index) => (
-                             <li key={index} className="flex items-start">
-                                <span className="text-blue-500 mr-2 mt-1">&#10003;</span>
-                                <span>{feature}</span>
-                             </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-        </div>
-      </section>
-    </motion.div>
-  );
-};
-
 
 const ServicesPage: React.FC = () => {
-  const [activeService, setActiveService] = useState(null);
-
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
+    visible: { 
+      opacity: 1, 
       y: 0,
-      transition: { duration: 0.6, staggerChildren: 0.1 }
+      transition: { duration: 0.6 }
     }
   };
 
-  const handleLearnMoreClick = (e, serviceId) => {
-    e.preventDefault();
-    setActiveService(serviceId);
-    window.scrollTo(0, 0); // Scroll to top on page change
-  };
-  
-  const handleBackClick = () => {
-    setActiveService(null);
-    window.scrollTo(0, 0);
-  };
-
-  // If a service is selected, show the detail page
-  if (activeService) {
-    return <ServiceDetailPage serviceId={activeService} onBackClick={handleBackClick} />;
-  }
-
-  // Otherwise, show the main services overview page
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-800 to-indigo-800 text-white pt-32 pb-16">
-        <div className="container mx-auto px-4">
+      <section className="bg-gradient-to-br from-primary-800 to-secondary-800 text-white pt-32 pb-16">
+        <div className="container-custom">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Solar Energy Solutions
@@ -129,38 +33,148 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Financing Options */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+      <section className="section bg-white">
+        <div className="container-custom">
+          <div className="max-w-3xl mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Financing Options</h2>
             <p className="text-lg text-gray-600">
               We offer flexible financing options to make solar accessible for everyone. Choose the option that best fits your financial goals.
             </p>
           </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {serviceOptions.map((option, index) => (
-                  <motion.div 
-                    key={option.id}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
-                    variants={fadeIn}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-white rounded-lg shadow-md p-6 flex flex-col border-t-4 border-blue-500 hover:shadow-xl transition-shadow"
-                  >
-                    <h3 className="text-2xl font-semibold mb-4">{option.name}</h3>
-                    <p className="text-gray-600 mb-6 flex-grow">{option.description}</p>
-                    {/* Add more details from serviceOptions if needed */}
-                    <a href="#" className="mt-4 block text-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded">
-                        Learn More
-                    </a>
-                  </motion.div>
-                ))}
-            </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {serviceOptions.map((option) => (
+              <motion.div 
+                key={option.id}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                className="card hover:shadow-lg transition-all border-t-4 border-primary-500"
+              >
+                <h3 className="text-2xl font-semibold mb-4">{option.name}</h3>
+                <p className="text-gray-600 mb-6">{option.description}</p>
+                
+                <div className="mb-6">
+                  <div className="flex items-center mb-2">
+                    <CreditCard className="w-5 h-5 text-primary-600 mr-2" />
+                    <span className="font-medium">Financial Benefits</span>
+                  </div>
+                  <ul className="pl-7 space-y-2 text-gray-600">
+                    {option.benefits.slice(0, 3).map((benefit, index) => (
+                      <li key={index} className="list-disc">{benefit}</li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="mb-6">
+                  <div className="flex items-center mb-2">
+                    <Clock className="w-5 h-5 text-primary-600 mr-2" />
+                    <span className="font-medium">Timeline</span>
+                  </div>
+                  <p className="text-gray-600">
+                    Typical installation completes in {option.process.length} steps over {option.id === 'buyout' ? '4-8' : '3-6'} weeks.
+                  </p>
+                </div>
+                
+                <div className="mb-6">
+                  <div className="flex items-center mb-2">
+                    <DollarSign className="w-5 h-5 text-primary-600 mr-2" />
+                    <span className="font-medium">Bill Reduction</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-full bg-gray-200 rounded-full h-3 mr-3">
+                      <div 
+                        className="bg-primary-500 h-3 rounded-full" 
+                        style={{ width: `${option.reduction.max}%` }}
+                      ></div>
+                    </div>
+                    <span className="text-sm font-medium whitespace-nowrap">
+                      {option.reduction.min}-{option.reduction.max}%
+                    </span>
+                  </div>
+                </div>
+                
+                <Link to={`/services/${option.id}`} className="btn btn-primary w-full text-center">
+                  Learn More
+                </Link>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Market Segments */}
+            <section className="section bg-white">
+        <div className="container-custom">
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Financing Options</h2>
+            <p className="text-lg text-gray-600">
+              We offer flexible financing options to make solar accessible for everyone. Choose the option that best fits your financial goals.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {serviceOptions.map((option) => (
+              <motion.div 
+                key={option.id}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                className="card hover:shadow-lg transition-all border-t-4 border-primary-500"
+              >
+                <h3 className="text-2xl font-semibold mb-4">{option.name}</h3>
+                <p className="text-gray-600 mb-6">{option.description}</p>
+                
+                <div className="mb-6">
+                  <div className="flex items-center mb-2">
+                    <CreditCard className="w-5 h-5 text-primary-600 mr-2" />
+                    <span className="font-medium">Financial Benefits</span>
+                  </div>
+                  <ul className="pl-7 space-y-2 text-gray-600">
+                    {option.benefits.slice(0, 3).map((benefit, index) => (
+                      <li key={index} className="list-disc">{benefit}</li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="mb-6">
+                  <div className="flex items-center mb-2">
+                    <Clock className="w-5 h-5 text-primary-600 mr-2" />
+                    <span className="font-medium">Timeline</span>
+                  </div>
+                  <p className="text-gray-600">
+                    Typical installation completes in {option.process.length} steps over {option.id === 'buyout' ? '4-8' : '3-6'} weeks.
+                  </p>
+                </div>
+                
+                <div className="mb-6">
+                  <div className="flex items-center mb-2">
+                    <DollarSign className="w-5 h-5 text-primary-600 mr-2" />
+                    <span className="font-medium">Bill Reduction</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-full bg-gray-200 rounded-full h-3 mr-3">
+                      <div 
+                        className="bg-primary-500 h-3 rounded-full" 
+                        style={{ width: `${option.reduction.max}%` }}
+                      ></div>
+                    </div>
+                    <span className="text-sm font-medium whitespace-nowrap">
+                      {option.reduction.min}-{option.reduction.max}%
+                    </span>
+                  </div>
+                </div>
+                
+                <Link to={`/services/${option.id}`} className="btn btn-primary w-full text-center">
+                  Learn More
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -203,72 +217,111 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Additional Services */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+      <section className="section bg-white">
+        <div className="container-custom">
+          <div className="max-w-3xl mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Complementary Services</h2>
             <p className="text-lg text-gray-600">
               Enhance your solar investment with these additional services.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-             <div className="bg-gray-50 rounded-lg p-6 flex items-start">
-               <div className="bg-blue-100 p-3 rounded-full mr-4">
-                 <Battery className="w-6 h-6 text-blue-600" />
-               </div>
-               <div>
-                 <h3 className="text-xl font-semibold mb-2">Battery Backup Solutions</h3>
-                 <p className="text-gray-600">
-                   Ensure energy security with battery backup systems that can power your home during outages.
-                 </p>
-               </div>
-             </div>
-             <div className="bg-gray-50 rounded-lg p-6 flex items-start">
-               <div className="bg-blue-100 p-3 rounded-full mr-4">
-                 <DollarSign className="w-6 h-6 text-blue-600" />
-               </div>
-               <div>
-                 <h3 className="text-xl font-semibold mb-2">Tax Credit Services</h3>
-                 <p className="text-gray-600">
-                   Maximize your financial benefits with our tax credit services, helping you navigate federal and state incentives.
-                 </p>
-               </div>
-             </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="card flex items-start p-6"
+            >
+              <div className="bg-primary-50 p-3 rounded-full mr-4">
+                <Battery className="w-6 h-6 text-primary-600" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Battery Backup Solutions</h3>
+                <p className="text-gray-600 mb-4">
+                  Ensure energy security with battery backup systems that can power your home during outages and charge your electric vehicle.
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-start">
+                    <span className="text-primary-600 mr-2">•</span>
+                    <span>Available in various capacities</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary-600 mr-2">•</span>
+                    <span>Seamless integration with solar systems</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary-600 mr-2">•</span>
+                    <span>Smart energy management systems</span>
+                  </li>
+                </ul>
+                <Link to="/contact" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                  Learn More <span className="ml-1">→</span>
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="card flex items-start p-6"
+            >
+              <div className="bg-primary-50 p-3 rounded-full mr-4">
+                <DollarSign className="w-6 h-6 text-primary-600" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Tax Credit Services</h3>
+                <p className="text-gray-600 mb-4">
+                  Maximize your financial benefits with our tax credit services, helping you navigate federal and state incentives.
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-start">
+                    <span className="text-primary-600 mr-2">•</span>
+                    <span>Federal ITC guidance</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary-600 mr-2">•</span>
+                    <span>State incentive program assistance</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary-600 mr-2">•</span>
+                    <span>Tax liability reduction strategies</span>
+                  </li>
+                </ul>
+                <Link to="/tax-credits" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                  Learn More <span className="ml-1">→</span>
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-blue-700 to-indigo-700 text-white">
-        <div className="container mx-auto px-4 text-center">
+      <section className="section bg-gradient-to-br from-primary-700 to-secondary-700 text-white">
+        <div className="container-custom text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto"
+          >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Solar Journey?</h2>
-            <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
+            <p className="text-xl mb-8 opacity-90">
               Contact us today for a free consultation and custom quote tailored to your specific needs.
             </p>
-            <a href="#" className="inline-block bg-white text-blue-700 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 text-lg transition-colors">
+            <Link to="/contact" className="btn bg-white text-primary-700 hover:bg-gray-100">
               Get a Free Quote
-            </a>
+            </Link>
+          </motion.div>
         </div>
       </section>
     </>
   );
 };
 
-
-function App() {
-  React.useEffect(() => {
-    const tailwind = document.createElement('script');
-    tailwind.src = 'https://cdn.tailwindcss.com';
-    document.head.appendChild(tailwind);
-  }, []);
-  
-  return (
-    <div className="bg-gray-100">
-      <ServicesPage />
-    </div>
-  )
-}
-
-
-export default App;
+export default ServicesPage;
