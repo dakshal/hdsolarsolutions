@@ -270,7 +270,7 @@ const HomePage: React.FC = () => {
             
             <div>
               <div className="text-4xl md:text-5xl font-bold mb-2">
-                {statsInView && <CountUp end={30} suffix="" duration={2.5} />}
+                {statsInView && <CountUp end={30} suffix="+" duration={2.5} />}
               </div>
               <p className="text-lg opacity-90">Metric Tons CO₂ Offset</p>
             </div>
