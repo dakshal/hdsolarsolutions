@@ -151,7 +151,7 @@ const ServicesPage: React.FC = () => {
                                   <Lightbulb className="w-5 h-5"/>
                               </div>
                               <div>
-                                  <h4 className="font-small font-semibold">{offering.name}</h4>
+                                  <h5 className="font-small font-semibold">{offering.name}</h5>
                                   <p className="text-gray-600">{offering.description}</p>
                               </div>
                           </div>
