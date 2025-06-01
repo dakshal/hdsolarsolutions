@@ -79,8 +79,8 @@ const AboutPage: React.FC = () => {
        className="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-xl"
       >
        <img
-        src="https://images.pexels.com/photos/9875321/pexels-photo-9875321.jpeg"
-        alt="SolarEnergy team installing solar panels"
+        src="https://t4.ftcdn.net/jpg/06/13/33/21/360_F_613332177_rdl36d2CnlqC1tqGQE3CizEJdu9G2Ltj.jpg"
+        alt="H&D solar solutions mission and values"
         className="w-full h-full object-cover"
        />
       </motion.div>
