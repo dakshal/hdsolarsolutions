@@ -35,7 +35,7 @@ export const projects: Project[] = [
     systemSize: '10.2 kW with 13.5 kWh battery',
     savings: '$2,200 annually',
     description: 'A comprehensive solar and battery installation for a residential home, providing both daytime power and evening backup during outages.',
-    imageUrl: 'https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg',
+    imageUrl: 'https://eitaisolar.com/wp-content/uploads/2023/12/blog-1229-2-1024x457.jpg',
     features: [
       'High-temperature rated solar panels',
       'Powerwall battery integration',
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     systemSize: '175 kW',
     savings: '$42,000 annually',
     description: 'A solar canopy installation covering the parking area of a busy retail shopping center. The system provides shade for customers while generating significant electricity for the retail operations.',
-    imageUrl: 'https://images.pexels.com/photos/460659/pexels-photo-460659.jpeg',
+    imageUrl: 'https://image.cnbcfm.com/api/v1/image/107031478-1647451827051-Target_net_zero_energy_store.jpg',
     features: [
       'Dual-purpose parking shade structure',
       'EV charging stations integration',
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     systemSize: '350 kW',
     savings: '$76,000 annually',
     description: 'A large-scale rooftop solar installation for a manufacturing facility, helping the company achieve sustainability goals while significantly reducing operating costs.',
-    imageUrl: 'https://images.pexels.com/photos/9875400/pexels-photo-9875400.jpeg',
+    imageUrl: 'https://www.pv-magazine.com/wp-content/uploads/2021/04/Hunter-Douglas-warehouse-solar-at-Rydalmere-manufacturing-site.-1536x779-1-1200x609.png',
     features: [
       'Over 800 commercial-grade panels',
       'Custom mounting system for industrial roofing',
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     systemSize: '125 kW',
     savings: '$29,000 annually',
     description: 'A solar installation for a municipal government building, showcasing the city\'s commitment to renewable energy while providing significant taxpayer savings.',
-    imageUrl: 'https://images.pexels.com/photos/2800832/pexels-photo-2800832.jpeg',
+    imageUrl: 'https://media.bizj.us/view/img/1355651/1108staples-2*1200xx1024-576-0-96.jpg',
     features: [
       'Ballasted racking system',
       'Snowshed panel technology',
@@ -99,7 +99,7 @@ export const projects: Project[] = [
     systemSize: '200 kW',
     savings: '$47,000 annually',
     description: 'A comprehensive solar installation across multiple school buildings, reducing operating costs and providing educational opportunities for students.',
-    imageUrl: 'https://images.pexels.com/photos/2769546/pexels-photo-2769546.jpeg',
+    imageUrl: 'https://irecusa.org/wp-content/uploads/2021/06/SCUSD-District-Borrego-Solar-scaled.jpg',
     features: [
       'Multiple building integration',
       'Educational monitoring displays',
