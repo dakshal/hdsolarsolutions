@@ -144,7 +144,7 @@ const AboutPage: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-bold mb-4">Our Service Territory</h2>
             <p className="text-lg text-gray-600">
-              We currently serve customers in seven states across the United States, with plans for continued expansion.
+              We currently serve customers in six states across the United States, with plans for continued expansion.
             </p>
           </div>
 
