@@ -124,17 +124,17 @@ const ServicesPage: React.FC = () => {
                 variants={fadeIn}
                 className="card hover:shadow-lg transition-all border-t-4 border-primary-500"
               >
-                <h3 className="text-2xl font-semibold mb-4">{option.name}</h3>
-                <p className="text-gray-600 mb-6">{option.description}</p>
+                <h3 className="text-2xl font-semibold mb-4">A solution for {option.name}</h3>
+                <p className="text-gray-600 mb-6">{option.summary}</p>
                 
                 <div className="mb-6">
                   <div className="flex items-center mb-2">
                     <CreditCard className="w-5 h-5 text-primary-600 mr-2" />
-                    <span className="font-medium">Financial Benefits</span>
+                    <span className="font-medium">Features</span>
                   </div>
                   <ul className="pl-7 space-y-2 text-gray-600">
-                    {option.benefits.slice(0, 3).map((benefit, index) => (
-                      <li key={index} className="list-disc">{benefit}</li>
+                    {option.features.slice(0, 3).map((feature, index) => (
+                      <li key={index} className="list-disc">{feature}</li>
                     ))}
                   </ul>
                 </div>
@@ -142,77 +142,28 @@ const ServicesPage: React.FC = () => {
                 <div className="mb-6">
                   <div className="flex items-center mb-2">
                     <Clock className="w-5 h-5 text-primary-600 mr-2" />
-                    <span className="font-medium">Timeline</span>
+                    <span className="font-medium">Key Offerings</span>
                   </div>
-                  <p className="text-gray-600">
-                    Typical installation completes in {option.process.length} steps over {option.id === 'buyout' ? '4-8' : '3-6'} weeks.
-                  </p>
-                </div>
-                
-                <div className="mb-6">
-                  <div className="flex items-center mb-2">
-                    <DollarSign className="w-5 h-5 text-primary-600 mr-2" />
-                    <span className="font-medium">Bill Reduction</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-full bg-gray-200 rounded-full h-3 mr-3">
-                      <div 
-                        className="bg-primary-500 h-3 rounded-full" 
-                        style={{ width: `${option.reduction.max}%` }}
-                      ></div>
-                    </div>
-                    <span className="text-sm font-medium whitespace-nowrap">
-                      {option.reduction.min}-{option.reduction.max}%
-                    </span>
+                  <div className="space-y-6">
+                      {service.details.keyOfferings.map((offering, index) => (
+                          <div key={index} className="flex items-start">
+                              <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                                  <Lightbulb className="w-5 h-5"/>
+                              </div>
+                              <div>
+                                  <h4 className="text-xl font-semibold">{offering.name}</h4>
+                                  <p className="text-gray-600">{offering.description}</p>
+                              </div>
+                          </div>
+                      ))}
                   </div>
                 </div>
-                
                 <Link to={`/services/${option.id}`} className="btn btn-primary w-full text-center">
                   Learn More
                 </Link>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-      <section className="py-16 lg:py-24 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Solar Solutions By Market</h2>
-            <p className="text-lg text-gray-600">
-              We offer tailored solar solutions for different market segments, each with unique requirements and benefits.
-            </p>
-          </div>
-
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {marketSegments.map((segment) => {
-                const Icon = segment.icon;
-                return (
-                    <motion.div
-                        key={segment.id}
-                        variants={fadeIn}
-                        className="bg-white rounded-lg shadow-md p-8 flex flex-col text-center hover:shadow-xl transition-shadow"
-                    >
-                        <div className="flex-grow">
-                            <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 text-blue-600 rounded-full mb-6">
-                                <Icon className="w-12 h-12" />
-                            </div>
-                            <h3 className="text-2xl font-semibold mb-4">{segment.name}</h3>
-                            <p className="text-gray-600 mb-6">{segment.summary}</p>
-                        </div>
-                        <a href="#" onClick={(e) => handleLearnMoreClick(e, segment.id)} className="mt-auto block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">
-                            Learn More
-                        </a>
-                    </motion.div>
-                )
-            })}
-          </motion.div>
         </div>
       </section>
 
