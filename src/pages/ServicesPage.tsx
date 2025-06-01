@@ -170,35 +170,26 @@ const ServicesPage: React.FC = () => {
             </p>
           </div>
 
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {marketSegments.map((segment) => {
-                const Icon = segment.icon;
-                return (
-                    <motion.div
-                        key={segment.id}
-                        variants={fadeIn}
-                        className="bg-white rounded-lg shadow-md p-8 flex flex-col text-center hover:shadow-xl transition-shadow"
-                    >
-                        <div className="flex-grow">
-                            <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 text-blue-600 rounded-full mb-6">
-                                <Icon className="w-12 h-12" />
-                            </div>
-                            <h3 className="text-2xl font-semibold mb-4">{segment.name}</h3>
-                            <p className="text-gray-600 mb-6">{segment.summary}</p>
-                        </div>
-                        <a href="#" onClick={(e) => handleLearnMoreClick(e, segment.id)} className="mt-auto block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">
-                            Learn More
-                        </a>
-                    </motion.div>
-                )
-            })}
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {marketSegments.map((option, index) => (
+                  <motion.div 
+                    key={option.id}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                    variants={fadeIn}
+                    transition={{ delay: index * 0.1 }}
+                    className="bg-white rounded-lg shadow-md p-6 flex flex-col border-t-4 border-blue-500 hover:shadow-xl transition-shadow"
+                  >
+                    <h3 className="text-2xl font-semibold mb-4">{option.name}</h3>
+                    <p className="text-gray-600 mb-6 flex-grow">{option.summary}</p>
+                    {/* Add more details from serviceOptions if needed */}
+                    <a href="#" className="mt-4 block text-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded">
+                        Learn More
+                    </a>
+                  </motion.div>
+                ))}
+            </div>
         </div>
       </section>
 
