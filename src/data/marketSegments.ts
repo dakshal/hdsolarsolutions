@@ -33,7 +33,7 @@ export const marketSegments: MarketSegment[] = [
       'Average payback period: 5-8 years'
     ],
     details: {
-      imageUrl: 'https://images.pexels.com/photos/433309/pexels-photo-433309.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      imageUrl: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       title: 'Power Your Home with Clean Energy',
       description: 'Our residential solar solutions are designed to fit your home\'s unique energy needs and your financial goals. We handle everything from the initial consultation and custom design to installation and final inspection. By switching to solar, you not only lock in lower energy costs but also make a significant contribution to a cleaner environment.',
       keyOfferings: [
