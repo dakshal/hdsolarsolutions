@@ -148,7 +148,7 @@ const ServicesPage: React.FC = () => {
                       {option.details.keyOfferings.map((offering, index) => (
                           <div key={index} className="flex items-start">
                               <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
-                                  <Lightbulb className="w-5 h-5"/>
+                                  <Lightbulb className="w-2 h-2"/>
                               </div>
                               <div>
                                   <span className="text-gray-600">{offering.name}</span>
