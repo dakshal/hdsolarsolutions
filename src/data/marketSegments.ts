@@ -1,327 +1,93 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { CreditCard, Clock, DollarSign, Lightbulb, Home, Building2, Landmark, Battery } from 'lucide-react';
-import { serviceOptions } from '../data/serviceOptions';
-import { marketSegments } from '../data/marketSegments';
+import { Home, Building2, Landmark } from 'lucide-react';
 
+export type MarketSegment = {
+  id: string;
+  name: string;
+  icon: Icon;
+  summary: string;
+  features: string[];
+  details: Detail;
+};
+export type Detail = {
+  imageUrl: string;
+  title: string;
+  description: string;
+  keyOfferings: KeyOffering[];
+}
 
-const ServicesPage: React.FC = () => {
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6 }
-    }
-  };
-
-  return (
-    <>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-800 to-secondary-800 text-white pt-32 pb-16">
-        <div className="container-custom">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Solar Energy Solutions
-            </h1>
-            <p className="text-xl mb-8 text-gray-100">
-              Explore our comprehensive range of solar solutions designed to meet your specific needs, whether you're a homeowner, business owner, or government entity.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Financing Options */}
-      <section className="section bg-white">
-        <div className="container-custom">
-          <div className="max-w-3xl mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Financing Options</h2>
-            <p className="text-lg text-gray-600">
-              We offer flexible financing options to make solar accessible for everyone. Choose the option that best fits your financial goals.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {serviceOptions.map((option) => (
-              <motion.div 
-                key={option.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-                className="card hover:shadow-lg transition-all border-t-4 border-primary-500"
-              >
-                <h3 className="text-2xl font-semibold mb-4">{option.name}</h3>
-                <p className="text-gray-600 mb-6">{option.description}</p>
-                
-                <div className="mb-6">
-                  <div className="flex items-center mb-2">
-                    <CreditCard className="w-5 h-5 text-primary-600 mr-2" />
-                    <span className="font-medium">Financial Benefits</span>
-                  </div>
-                  <ul className="pl-7 space-y-2 text-gray-600">
-                    {option.benefits.slice(0, 3).map((benefit, index) => (
-                      <li key={index} className="list-disc">{benefit}</li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div className="mb-6">
-                  <div className="flex items-center mb-2">
-                    <Clock className="w-5 h-5 text-primary-600 mr-2" />
-                    <span className="font-medium">Timeline</span>
-                  </div>
-                  <p className="text-gray-600">
-                    Typical installation completes in {option.process.length} steps over {option.id === 'buyout' ? '4-8' : '3-6'} weeks.
-                  </p>
-                </div>
-                
-                <div className="mb-6">
-                  <div className="flex items-center mb-2">
-                    <DollarSign className="w-5 h-5 text-primary-600 mr-2" />
-                    <span className="font-medium">Bill Reduction</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-full bg-gray-200 rounded-full h-3 mr-3">
-                      <div 
-                        className="bg-primary-500 h-3 rounded-full" 
-                        style={{ width: `${option.reduction.max}%` }}
-                      ></div>
-                    </div>
-                    <span className="text-sm font-medium whitespace-nowrap">
-                      {option.reduction.min}-{option.reduction.max}%
-                    </span>
-                  </div>
-                </div>
-                
-                <Link to={`/services/${option.id}`} className="btn btn-primary w-full text-center">
-                  Learn More
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Market Segments */}
-            <section className="section bg-white">
-        <div className="container-custom">
-          <div className="max-w-3xl mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Financing Options</h2>
-            <p className="text-lg text-gray-600">
-              We offer flexible financing options to make solar accessible for everyone. Choose the option that best fits your financial goals.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {serviceOptions.map((option) => (
-              <motion.div 
-                key={option.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-                className="card hover:shadow-lg transition-all border-t-4 border-primary-500"
-              >
-                <h3 className="text-2xl font-semibold mb-4">{option.name}</h3>
-                <p className="text-gray-600 mb-6">{option.description}</p>
-                
-                <div className="mb-6">
-                  <div className="flex items-center mb-2">
-                    <CreditCard className="w-5 h-5 text-primary-600 mr-2" />
-                    <span className="font-medium">Financial Benefits</span>
-                  </div>
-                  <ul className="pl-7 space-y-2 text-gray-600">
-                    {option.benefits.slice(0, 3).map((benefit, index) => (
-                      <li key={index} className="list-disc">{benefit}</li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div className="mb-6">
-                  <div className="flex items-center mb-2">
-                    <Clock className="w-5 h-5 text-primary-600 mr-2" />
-                    <span className="font-medium">Timeline</span>
-                  </div>
-                  <p className="text-gray-600">
-                    Typical installation completes in {option.process.length} steps over {option.id === 'buyout' ? '4-8' : '3-6'} weeks.
-                  </p>
-                </div>
-                
-                <div className="mb-6">
-                  <div className="flex items-center mb-2">
-                    <DollarSign className="w-5 h-5 text-primary-600 mr-2" />
-                    <span className="font-medium">Bill Reduction</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-full bg-gray-200 rounded-full h-3 mr-3">
-                      <div 
-                        className="bg-primary-500 h-3 rounded-full" 
-                        style={{ width: `${option.reduction.max}%` }}
-                      ></div>
-                    </div>
-                    <span className="text-sm font-medium whitespace-nowrap">
-                      {option.reduction.min}-{option.reduction.max}%
-                    </span>
-                  </div>
-                </div>
-                
-                <Link to={`/services/${option.id}`} className="btn btn-primary w-full text-center">
-                  Learn More
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="py-16 lg:py-24 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Solar Solutions By Market</h2>
-            <p className="text-lg text-gray-600">
-              We offer tailored solar solutions for different market segments, each with unique requirements and benefits.
-            </p>
-          </div>
-
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {marketSegments.map((segment) => {
-                const Icon = segment.icon;
-                return (
-                    <motion.div
-                        key={segment.id}
-                        variants={fadeIn}
-                        className="bg-white rounded-lg shadow-md p-8 flex flex-col text-center hover:shadow-xl transition-shadow"
-                    >
-                        <div className="flex-grow">
-                            <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 text-blue-600 rounded-full mb-6">
-                                <Icon className="w-12 h-12" />
-                            </div>
-                            <h3 className="text-2xl font-semibold mb-4">{segment.name}</h3>
-                            <p className="text-gray-600 mb-6">{segment.summary}</p>
-                        </div>
-                        <a href="#" onClick={(e) => handleLearnMoreClick(e, segment.id)} className="mt-auto block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">
-                            Learn More
-                        </a>
-                    </motion.div>
-                )
-            })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Additional Services */}
-      <section className="section bg-white">
-        <div className="container-custom">
-          <div className="max-w-3xl mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Complementary Services</h2>
-            <p className="text-lg text-gray-600">
-              Enhance your solar investment with these additional services.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="card flex items-start p-6"
-            >
-              <div className="bg-primary-50 p-3 rounded-full mr-4">
-                <Battery className="w-6 h-6 text-primary-600" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Battery Backup Solutions</h3>
-                <p className="text-gray-600 mb-4">
-                  Ensure energy security with battery backup systems that can power your home during outages and charge your electric vehicle.
-                </p>
-                <ul className="space-y-2 mb-4">
-                  <li className="flex items-start">
-                    <span className="text-primary-600 mr-2">•</span>
-                    <span>Available in various capacities</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary-600 mr-2">•</span>
-                    <span>Seamless integration with solar systems</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary-600 mr-2">•</span>
-                    <span>Smart energy management systems</span>
-                  </li>
-                </ul>
-                <Link to="/contact" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
-                  Learn More <span className="ml-1">→</span>
-                </Link>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="card flex items-start p-6"
-            >
-              <div className="bg-primary-50 p-3 rounded-full mr-4">
-                <DollarSign className="w-6 h-6 text-primary-600" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Tax Credit Services</h3>
-                <p className="text-gray-600 mb-4">
-                  Maximize your financial benefits with our tax credit services, helping you navigate federal and state incentives.
-                </p>
-                <ul className="space-y-2 mb-4">
-                  <li className="flex items-start">
-                    <span className="text-primary-600 mr-2">•</span>
-                    <span>Federal ITC guidance</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary-600 mr-2">•</span>
-                    <span>State incentive program assistance</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary-600 mr-2">•</span>
-                    <span>Tax liability reduction strategies</span>
-                  </li>
-                </ul>
-                <Link to="/tax-credits" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
-                  Learn More <span className="ml-1">→</span>
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="section bg-gradient-to-br from-primary-700 to-secondary-700 text-white">
-        <div className="container-custom text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Solar Journey?</h2>
-            <p className="text-xl mb-8 opacity-90">
-              Contact us today for a free consultation and custom quote tailored to your specific needs.
-            </p>
-            <Link to="/contact" className="btn bg-white text-primary-700 hover:bg-gray-100">
-              Get a Free Quote
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-    </>
-  );
+export type KeyOffering = {
+  name: string;
+  description: string;
 };
 
-export default ServicesPage;
+export const marketSegments: MarketSegment[] = [
+   {
+    id: 'residential',
+    name: 'Residential',
+    icon: Home,
+    summary: 'Custom solar solutions for homeowners that reduce electricity bills and increase property value while contributing to a sustainable future.',
+    features: [
+      'Systems sized from 5kW to 15kW',
+      'Rooftop and ground mount options',
+      'Battery backup available',
+      'Average payback period: 5-8 years'
+    ],
+    details: {
+      imageUrl: 'https://images.pexels.com/photos/433309/pexels-photo-433309.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      title: 'Power Your Home with Clean Energy',
+      description: 'Our residential solar solutions are designed to fit your home\'s unique energy needs and your financial goals. We handle everything from the initial consultation and custom design to installation and final inspection. By switching to solar, you not only lock in lower energy costs but also make a significant contribution to a cleaner environment.',
+      keyOfferings: [
+        { name: 'Custom System Design', description: 'We analyze your energy usage and roof layout to design the most efficient system possible.' },
+        { name: 'Tier-1 Equipment', description: 'We use only the highest quality solar panels, inverters, and racking for maximum performance and longevity.' },
+        { name: 'Seamless Installation', description: 'Our certified installation teams ensure a safe, clean, and efficient installation process with minimal disruption to your home.' },
+        { name: 'Energy Monitoring', description: 'Track your system\'s production in real-time through our intuitive mobile app.' },
+      ]
+    }
+  },
+  {
+    id: 'commercial',
+    name: 'Commercial',
+    icon: Building2,
+    summary: 'Scalable solar solutions for businesses looking to reduce operating costs, achieve sustainability goals, and enhance brand reputation.',
+    features: [
+      'Systems from 50kW to 1MW+',
+      'Rooftop, ground mount, and carport options',
+      'Customized energy storage solutions',
+      'Average payback period: 4-7 years'
+    ],
+    details: {
+      imageUrl: 'https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      title: 'Smart Energy for Your Business',
+      description: 'Lower your operating expenses and demonstrate your commitment to sustainability with our commercial solar solutions. We provide comprehensive energy analysis to design a system that maximizes your return on investment. Solar energy can provide your business with predictable energy costs for decades, protecting you from volatile utility rates.',
+      keyOfferings: [
+        { name: 'Financial Analysis & ROI', description: 'We provide detailed financial models showing your projected savings, payback period, and long-term ROI.' },
+        { name: 'Scalable System Architecture', description: 'Our systems are designed to grow with your business, allowing for future expansion.' },
+        { name: 'Accelerated Depreciation (MACRS)', description: 'Benefit from significant tax advantages that can offset a large portion of your initial investment.' },
+        { name: 'Public Relations Boost', description: 'Showcase your commitment to corporate social responsibility and attract environmentally-conscious customers.' },
+      ]
+    }
+  },
+  {
+    id: 'government',
+    name: 'Government',
+    icon: Landmark,
+    summary: 'Helping public institutions achieve energy independence, meet renewable energy mandates, and save taxpayer dollars on energy costs.',
+    features: [
+      'Systems sized for municipal needs',
+      'Innovative financing options for public entities',
+      'Microgrid and resilience solutions',
+      'Average payback period: 5-10 years'
+    ],
+    details: {
+      imageUrl: 'https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      title: 'Resilient and Sustainable Public Infrastructure',
+      description: 'We partner with federal, state, and local government entities to deploy reliable and cost-effective solar energy solutions. Our projects help public institutions reduce their carbon footprint, achieve energy security, and redirect budget savings to essential public services. We are experienced in navigating government procurement processes and securing specialized financing.',
+      keyOfferings: [
+        { name: 'Power Purchase Agreements (PPAs)', description: 'Install solar with no upfront capital expenditure and simply purchase the clean energy at a reduced rate.' },
+        { name: 'Energy Resilience', description: 'Incorporate battery storage and microgrids to ensure critical facilities remain powered during grid outages.' },
+        { name:'Regulatory Compliance', description: 'Meet clean energy mandates and sustainability goals with verifiable renewable energy projects.' },
+        { name: 'Community Solar Programs', description: 'Develop projects that allow local residents and businesses to benefit from clean energy savings.' },
+      ]
+    }
+  }
+];
