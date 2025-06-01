@@ -265,7 +265,7 @@ export const serviceOptions: ServiceOption[] = [
     }
   },
   {
-    id: 'collaboration',
+    id: 'collaborations',
     name: 'EPC Collaborations',
     description: 'Strategic partnerships with existing solar EPC companies to maximize tax benefits and project success.',
     benefits: [
