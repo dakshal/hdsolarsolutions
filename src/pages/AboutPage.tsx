@@ -31,7 +31,7 @@ const AboutPage: React.FC = () => {
               About SolarEnergy
             </h1>
             <p className="text-xl mb-8 text-gray-100">
-              Leading the renewable energy revolution with innovative solar solutions since 2015.
+              Leading the renewable energy revolution with innovative solar solutions since 2024.
             </p>
           </div>
         </div>
