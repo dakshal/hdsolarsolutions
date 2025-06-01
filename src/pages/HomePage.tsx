@@ -395,7 +395,7 @@ const HomePage: React.FC = () => {
                 <p className="text-gray-600 mb-4">
                   Integrated battery systems to power your home during outages and charge your EV efficiently.
                 </p>
-                <Link to="/services/battery" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                <Link to="/services/options/battery" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                   Learn More <span className="ml-1">→</span>
                 </Link>
               </div>
