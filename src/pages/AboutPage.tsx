@@ -4,81 +4,22 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { territories } from '../data/territoryData';
 import { MapPin, Sun, Award, Users, Clock, Target } from 'lucide-react';
 
-// Data for each service territory, with updated map coordinates.
-const mapTerritoryData = [
-  {
-    id: 'pa',
-    name: 'Pennsylvania',
-    top: '25%', // Adjusted for new map
-    left: '40%', // Adjusted for new map
-    description: "In Pennsylvania, we leverage the state's growing solar market to provide robust residential and commercial installations, helping customers take advantage of local SREC programs.",
-    incentives: [
-      "Solar Renewable Energy Credits (SREC)",
-      "State-level tax credits",
-      "Net metering policies"
-    ],
-  },
-  {
-    id: 'va',
-    name: 'Virginia',
-    top: '75%',
-    left: '35%',
-    description: "Virginia's commitment to clean energy makes it a prime location for solar. We offer tailored solutions that align with the Virginia Clean Economy Act.",
-    incentives: [
-      "Property Tax Exemption",
-      "Renewable Energy Portfolio Standard (RPS)",
-      "Federal Solar Investment Tax Credit (ITC)"
-    ],
-  },
-  {
-    id: 'md',
-    name: 'Maryland',
-    top: '50%',
-    left: '45%',
-    description: "We are a leading provider in Maryland, helping clients navigate the state's strong solar incentives and residential grant programs to maximize their investment.",
-    incentives: [
-      "Residential Clean Energy Grant Program",
-      "Solar Renewable Energy Credits (SRECs)",
-      "Local property and income tax credits"
-    ],
-  },
-  {
-    id: 'dc',
-    name: 'Washington DC',
-    top: '65%',
-    left: '48%',
-    description: "In Washington D.C., we specialize in urban solar solutions, including rooftop installations for residential and commercial buildings in the nation's capital.",
-    incentives: [
-        "Nation's leading SREC market",
-        "Solar for All program",
-        "Federal tax credits"
-    ],
-  },
-  {
-    id: 'nj',
-    name: 'New Jersey',
-    top: '35%',
-    left: '80%',
-    description: "New Jersey is one of the nation's top solar states. Our expertise ensures customers benefit from the Transition Renewable Energy Certificate (TREC) program.",
-    incentives: [
-      "Successor Solar Incentive (SuSI) Program",
-      "Property tax exemption",
-      "Zero sales tax on solar equipment"
-    ],
-  },
-  {
-    id: 'de',
-    name: 'Delaware',
-    top: '58%',
-    left: '70%',
-    description: "In the first state, we offer leading solar technology, taking advantage of Delaware's Green Energy Program and excellent net metering policies.",
-    incentives: [
-      "Delmarva Power & Light Green Energy Program",
-      "State-funded grants and rebates",
-      "Favorable net metering rules"
-    ],
-  }
-];
+// Map coordinates for each territory
+const mapCoordinates = {
+  pa: { top: '25%', left: '40%' },
+  va: { top: '75%', left: '35%' },
+  md: { top: '50%', left: '45%' },
+  dc: { top: '65%', left: '48%' },
+  nj: { top: '35%', left: '80%' },
+  de: { top: '58%', left: '70%' }
+};
+
+// Combine territory data with map coordinates
+const mapTerritoryData = territories.map(territory => ({
+  ...territory,
+  top: mapCoordinates[territory.id].top,
+  left: mapCoordinates[territory.id].left
+}));
 
 const AboutPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
