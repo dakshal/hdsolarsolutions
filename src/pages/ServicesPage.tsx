@@ -95,7 +95,7 @@ const ServicesPage: React.FC = () => {
                   </div>
                 </div>
                 
-                <Link to={`/services/${option.id}`} className="btn btn-primary w-full text-center">
+                <Link to={`/services/options/${option.id}`} className="btn btn-primary w-full text-center">
                   Learn More
                 </Link>
               </motion.div>
@@ -158,7 +158,7 @@ const ServicesPage: React.FC = () => {
                       ))}
                   </div>
                 </div>
-                <Link to={`/services/${option.id}`} className="btn btn-primary w-full text-center">
+                <Link to={`/services/markets/${option.id}`} className="btn btn-primary w-full text-center">
                   Learn More
                 </Link>
               </motion.div>
