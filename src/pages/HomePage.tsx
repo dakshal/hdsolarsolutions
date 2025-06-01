@@ -95,7 +95,7 @@ const HomePage: React.FC = () => {
               <p className="text-gray-600 mb-4">
                 Custom solar systems for homeowners that reduce electricity bills and increase property value.
               </p>
-              <Link to="/services/residential" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+              <Link to="/services/markets/residential" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                 Learn More <span className="ml-1">→</span>
               </Link>
             </motion.div>
@@ -108,7 +108,7 @@ const HomePage: React.FC = () => {
               <p className="text-gray-600 mb-4">
                 Scalable solar solutions for businesses looking to reduce operating costs and achieve sustainability goals.
               </p>
-              <Link to="/services/commercial" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+              <Link to="/services/markets/commercial" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                 Learn More <span className="ml-1">→</span>
               </Link>
             </motion.div>
@@ -121,7 +121,7 @@ const HomePage: React.FC = () => {
               <p className="text-gray-600 mb-4">
                 Helping public institutions achieve energy independence and meet renewable energy mandates.
               </p>
-              <Link to="/services/government" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+              <Link to="/services/markets/government" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                 Learn More <span className="ml-1">→</span>
               </Link>
             </motion.div>
