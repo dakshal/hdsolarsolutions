@@ -18,7 +18,7 @@ export type KeyOffering = {
   description: string;
 };
 
-export const serviceOptions: ServiceOption[] = [
+export const marketSegments: MarketSegment[] = [
    {
     id: 'residential',
     name: 'Residential',
