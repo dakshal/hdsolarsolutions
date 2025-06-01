@@ -219,7 +219,7 @@ const AboutPage: React.FC = () => {
                   style={{
                     top: territory.top,
                     left: territory.left,
-                    transform: 'translate(-50%, -50%)', // Center the pin on the coordinates
+                    transform: 'translate(-50%, -50%)',
                   }}
                   title={territory.name}
                 >
