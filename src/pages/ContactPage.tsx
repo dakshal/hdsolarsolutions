@@ -104,8 +104,8 @@ const ContactPage: React.FC = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Office</h3>
                     <address className="text-gray-600 not-italic">
-                      123 Solar Street<br />
-                      Greenville, CA 94532
+                      1706 S Shore ct<br />
+                      Pittsburgh, PA, 15203
                     </address>
                   </div>
                 </div>
@@ -117,7 +117,7 @@ const ContactPage: React.FC = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Hours</h3>
                     <p className="text-gray-600">
-                      Monday - Friday: 8:00 AM - 6:00 PM<br />
+                      Monday - Friday: 9:00 AM - 5:00 PM<br />
                       Saturday: 9:00 AM - 2:00 PM<br />
                       Sunday: Closed
                     </p>
