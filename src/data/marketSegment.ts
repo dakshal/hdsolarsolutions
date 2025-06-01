@@ -83,7 +83,7 @@ export const serviceOptions: ServiceOption[] = [
       keyOfferings: [
         { name: 'Power Purchase Agreements (PPAs)', description: 'Install solar with no upfront capital expenditure and simply purchase the clean energy at a reduced rate.' },
         { name: 'Energy Resilience', description: 'Incorporate battery storage and microgrids to ensure critical facilities remain powered during grid outages.' },
-        { name:'Cleaner Energy', description: 'Meet clean energy mandates and sustainability goals with verifiable renewable energy projects.' },
+        { name:'Regulatory Compliance', description: 'Meet clean energy mandates and sustainability goals with verifiable renewable energy projects.' },
         { name: 'Community Solar Programs', description: 'Develop projects that allow local residents and businesses to benefit from clean energy savings.' },
       ]
     }
