@@ -99,7 +99,7 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/services/battery" className="text-gray-300 hover:text-primary-400 transition-colors">
+                <Link to="/services/options/battery" className="text-gray-300 hover:text-primary-400 transition-colors">
                   Battery Backup Solutions
                 </Link>
               </li>
