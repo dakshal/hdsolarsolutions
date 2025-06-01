@@ -263,5 +263,62 @@ export const serviceOptions: ServiceOption[] = [
       min: 0,
       max: 20
     }
+  },
+  {
+    id: 'collaboration',
+    name: 'EPC Collaborations',
+    description: 'Strategic partnerships with existing solar EPC companies to maximize tax benefits and project success.',
+    benefits: [
+      'Unlock project financing through specialized tax equity partnerships',
+      'Maximize project profitability by monetizing federal tax credits (ITC)',
+      'Reduce financial risk and capital requirements for large-scale projects',
+      'Access to a network of financial institutions and renewable energy investors',
+      'Expertise in navigating complex tax law and financial structuring',
+      'Co-development opportunities to expand your project pipeline'
+    ],
+    process: [
+      {
+        title: 'Initial Partnership Inquiry',
+        description: 'Prospective EPC partners submit their project portfolio or specific financing needs for review.',
+        leadTime: '1-3 days'
+      },
+      {
+        title: 'Project Due Diligence',
+        description: 'We conduct a thorough review of project financials, technical specifications, and legal documentation.',
+        leadTime: '1-2 weeks'
+      },
+      {
+        title: 'Financial Modeling & Structuring',
+        description: 'Our team models the project\'s financial outcomes and structures the optimal tax equity deal.',
+        leadTime: '1 week'
+      },
+      {
+        title: 'Partnership Agreement',
+        description: 'Drafting and execution of a comprehensive legal agreement defining roles, responsibilities, and returns.',
+        leadTime: '1-2 weeks'
+      },
+      {
+        title: 'Funding & Project Execution',
+        description: 'Collaboration through the project lifecycle to ensure all financial and regulatory milestones are met.',
+        leadTime: 'Project Duration'
+      },
+      {
+        title: 'Incentive Monetization & Reporting',
+        description: 'Managing the claim process for tax benefits and handling all long-term compliance and reporting.',
+        leadTime: 'Ongoing'
+      }
+    ],
+    documentation: [
+      'Corporate Profile & Financial Statements',
+      'Detailed Project Proposals (including technical specs and site plans)',
+      'Financial Pro-Forma models for each project',
+      'Executed Power Purchase Agreements (PPAs)',
+      'Utility Interconnection Agreements',
+      'Evidence of Site Control (deeds, leases, etc.)'
+    ],
+    reduction: {
+      min: 0,
+      max: 0
+    }
   }
 ];
