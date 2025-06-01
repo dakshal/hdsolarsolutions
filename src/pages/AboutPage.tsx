@@ -7,6 +7,22 @@ import { MapPin, Sun, Award, Users, Clock, Target } from 'lucide-react';
 const AboutPage: React.FC = () => {
  const [searchParams] = useSearchParams();
  const territoryParam = searchParams.get('territory');
+ // Map coordinates for each territory
+ const mapCoordinates = {
+   pa: { top: '25%', left: '40%' },
+   va: { top: '75%', left: '35%' },
+   md: { top: '50%', left: '45%' },
+   dc: { top: '65%', left: '48%' },
+   nj: { top: '35%', left: '80%' },
+   de: { top: '58%', left: '70%' }
+ };
+  
+  // Combine territory data with map coordinates
+ const mapTerritoryData = territories.map(territory => ({
+   ...territory,
+   top: mapCoordinates[territory.id].top,
+   left: mapCoordinates[territory.id].left
+ }));
  const selectedTerritory = territoryParam
   ? territories.find(t => t.id === territoryParam)
   : null;
