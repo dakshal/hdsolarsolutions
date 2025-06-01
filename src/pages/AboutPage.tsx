@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
 import { territories } from '../data/territoryData';
 import { MapPin, Sun, Award, Users, Clock, Target } from 'lucide-react';
-
 const AboutPage: React.FC = () => {
  const [searchParams] = useSearchParams();
  const territoryParam = searchParams.get('territory');
@@ -154,31 +153,29 @@ const AboutPage: React.FC = () => {
          className="w-full h-full object-cover"
         />
        </div>
-        {/* Mapping over territories to place pins */}
-	    {mapTerritoryData.map((territory) => (
-	      <Link
-	        key={territory.id}
-	        to={`/about?territory=${territory.id}`}
-	        className={`absolute flex items-center justify-center bg-blue-600 text-white rounded-full border-2 border-white shadow-lg transition-all duration-300 ease-in-out hover:bg-blue-700 hover:w-auto hover:px-2 group ${
-	          territory.id === selectedTerritory?.id ? 'w-auto px-2 bg-blue-700' : 'w-8 h-8'
-	        }`}
-	        style={{
-	          top: territory.top,
-	          left: territory.left,
-	          transform: 'translate(-50%, -50%)',
-	        }}
-	        title={territory.name}
-	      >
-	        <MapPin className="w-4 h-4 min-w-4" />
-	         <span className={`ml-1 whitespace-nowrap overflow-hidden transition-all duration-300 ${
-	             territory.id === selectedTerritory?.id ? 'max-w-40' : 'max-w-0 group-hover:max-w-40'
-	           }`}>
-	           {territory.name}
-	         </span>
-	      </a>
-	    ))}
+       {territories.map((territory, index) => (
+        <Link
+         key={territory.id}
+         to={`/about?territory=${territory.id}`}
+         className={`absolute w-8 h-8 flex items-center justify-center bg-primary-600 text-white rounded-full border-2 border-white shadow-lg transition-all hover:w-auto hover:px-2 hover:bg-primary-700 ${
+          territory.id === selectedTerritory?.id ? 'w-auto px-2 bg-primary-700' : ''
+         }`}
+         style={{
+          // Random positioning for demonstration
+          top: `${20 + (index * 10)}%`,
+          left: `${15 + (index * 9)}%`,
+         }}
+        >
+         <MapPin className="w-4 h-4 min-w-4" />
+         <span className={`ml-1 whitespace-nowrap overflow-hidden transition-all ${
+          territory.id === selectedTerritory?.id ? 'max-w-40' : 'max-w-0'
+         }`}>
+          {territory.name}
+         </span>
+        </Link>
+       ))}
       </motion.div>
-
+     
       <div>
        {selectedTerritory ? (
         <motion.div
@@ -191,11 +188,11 @@ const AboutPage: React.FC = () => {
           <MapPin className="w-6 h-6 text-primary-600 mr-2" />
           {selectedTerritory.name}
          </h3>
-
+        
          <p className="text-gray-600 mb-6">
           {selectedTerritory.description}
          </p>
-
+        
          <div className="mb-6">
           <h4 className="font-semibold mb-2">Local Incentives:</h4>
           <ul className="space-y-2">
@@ -207,10 +204,10 @@ const AboutPage: React.FC = () => {
            ))}
           </ul>
          </div>
-
+        
          <div className="mb-6">
           <h4 className="font-semibold mb-3">Average Payback Periods:</h4>
-
+         
           <div className="mb-4">
            <h5 className="text-sm font-medium mb-2">Residential Systems</h5>
            <div className="grid grid-cols-3 gap-4">
@@ -228,7 +225,7 @@ const AboutPage: React.FC = () => {
             </div>
            </div>
           </div>
-
+         
           <div>
            <h5 className="text-sm font-medium mb-2">Commercial Systems</h5>
            <div className="grid grid-cols-3 gap-4">
@@ -247,7 +244,7 @@ const AboutPage: React.FC = () => {
            </div>
           </div>
          </div>
-
+        
          <div className="text-center">
           <Link
            to="/contact"
@@ -264,7 +261,7 @@ const AboutPage: React.FC = () => {
          <p className="text-gray-600 mb-6">
           We currently operate in seven states, providing comprehensive solar solutions to residential, commercial, and government customers.
          </p>
-
+        
          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
           {territories.map((territory) => (
            <Link
@@ -277,7 +274,7 @@ const AboutPage: React.FC = () => {
            </Link>
           ))}
          </div>
-
+        
          <p className="text-gray-600 text-sm text-center">
           Click on a state to view detailed information about our services and incentives in that area.
          </p>
@@ -299,7 +296,7 @@ const AboutPage: React.FC = () => {
      <div className="relative">
       {/* Timeline connector */}
       <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary-200 transform -translate-x-1/2"></div>
-
+     
       <motion.div
        initial={{ opacity: 0, y: 20 }}
        whileInView={{ opacity: 1, y: 0 }}
@@ -316,14 +313,14 @@ const AboutPage: React.FC = () => {
          </p>
         </div>
        </div>
-
+      
        <div className="md:w-8 md:h-8 bg-primary-500 rounded-full z-10 my-4 md:my-0 flex items-center justify-center text-white">
         <Clock className="w-4 h-4" />
        </div>
-
+      
        <div className="md:w-1/2"></div>
       </motion.div>
-
+     
       <motion.div
        initial={{ opacity: 0, y: 20 }}
        whileInView={{ opacity: 1, y: 0 }}
@@ -340,14 +337,14 @@ const AboutPage: React.FC = () => {
          </p>
         </div>
        </div>
-
+      
        <div className="md:w-8 md:h-8 bg-primary-500 rounded-full z-10 my-4 md:my-0 flex items-center justify-center text-white">
         <Target className="w-4 h-4" />
        </div>
-
+      
        <div className="md:w-1/2"></div>
       </motion.div>
-
+     
       <motion.div
        initial={{ opacity: 0, y: 20 }}
        whileInView={{ opacity: 1, y: 0 }}
@@ -364,14 +361,14 @@ const AboutPage: React.FC = () => {
          </p>
         </div>
        </div>
-
+      
        <div className="md:w-8 md:h-8 bg-primary-500 rounded-full z-10 my-4 md:my-0 flex items-center justify-center text-white">
         <MapPin className="w-4 h-4" />
        </div>
-
+      
        <div className="md:w-1/2"></div>
       </motion.div>
-
+     
       <motion.div
        initial={{ opacity: 0, y: 20 }}
        whileInView={{ opacity: 1, y: 0 }}
@@ -388,14 +385,14 @@ const AboutPage: React.FC = () => {
          </p>
         </div>
        </div>
-
+      
        <div className="md:w-8 md:h-8 bg-primary-500 rounded-full z-10 my-4 md:my-0 flex items-center justify-center text-white">
         <Users className="w-4 h-4" />
        </div>
-
+      
        <div className="md:w-1/2"></div>
       </motion.div>
-
+     
       <motion.div
        initial={{ opacity: 0, y: 20 }}
        whileInView={{ opacity: 1, y: 0 }}
@@ -412,11 +409,11 @@ const AboutPage: React.FC = () => {
          </p>
         </div>
        </div>
-
+      
        <div className="md:w-8 md:h-8 bg-primary-500 rounded-full z-10 my-4 md:my-0 flex items-center justify-center text-white">
         <Award className="w-4 h-4" />
        </div>
-
+      
        <div className="md:w-1/2"></div>
       </motion.div>
      </div>
