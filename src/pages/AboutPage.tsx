@@ -186,11 +186,33 @@ const AboutPage: React.FC = () => {
                 />
               </div>
               {/* Mapping over territories to place pins */}
+              {/*
+              {territories.map((territory, index) => (
+                <Link
+                  key={territory.id}
+                  to={`/about?territory=${territory.id}`}
+                  className={`absolute w-8 h-8 flex items-center justify-center bg-primary-600 text-white rounded-full border-2 border-white shadow-lg transition-all hover:w-auto hover:px-2 hover:bg-primary-700 ${
+                    territory.id === selectedTerritory?.id ? 'w-auto px-2 bg-primary-700' : ''
+                  }`}
+                  style={{
+                    // Random positioning for demonstration
+                    top: `${20 + (index * 10)}%`,
+                    left: `${15 + (index * 9)}%`,
+                  }}
+                >
+                  <MapPin className="w-4 h-4 min-w-4" />
+                  <span className={`ml-1 whitespace-nowrap overflow-hidden transition-all ${
+                    territory.id === selectedTerritory?.id ? 'max-w-40' : 'max-w-0'
+                  }`}>
+                    {territory.name}
+                  </span>
+                </Link>
+              ))}
+              */}
               {mapTerritoryData.map((territory) => (
-                <a
+                <Link
                   key={territory.id}
-                  href="#"
-                  onClick={(e) => handleTerritoryClick(e, territory.id)}
+                  to={`/about?territory=${territory.id}`}
                   className={`absolute flex items-center justify-center bg-blue-600 text-white rounded-full border-2 border-white shadow-lg transition-all duration-300 ease-in-out hover:bg-blue-700 hover:w-auto hover:px-2 group ${
                     territory.id === selectedTerritory?.id ? 'w-auto px-2 bg-blue-700' : 'w-8 h-8'
                   }`}
@@ -442,48 +464,4 @@ const AboutPage: React.FC = () => {
                   <div className="font-bold text-primary-600 mb-2">Today</div>
                   <h3 className="text-xl font-semibold mb-2">A National Leader</h3>
                   <p className="text-gray-600">
-                    Now operating in five states with over 10 installations, we continue to lead the way in solar innovation and customer satisfaction.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="md:w-8 md:h-8 bg-primary-500 rounded-full z-10 my-4 md:my-0 flex items-center justify-center text-white">
-                <Award className="w-4 h-4" />
-              </div>
-              
-              <div className="md:w-1/2"></div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="section bg-gradient-to-br from-primary-700 to-secondary-700 text-white">
-        <div className="container-custom text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl font-bold mb-6">Join the Solar Revolution</h2>
-            <p className="text-xl mb-8 opacity-90">
-              Ready to reduce your energy costs and environmental impact? Contact us today to learn more about our solar solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link to="/contact" className="btn bg-white text-primary-700 hover:bg-gray-100">
-                Get a Free Quote
-              </Link>
-              <Link to="/services" className="btn bg-transparent border border-white hover:bg-white/10">
-                Explore Our Services
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    </>
-  );
-};
-
-export default AboutPage;
+                    Now operating in five states with over 10 installations, we continue to lead the way in sol
