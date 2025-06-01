@@ -115,7 +115,7 @@ const ServicesPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {serviceOptions.map((option) => (
+            {marketSegments.map((option) => (
               <motion.div 
                 key={option.id}
                 initial="hidden"
