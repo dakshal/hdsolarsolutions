@@ -206,7 +206,7 @@ const ServicesPage: React.FC = () => {
                     <span>Smart energy management systems</span>
                   </li>
                 </ul>
-                <Link to="/contact" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                <Link to="/services/options/battery" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                   Learn More <span className="ml-1">→</span>
                 </Link>
               </div>
