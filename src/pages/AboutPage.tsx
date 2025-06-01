@@ -169,25 +169,26 @@ const AboutPage: React.FC = () => {
          className="w-full h-full object-cover"
         />
        </div>
-       {territories.map((territory, index) => (
+       {mapTerritoryData.map((territory) => (
         <Link
-         key={territory.id}
-         to={`/about?territory=${territory.id}`}
-         className={`absolute w-8 h-8 flex items-center justify-center bg-primary-600 text-white rounded-full border-2 border-white shadow-lg transition-all hover:w-auto hover:px-2 hover:bg-primary-700 ${
-          territory.id === selectedTerritory?.id ? 'w-auto px-2 bg-primary-700' : ''
-         }`}
-         style={{
-          // Random positioning for demonstration
-          top: `${20 + (index * 10)}%`,
-          left: `${15 + (index * 9)}%`,
-         }}
-        >
-         <MapPin className="w-4 h-4 min-w-4" />
-         <span className={`ml-1 whitespace-nowrap overflow-hidden transition-all ${
-          territory.id === selectedTerritory?.id ? 'max-w-40' : 'max-w-0'
-         }`}>
-          {territory.name}
-         </span>
+	        key={territory.id}
+	        to={`/about?territory=${territory.id}`}
+	        className={`absolute flex items-center justify-center bg-blue-600 text-white rounded-full border-2 border-white shadow-lg transition-all duration-300 ease-in-out hover:bg-blue-700 hover:w-auto hover:px-2 group ${
+	          territory.id === selectedTerritory?.id ? 'w-auto px-2 bg-blue-700' : 'w-8 h-8'
+	        }`}
+	        style={{
+	          top: territory.top,
+	          left: territory.left,
+	          transform: 'translate(-50%, -50%)',
+	        }}
+	        title={territory.name}
+	      >
+	        <MapPin className="w-4 h-4 min-w-4" />
+	         <span className={`ml-1 whitespace-nowrap overflow-hidden transition-all duration-300 ${
+	             territory.id === selectedTerritory?.id ? 'max-w-40' : 'max-w-0 group-hover:max-w-40'
+	           }`}>
+	           {territory.name}
+	         </span>
         </Link>
        ))}
       </motion.div>
