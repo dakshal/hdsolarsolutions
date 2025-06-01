@@ -74,27 +74,27 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-6 text-white">Our Services</h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/services/buyout" className="text-gray-300 hover:text-primary-400 transition-colors">
+                <Link to="/services/options/buyout" className="text-gray-300 hover:text-primary-400 transition-colors">
                   Solar Buy Out
                 </Link>
               </li>
               <li>
-                <Link to="/services/lease" className="text-gray-300 hover:text-primary-400 transition-colors">
+                <Link to="/services/options/lease" className="text-gray-300 hover:text-primary-400 transition-colors">
                   Solar Lease
                 </Link>
               </li>
               <li>
-                <Link to="/services/ppa" className="text-gray-300 hover:text-primary-400 transition-colors">
+                <Link to="/services/options/ppa" className="text-gray-300 hover:text-primary-400 transition-colors">
                   Power Purchase Agreement
                 </Link>
               </li>
               <li>
-                <Link to="/services/residential" className="text-gray-300 hover:text-primary-400 transition-colors">
+                <Link to="/services/markets/residential" className="text-gray-300 hover:text-primary-400 transition-colors">
                   Residential Solar
                 </Link>
               </li>
               <li>
-                <Link to="/services/commercial" className="text-gray-300 hover:text-primary-400 transition-colors">
+                <Link to="/services/markets/commercial" className="text-gray-300 hover:text-primary-400 transition-colors">
                   Commercial Solar
                 </Link>
               </li>
