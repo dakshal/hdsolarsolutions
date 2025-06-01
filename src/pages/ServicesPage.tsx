@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CreditCard, Clock, DollarSign, Lightbulb, Home, Building2, Landmark, Battery } from 'lucide-react';
 import { serviceOptions } from '../data/serviceOptions';
+import { marketSegments } from '../data/marketSegments';
 
 // This is the detail page component
 const ServiceDetailPage = ({ serviceId, onBackClick }) => {
