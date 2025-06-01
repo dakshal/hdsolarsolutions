@@ -262,13 +262,7 @@ const ServicesPage: React.FC = () => {
             viewport={{ once: true }}
           >
             {marketSegments.map((segment) => {
-                if (segment.icon == 'Home') {
-                  const Icon = Home;
-                } else if (segment.icon == 'Building2') {
-                  const Icon = Building2;
-                } else {
-                  const Icon = Landmark;
-                }
+                const Icon = segment.icon;
                 return (
                     <motion.div
                         key={segment.id}
