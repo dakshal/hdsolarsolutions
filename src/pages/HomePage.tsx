@@ -74,7 +74,7 @@ const HomePage: React.FC = () => {
       <section className="section bg-white">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Solar Energy Solutions</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">H&D Solar Solutions</h2>
             <p className="text-lg text-gray-600">
               Customized solar packages to fit your energy needs and financial goals.
             </p>
@@ -479,7 +479,7 @@ const HomePage: React.FC = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Harness the Power of the Sun?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Contact us today for a free consultation and discover how much you can save with solar energy.
+              Contact us today for a free consultation and discover how much you can save with H&D Solar Solutions.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/contact" className="btn bg-white text-primary-700 hover:bg-gray-100">
