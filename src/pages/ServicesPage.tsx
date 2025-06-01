@@ -171,127 +171,44 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Market Segments */}
-      <section className="section bg-gray-50">
-        <div className="container-custom">
-          <div className="max-w-3xl mb-16">
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Solar Solutions By Market</h2>
             <p className="text-lg text-gray-600">
               We offer tailored solar solutions for different market segments, each with unique requirements and benefits.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="card hover:shadow-lg"
-            >
-              <div className="bg-primary-50 p-6 mb-6 rounded-lg flex justify-center">
-                <Home className="w-16 h-16 text-primary-600" />
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">Residential</h3>
-              <p className="text-gray-600 mb-6">
-                Custom solar solutions for homeowners that reduce electricity bills and increase property value while contributing to a sustainable future.
-              </p>
-              <ul className="mb-8 space-y-3">
-                <li className="flex items-start">
-                  <Lightbulb className="w-5 h-5 text-primary-600 mr-2 shrink-0 mt-0.5" />
-                  <span>Systems sized from 5kW to 15kW</span>
-                </li>
-                <li className="flex items-start">
-                  <Lightbulb className="w-5 h-5 text-primary-600 mr-2 shrink-0 mt-0.5" />
-                  <span>Rooftop and ground mount options</span>
-                </li>
-                <li className="flex items-start">
-                  <Lightbulb className="w-5 h-5 text-primary-600 mr-2 shrink-0 mt-0.5" />
-                  <span>Battery backup available</span>
-                </li>
-                <li className="flex items-start">
-                  <Lightbulb className="w-5 h-5 text-primary-600 mr-2 shrink-0 mt-0.5" />
-                  <span>Average payback period: 5-8 years</span>
-                </li>
-              </ul>
-              <Link to="/services/residential" className="btn btn-primary w-full text-center">
-                Learn More
-              </Link>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="card hover:shadow-lg"
-            >
-              <div className="bg-primary-50 p-6 mb-6 rounded-lg flex justify-center">
-                <Building2 className="w-16 h-16 text-primary-600" />
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">Commercial</h3>
-              <p className="text-gray-600 mb-6">
-                Scalable solar solutions for businesses looking to reduce operating costs, achieve sustainability goals, and enhance brand reputation.
-              </p>
-              <ul className="mb-8 space-y-3">
-                <li className="flex items-start">
-                  <Lightbulb className="w-5 h-5 text-primary-600 mr-2 shrink-0 mt-0.5" />
-                  <span>Systems from 50kW to 1MW+</span>
-                </li>
-                <li className="flex items-start">
-                  <Lightbulb className="w-5 h-5 text-primary-600 mr-2 shrink-0 mt-0.5" />
-                  <span>Rooftop, ground mount, and carport options</span>
-                </li>
-                <li className="flex items-start">
-                  <Lightbulb className="w-5 h-5 text-primary-600 mr-2 shrink-0 mt-0.5" />
-                  <span>Customized energy storage solutions</span>
-                </li>
-                <li className="flex items-start">
-                  <Lightbulb className="w-5 h-5 text-primary-600 mr-2 shrink-0 mt-0.5" />
-                  <span>Average payback period: 4-7 years</span>
-                </li>
-              </ul>
-              <Link to="/services/commercial" className="btn btn-primary w-full text-center">
-                Learn More
-              </Link>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="card hover:shadow-lg"
-            >
-              <div className="bg-primary-50 p-6 mb-6 rounded-lg flex justify-center">
-                <Landmark className="w-16 h-16 text-primary-600" />
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">Government</h3>
-              <p className="text-gray-600 mb-6">
-                Helping public institutions achieve energy independence, meet renewable energy mandates, and save taxpayer dollars on energy costs.
-              </p>
-              <ul className="mb-8 space-y-3">
-                <li className="flex items-start">
-                  <Lightbulb className="w-5 h-5 text-primary-600 mr-2 shrink-0 mt-0.5" />
-                  <span>Systems sized for municipal needs</span>
-                </li>
-                <li className="flex items-start">
-                  <Lightbulb className="w-5 h-5 text-primary-600 mr-2 shrink-0 mt-0.5" />
-                  <span>Innovative financing options for public entities</span>
-                </li>
-                <li className="flex items-start">
-                  <Lightbulb className="w-5 h-5 text-primary-600 mr-2 shrink-0 mt-0.5" />
-                  <span>Microgrid and resilience solutions</span>
-                </li>
-                <li className="flex items-start">
-                  <Lightbulb className="w-5 h-5 text-primary-600 mr-2 shrink-0 mt-0.5" />
-                  <span>Average payback period: 5-10 years</span>
-                </li>
-              </ul>
-              <Link to="/services/government" className="btn btn-primary w-full text-center">
-                Learn More
-              </Link>
-            </motion.div>
-          </div>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {marketSegments.map((segment) => {
+                const Icon = segment.icon;
+                return (
+                    <motion.div
+                        key={segment.id}
+                        variants={fadeIn}
+                        className="bg-white rounded-lg shadow-md p-8 flex flex-col text-center hover:shadow-xl transition-shadow"
+                    >
+                        <div className="flex-grow">
+                            <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 text-blue-600 rounded-full mb-6">
+                                <Icon className="w-12 h-12" />
+                            </div>
+                            <h3 className="text-2xl font-semibold mb-4">{segment.name}</h3>
+                            <p className="text-gray-600 mb-6">{segment.summary}</p>
+                        </div>
+                        <a href="#" onClick={(e) => handleLearnMoreClick(e, segment.id)} className="mt-auto block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">
+                            Learn More
+                        </a>
+                    </motion.div>
+                )
+            })}
+          </motion.div>
         </div>
       </section>
 
