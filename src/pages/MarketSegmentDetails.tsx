@@ -202,7 +202,7 @@ const MarketSegmentDetailPage: React.FC = () => {
                     <li><strong>Monthly Payment:</strong> {formatCurrency(Math.round(systemExample.cost * 0.008))}</li>
                     <li><strong>Annual Savings:</strong> {formatCurrency(Math.round(systemExample.annualSavings * 0.25))}</li>
                     <li><strong>O&M Cost:</strong> $0 (included)</li>
-                    <li><strong>Term:</strong> 20-25 years</li>
+                    <li><strong>Term:</strong> upto 25 years</li>
                     <li><strong>Total Savings:</strong> {formatCurrency(Math.round(systemExample.annualSavings * 0.25 * 25))}</li>
                   </ul>
                   <Link to="/services/options/lease" className="btn btn-primary w-full mt-4">
@@ -220,7 +220,7 @@ const MarketSegmentDetailPage: React.FC = () => {
                     <li><strong>Rate per kWh:</strong> $0.08-0.10</li>
                     <li><strong>Annual Savings:</strong> {formatCurrency(Math.round(systemExample.annualSavings * 0.25))}</li>
                     <li><strong>O&M Cost:</strong> $0 (included)</li>
-                    <li><strong>Escalation:</strong> Up to 2% annually</li>
+                    <li><strong>Term:</strong> upto 25 years</li>
                     <li><strong>Total Savings:</strong> {formatCurrency(Math.round(systemExample.annualSavings * 0.25 * 25))}</li>
                   </ul>
                   <Link to="/services/options/ppa" className="btn btn-primary w-full mt-4">
