@@ -28,6 +28,7 @@ const Header: React.FC = () => {
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Projects', path: '/projects' },
+    { name: 'Calculator', path: '/calculator' },
     { name: 'Tax Credits', path: '/tax-credits' },
     { name: 'Sales Rep', path: '/sales-rep' },
     { name: 'Contact', path: '/contact' },
@@ -42,7 +43,7 @@ const Header: React.FC = () => {
       <div className="container-custom flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={closeMenu}>
           <Sun className="w-8 h-8 text-primary-600 mr-2" />
-          <span className="font-bold text-xl text-gray-900">H&amp;D Solar Solutions</span>
+          <span className="font-bold text-xl text-gray-900">H&D Solar Solutions</span>
         </Link>
 
         {/* Desktop Navigation */}

@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { marketSegments } from '../data/marketSegments';
 import { motion } from 'framer-motion';
-import { CheckCircle, Lightbulb, AlertCircle, TrendingUp, ShieldCheck } from 'lucide-react';
+import { CheckCircle, Lightbulb, AlertCircle, TrendingUp, ShieldCheck, Calculator, DollarSign, Zap, Clock } from 'lucide-react';
 
 const MarketSegmentDetailPage: React.FC = () => {
   const { segmentId } = useParams<{ segmentId: string }>();
@@ -33,6 +33,58 @@ const MarketSegmentDetailPage: React.FC = () => {
       y: 0,
       transition: { duration: 0.6 }
     }
+  };
+
+  // System examples based on segment
+  const getSystemExample = () => {
+    switch (segment.id) {
+      case 'residential':
+        return {
+          size: '10kW',
+          cost: 35000,
+          annualGeneration: 12000,
+          annualSavings: 2500,
+          federalITC: 10500,
+          netCost: 24500,
+          paybackPeriod: '6-8 years',
+          description: 'Perfect for a typical family home with moderate to high electricity usage.'
+        };
+      case 'commercial':
+        return {
+          size: '100kW',
+          cost: 350000,
+          annualGeneration: 120000,
+          annualSavings: 18000,
+          federalITC: 105000,
+          netCost: 245000,
+          paybackPeriod: '4-6 years',
+          description: 'Ideal for medium-sized businesses, retail stores, or small manufacturing facilities.'
+        };
+      case 'nonprofit':
+        return {
+          size: '350kW',
+          cost: 1225000,
+          annualGeneration: 420000,
+          annualSavings: 63000,
+          federalITC: 367500,
+          netCost: 857500,
+          paybackPeriod: '5-8 years',
+          description: 'Suitable for large non-profit organizations, hospitals, schools, or community centers.'
+        };
+      default:
+        return null;
+    }
+  };
+
+  const systemExample = getSystemExample();
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
   };
 
   return (
@@ -85,8 +137,110 @@ const MarketSegmentDetailPage: React.FC = () => {
         </div>
       </section>
 
+      {/* System Example Section */}
+      {systemExample && (
+        <section className="section bg-gray-50">
+          <div className="container-custom">
+            <div className="max-w-3xl mb-12">
+              <h2 className="text-3xl font-bold mb-4">{segment.name} System Example</h2>
+              <p className="text-lg text-gray-600">
+                Here's a detailed cost breakdown for a typical {segment.name.toLowerCase()} solar installation.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-md p-8 max-w-4xl mx-auto">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-semibold mb-2">{systemExample.size} Solar System</h3>
+                <p className="text-gray-600">{systemExample.description}</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div className="bg-gray-50 p-4 rounded-lg text-center">
+                  <div className="text-sm text-gray-500">System Size</div>
+                  <div className="text-xl font-semibold">{systemExample.size}</div>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg text-center">
+                  <div className="text-sm text-gray-500">System Cost</div>
+                  <div className="text-xl font-semibold">{formatCurrency(systemExample.cost)}</div>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg text-center">
+                  <div className="text-sm text-gray-500">Annual Generation</div>
+                  <div className="text-xl font-semibold">{systemExample.annualGeneration.toLocaleString()} kWh</div>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg text-center">
+                  <div className="text-sm text-gray-500">Annual Savings</div>
+                  <div className="text-xl font-semibold">{formatCurrency(systemExample.annualSavings)}</div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="border border-gray-200 rounded-lg p-6">
+                  <h4 className="text-lg font-semibold mb-4 text-primary-600 flex items-center">
+                    <DollarSign className="w-5 h-5 mr-2" />
+                    Purchase (Buy Out)
+                  </h4>
+                  <ul className="space-y-2 text-sm">
+                    <li><strong>System Cost:</strong> {formatCurrency(systemExample.cost)}</li>
+                    <li><strong>Federal ITC (30%):</strong> {formatCurrency(systemExample.federalITC)}</li>
+                    <li><strong>Net Investment:</strong> {formatCurrency(systemExample.netCost)}</li>
+                    <li><strong>Annual Savings:</strong> {formatCurrency(systemExample.annualSavings)}</li>
+                    <li><strong>Payback Period:</strong> {systemExample.paybackPeriod}</li>
+                    <li><strong>25-Year Savings:</strong> {formatCurrency(systemExample.annualSavings * 25 - systemExample.netCost)}</li>
+                  </ul>
+                  <Link to="/services/options/buyout" className="btn btn-primary w-full mt-4">
+                    View Details
+                  </Link>
+                </div>
+
+                <div className="border border-gray-200 rounded-lg p-6">
+                  <h4 className="text-lg font-semibold mb-4 text-primary-600 flex items-center">
+                    <Clock className="w-5 h-5 mr-2" />
+                    Leasing
+                  </h4>
+                  <ul className="space-y-2 text-sm">
+                    <li><strong>Upfront Cost:</strong> $0</li>
+                    <li><strong>Monthly Payment:</strong> {formatCurrency(Math.round(systemExample.cost * 0.008))}</li>
+                    <li><strong>Annual Savings:</strong> {formatCurrency(Math.round(systemExample.annualSavings * 0.25))}</li>
+                    <li><strong>O&M Cost:</strong> $0 (included)</li>
+                    <li><strong>Term:</strong> 20-25 years</li>
+                    <li><strong>Total Savings:</strong> {formatCurrency(Math.round(systemExample.annualSavings * 0.25 * 25))}</li>
+                  </ul>
+                  <Link to="/services/options/lease" className="btn btn-primary w-full mt-4">
+                    View Details
+                  </Link>
+                </div>
+
+                <div className="border border-gray-200 rounded-lg p-6">
+                  <h4 className="text-lg font-semibold mb-4 text-primary-600 flex items-center">
+                    <Zap className="w-5 h-5 mr-2" />
+                    PPA
+                  </h4>
+                  <ul className="space-y-2 text-sm">
+                    <li><strong>Upfront Cost:</strong> $0</li>
+                    <li><strong>Rate per kWh:</strong> $0.08-0.10</li>
+                    <li><strong>Annual Savings:</strong> {formatCurrency(Math.round(systemExample.annualSavings * 0.25))}</li>
+                    <li><strong>O&M Cost:</strong> $0 (included)</li>
+                    <li><strong>Escalation:</strong> Up to 2% annually</li>
+                    <li><strong>Total Savings:</strong> {formatCurrency(Math.round(systemExample.annualSavings * 0.25 * 25))}</li>
+                  </ul>
+                  <Link to="/services/options/ppa" className="btn btn-primary w-full mt-4">
+                    View Details
+                  </Link>
+                </div>
+              </div>
+
+              <div className="bg-primary-50 p-4 rounded-lg border border-primary-100">
+                <p className="text-sm text-gray-700 text-center">
+                  <strong>Note:</strong> These are estimated costs based on average market rates. Actual costs may vary based on site conditions, local incentives, and specific equipment choices. Contact us for a personalized quote.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* In-Depth Look Section */}
-      <section className="section bg-gray-50">
+      <section className="section bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -121,7 +275,7 @@ const MarketSegmentDetailPage: React.FC = () => {
       </section>
 
       {/* Key Offerings Section */}
-      <section className="section bg-white">
+      <section className="section bg-gray-50">
         <div className="container-custom">
           <div className="max-w-3xl mb-12 mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Our Core Offerings for {segment.name}</h2>
@@ -152,6 +306,26 @@ const MarketSegmentDetailPage: React.FC = () => {
                   </div>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Calculator CTA */}
+      <section className="section bg-white">
+        <div className="container-custom">
+          <div className="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-xl p-8 text-white text-center">
+            <div className="max-w-3xl mx-auto">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 text-white mb-6">
+                <Calculator className="w-8 h-8" />
+              </div>
+              <h2 className="text-3xl font-bold mb-4">Get Your Personalized Solar Estimate</h2>
+              <p className="text-xl mb-8 opacity-90">
+                Use our interactive calculator to get an instant, detailed cost breakdown for your {segment.name.toLowerCase()} solar project.
+              </p>
+              <Link to="/calculator" className="btn bg-white text-primary-700 hover:bg-gray-100">
+                Try Our Solar Calculator
+              </Link>
             </div>
           </div>
         </div>
