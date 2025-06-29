@@ -292,7 +292,7 @@ export const serviceOptions: ServiceOption[] = [
   {
     id: 'collaborations',
     name: 'EPC Collaborations',
-    description: 'We finance solar purchase, PPA, and solar leasing for existing EPC companies, helping maximize tax benefits and project success.',
+    description: 'We finance projects for PPA, and solar leasing for existing EPC companies, helping maximize tax benefits and project success.',
     upfrontCost: 'Varies by project',
     taxBenefits: true,
     maintenanceIncluded: false,
