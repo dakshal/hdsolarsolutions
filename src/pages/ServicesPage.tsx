@@ -337,6 +337,7 @@ const ServicesPage: React.FC = () => {
                   <li><strong>Solar ITC:</strong> $10,500</li>
                   <li><strong>Net Investment:</strong> $24,500</li>
                   <li><strong>Annual Saving:</strong> $2,500</li>
+                  <li><strong>O&M Cost:</strong> Self maintained</li>
                   <li><strong>Payback Period:</strong> Up to 10 years</li>
                 </ul>
                 <Link to="/services/options/buyout" className="btn btn-primary w-full mt-4">
