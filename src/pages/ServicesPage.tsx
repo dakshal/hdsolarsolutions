@@ -347,11 +347,11 @@ const ServicesPage: React.FC = () => {
               <div className="border border-gray-200 rounded-lg p-6">
                 <h5 className="text-lg font-semibold mb-4 text-primary-600">Leasing</h5>
                 <ul className="space-y-2 text-sm">
+                  <li><strong>System Cost:</strong> $0</li>
                   <li><strong>Annual Saving:</strong> 25% discount ($600/year)</li>
                   <li><strong>Total Savings:</strong> $15,000 (system life)</li>
                   <li><strong>O&M Cost:</strong> $0 (included)</li>
-                  <li><strong>Term:</strong> 20-25 years</li>
-                  <li><strong>Upfront Cost:</strong> $0</li>
+                  <li><strong>Term:</strong> upto 25 years</li>
                 </ul>
                 <Link to="/services/options/lease" className="btn btn-primary w-full mt-4">
                   View Details
@@ -361,11 +361,11 @@ const ServicesPage: React.FC = () => {
               <div className="border border-gray-200 rounded-lg p-6">
                 <h5 className="text-lg font-semibold mb-4 text-primary-600">PPA</h5>
                 <ul className="space-y-2 text-sm">
+                  <li><strong>System Cost:</strong> $0</li>
                   <li><strong>Annual Saving:</strong> 25% discount ($600/year)</li>
                   <li><strong>Total Savings:</strong> $15,000 (system life)</li>
                   <li><strong>O&M Cost:</strong> $0 (included)</li>
-                  <li><strong>Term:</strong> 20-25 years</li>
-                  <li><strong>Escalation:</strong> Up to 2% annually</li>
+                  <li><strong>Term:</strong> upto 25 years</li>
                 </ul>
                 <Link to="/services/options/ppa" className="btn btn-primary w-full mt-4">
                   View Details
