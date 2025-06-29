@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Calculator, TrendingUp, Landmark, FileText, DollarSign, PiggyBank, Building, Users } from 'lucide-react';
+import { Calculator, TrendingUp, Landmark, FileText, DollarSign, PiggyBank, Building, Users, AlertTriangle, Target } from 'lucide-react';
 
 const TaxCreditsPage: React.FC = () => {
   const fadeIn = {
@@ -20,10 +20,10 @@ const TaxCreditsPage: React.FC = () => {
         <div className="container-custom">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Solar Tax Credits & Incentives
+              Solar Tax Credits & Investment Opportunities
             </h1>
             <p className="text-xl mb-8 text-gray-100">
-              Maximize your solar investment with valuable tax credits and turn your tax liability into a powerful investment opportunity.
+              Maximize your solar investment with valuable tax credits and turn your tax liability into a powerful wealth-building opportunity.
             </p>
           </div>
         </div>
@@ -35,7 +35,7 @@ const TaxCreditsPage: React.FC = () => {
           <div className="max-w-3xl mb-16">
             <h2 className="text-3xl font-bold mb-4">Federal Investment Tax Credit (ITC)</h2>
             <p className="text-lg text-gray-600">
-              The Federal Solar Investment Tax Credit is one of the most significant financial incentives for solar energy adoption in the United States.
+              The Federal Solar Investment Tax Credit is one of the most significant financial incentives for solar energy adoption in the United States, especially powerful for Solar Buy Out options.
             </p>
           </div>
 
@@ -53,7 +53,7 @@ const TaxCreditsPage: React.FC = () => {
                 </h3>
                 
                 <p className="text-gray-600 mb-6">
-                  The Federal ITC allows you to deduct 30% of the cost of installing a solar energy system from your federal taxes. This tax credit applies to both residential and commercial systems with no cap on its value.
+                  The Federal ITC allows you to deduct 30% of the cost of installing a solar energy system from your federal taxes. This immediate tax credit applies to Solar Buy Out purchases with no cap on its value.
                 </p>
                 
                 <div className="bg-gray-50 p-6 rounded-lg mb-6">
@@ -99,7 +99,7 @@ const TaxCreditsPage: React.FC = () => {
                   <li className="flex items-start">
                     <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
                     <span className="text-gray-600">
-                      <strong>System Ownership:</strong> You must own the solar system (not lease or PPA)
+                      <strong>System Ownership:</strong> You must own the solar system (Buy Out option only - not lease or PPA)
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -143,10 +143,22 @@ const TaxCreditsPage: React.FC = () => {
       <section id="passive-income" className="section bg-gray-50">
         <div className="container-custom">
           <div className="max-w-3xl mb-16">
-            <h2 className="text-3xl font-bold mb-4">Solar as a Passive Income Vehicle</h2>
+            <h2 className="text-3xl font-bold mb-4">Solar as a Tax Reduction & Passive Income Vehicle</h2>
             <p className="text-lg text-gray-600">
-              Beyond energy savings, solar investments can generate passive income and significantly reduce your tax burden.
+              For individuals who paid $50,000 to $600,000+ in taxes, solar investments can provide powerful tax reduction strategies and potentially recover paid taxes while generating passive income.
             </p>
+          </div>
+
+          <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-12 max-w-4xl mx-auto">
+            <div className="flex items-start">
+              <AlertTriangle className="w-6 h-6 text-red-600 mr-3 mt-1" />
+              <div>
+                <h3 className="text-lg font-semibold text-red-700 mb-2">High-Value Tax Strategy Opportunity</h3>
+                <p className="text-red-700">
+                  <strong>Are you someone who paid 5 to 6 figures in taxes?</strong> Solar investment through our Buy Out option can be a powerful vehicle for tax reduction and potentially recovering paid taxes. Contact us for a personalized consultation to explore how solar can transform your tax strategy.
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -163,7 +175,7 @@ const TaxCreditsPage: React.FC = () => {
               <div>
                 <h3 className="text-xl font-semibold mb-2">Tax Reduction Strategy</h3>
                 <p className="text-gray-600">
-                  Strategic solar investments can offset high tax liabilities, especially for individuals who paid 5 to 6 figures in taxes. This approach allows you to redirect funds that would otherwise go to taxes into wealth-building assets.
+                  Strategic solar investments can offset high tax liabilities, especially for individuals who paid significant amounts in taxes. This approach allows you to redirect funds that would otherwise go to taxes into wealth-building assets that provide returns for 25+ years.
                 </p>
               </div>
             </motion.div>
@@ -181,7 +193,7 @@ const TaxCreditsPage: React.FC = () => {
               <div>
                 <h3 className="text-xl font-semibold mb-2">Recover Paid Taxes</h3>
                 <p className="text-gray-600">
-                  Through advanced tax strategies involving solar investments, it's possible to recover a portion of taxes you've already paid, creating a powerful cash flow opportunity and potential for passive income.
+                  Through advanced tax strategies involving solar investments, it's possible to recover a portion of taxes you've already paid, creating a powerful cash flow opportunity and potential for passive income generation.
                 </p>
               </div>
             </motion.div>
@@ -194,7 +206,7 @@ const TaxCreditsPage: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="bg-white rounded-xl shadow-md p-8 max-w-4xl mx-auto"
           >
-            <h3 className="text-2xl font-semibold mb-6 text-center">How It Works: High-Income Example</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-center">High-Income Tax Strategy Example</h3>
             
             <div className="mb-8">
               <div className="flex flex-col md:flex-row md:items-center mb-6">
@@ -220,7 +232,7 @@ const TaxCreditsPage: React.FC = () => {
               
               <div className="bg-green-50 p-4 rounded-lg border border-green-100">
                 <p className="text-center text-gray-700">
-                  <strong>Result:</strong> Instead of paying $190,000 in taxes, you've redirected $160,000 into an income-generating asset that provides returns for 25+ years.
+                  <strong>Result:</strong> Instead of paying $190,000 in taxes, you've redirected $160,000 into an income-generating asset that provides returns for 25+ years while potentially recovering previously paid taxes.
                 </p>
               </div>
             </div>
@@ -241,9 +253,9 @@ const TaxCreditsPage: React.FC = () => {
       <section className="section bg-white">
         <div className="container-custom">
           <div className="max-w-3xl mb-16">
-            <h2 className="text-3xl font-bold mb-4">Collaborations with EPC Companies</h2>
+            <h2 className="text-3xl font-bold mb-4">How Our Tax Credit Investment Can Help You</h2>
             <p className="text-lg text-gray-600">
-              We partner with existing solar EPC (Engineering, Procurement, and Construction) companies to optimize tax benefits for large-scale projects.
+              We finance solar purchase, PPA, and solar leasing for existing EPC companies, helping maximize tax benefits and project success through strategic partnerships.
             </p>
           </div>
 
@@ -264,13 +276,25 @@ const TaxCreditsPage: React.FC = () => {
                   <li className="flex items-start">
                     <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
                     <span className="text-gray-600">
-                      <strong>Enhanced Project Economics:</strong> Improved financial returns through optimized tax incentive structures
+                      <strong>We Finance Solar Purchase:</strong> Complete project financing for cash purchase transactions
                     </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
                     <span className="text-gray-600">
-                      <strong>Expanded Project Scope:</strong> Ability to take on larger projects with our financial backing
+                      <strong>PPA Financing:</strong> Power Purchase Agreement structures for long-term revenue streams
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
+                    <span className="text-gray-600">
+                      <strong>Solar Leasing Solutions:</strong> Comprehensive leasing programs for residential and commercial projects
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
+                    <span className="text-gray-600">
+                      <strong>Enhanced Project Economics:</strong> Improved financial returns through optimized tax incentive structures
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -279,17 +303,11 @@ const TaxCreditsPage: React.FC = () => {
                       <strong>Risk Mitigation:</strong> Shared project risk through partnership structure
                     </span>
                   </li>
-                  <li className="flex items-start">
-                    <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
-                    <span className="text-gray-600">
-                      <strong>Access to Capital:</strong> Financing solutions for projects that might otherwise be difficult to fund
-                    </span>
-                  </li>
                 </ul>
                 
                 <div className="bg-primary-50 p-4 rounded-lg border border-primary-100">
                   <p className="text-sm text-gray-700">
-                    Our partnerships are structured to be win-win, allowing EPC companies to focus on what they do best while we optimize the financial structure.
+                    Our partnerships are structured to be win-win, allowing EPC companies to focus on what they do best while we optimize the financial structure and provide comprehensive financing solutions.
                   </p>
                 </div>
               </div>
@@ -350,61 +368,46 @@ const TaxCreditsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Financing Section */}
+      {/* Financing Clarification Section */}
       <section className="section bg-gray-50">
         <div className="container-custom">
           <div className="max-w-3xl mb-16">
-            <h2 className="text-3xl font-bold mb-4">Financing Resources</h2>
+            <h2 className="text-3xl font-bold mb-4">Our Financing Approach</h2>
             <p className="text-lg text-gray-600">
-              While we don't provide direct financing, we work with leading financial institutions to help our customers secure competitive solar financing.
+              We provide direct financing solutions rather than traditional bank financing, offering cash purchase, PPA, and solar leasing options.
             </p>
           </div>
 
           <div className="bg-white rounded-xl shadow-md p-8 max-w-4xl mx-auto">
             <h3 className="text-2xl font-semibold mb-6 flex items-center">
               <Landmark className="w-6 h-6 text-primary-600 mr-2" />
-              Our Banking Partners
+              Our Direct Financing Solutions
             </h3>
             
             <p className="text-gray-600 mb-8">
-              We have established relationships with the following financial institutions that offer specialized solar financing products:
+              <strong>We do not finance through traditional banks.</strong> Instead, we offer comprehensive financing structures directly:
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="p-6 border border-gray-200 rounded-lg text-center">
-                <div className="text-2xl font-semibold mb-2">SunTrust Bank</div>
-                <p className="text-sm text-gray-600">Specialized in residential solar loans</p>
+                <div className="text-2xl font-semibold mb-2 text-primary-600">Cash Purchase</div>
+                <p className="text-sm text-gray-600">Direct financing for system ownership with immediate tax benefits</p>
               </div>
               
               <div className="p-6 border border-gray-200 rounded-lg text-center">
-                <div className="text-2xl font-semibold mb-2">GreenSky</div>
-                <p className="text-sm text-gray-600">Offering solar-specific financing solutions</p>
+                <div className="text-2xl font-semibold mb-2 text-primary-600">PPA Options</div>
+                <p className="text-sm text-gray-600">Power Purchase Agreements with competitive rates and long-term savings</p>
               </div>
               
               <div className="p-6 border border-gray-200 rounded-lg text-center">
-                <div className="text-2xl font-semibold mb-2">Mosaic</div>
-                <p className="text-sm text-gray-600">Industry leader in solar financing</p>
-              </div>
-              
-              <div className="p-6 border border-gray-200 rounded-lg text-center">
-                <div className="text-2xl font-semibold mb-2">Sunlight Financial</div>
-                <p className="text-sm text-gray-600">Competitive rates for solar projects</p>
-              </div>
-              
-              <div className="p-6 border border-gray-200 rounded-lg text-center">
-                <div className="text-2xl font-semibold mb-2">Wells Fargo</div>
-                <p className="text-sm text-gray-600">Commercial solar project financing</p>
-              </div>
-              
-              <div className="p-6 border border-gray-200 rounded-lg text-center">
-                <div className="text-2xl font-semibold mb-2">US Bank</div>
-                <p className="text-sm text-gray-600">Tax equity investments for large projects</p>
+                <div className="text-2xl font-semibold mb-2 text-primary-600">Solar Leasing</div>
+                <p className="text-sm text-gray-600">Comprehensive leasing solutions with maintenance included</p>
               </div>
             </div>
             
             <div className="bg-primary-50 p-4 rounded-lg border border-primary-100">
               <p className="text-center text-gray-700">
-                Our team will help you navigate the financing options and connect you with the right institution based on your specific needs and financial situation.
+                Our direct financing approach allows us to provide more flexible terms and faster approval processes compared to traditional bank financing, while optimizing tax benefits for our clients.
               </p>
             </div>
           </div>
@@ -421,13 +424,18 @@ const TaxCreditsPage: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl font-bold mb-6">Ready to Maximize Your Solar Tax Benefits?</h2>
+            <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Tax Strategy?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Contact our tax specialists today to explore how solar can become a powerful part of your financial strategy.
+              If you paid 5 to 6 figures in taxes, contact our specialists today to explore how solar can become a powerful part of your wealth-building and tax reduction strategy.
             </p>
-            <Link to="/contact" className="btn bg-white text-primary-700 hover:bg-gray-100">
-              Schedule a Consultation
-            </Link>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link to="/contact" className="btn bg-white text-primary-700 hover:bg-gray-100">
+                Schedule a Tax Strategy Consultation
+              </Link>
+              <Link to="/services/options/collaborations" className="btn bg-transparent border border-white hover:bg-white/10">
+                Explore EPC Partnerships
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

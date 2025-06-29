@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sun, Home, Building2, Landmark, Battery, Zap, BarChart3 } from 'lucide-react';
+import { Sun, Home, Building2, Heart, Battery, Zap, BarChart3, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import CountUp from 'react-countup';
@@ -53,10 +53,10 @@ const HomePage: React.FC = () => {
             className="max-w-3xl"
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Powering a Sustainable Future with Solar Energy
+              Innovative Solar Financing for a Sustainable Future
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-100">
-              Residential, commercial, and government solar solutions tailored to your needs. Start saving today with clean, renewable energy.
+              H&D Solar Solutions: A solar developer specializing in innovative financing for residential, commercial, and non-profit organizations. No project is too small.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/contact" className="btn bg-primary-500 hover:bg-primary-600 text-white font-medium">
@@ -70,13 +70,34 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* Service Territory Banner */}
+      <section className="py-8 bg-primary-600 text-white">
+        <div className="container-custom">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <div className="flex items-center justify-center mb-4">
+              <Globe className="w-8 h-8 mr-3" />
+              <h2 className="text-2xl font-bold">We are open to doing projects anywhere in the U.S.</h2>
+            </div>
+            <p className="text-lg opacity-90">
+              Our primary focus is in these 6 states: Maryland, New Jersey, Pennsylvania, Washington DC, Delaware, and Virginia
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Services Overview */}
       <section className="section bg-white">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Solar Energy Solutions</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Solar Solutions by Market</h2>
             <p className="text-lg text-gray-600">
-              Customized solar packages to fit your energy needs and financial goals.
+              Customized solar packages with innovative financing to fit your energy needs and financial goals.
             </p>
           </div>
 
@@ -92,8 +113,12 @@ const HomePage: React.FC = () => {
                 <Home className="w-8 h-8 text-primary-600" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Residential Solutions</h3>
+              <div className="bg-gray-50 p-3 rounded-lg mb-4">
+                <div className="text-sm text-gray-600">System Size Range</div>
+                <div className="text-lg font-semibold text-primary-700">5kW - 10kW</div>
+              </div>
               <p className="text-gray-600 mb-4">
-                Custom solar systems for homeowners that reduce electricity bills and increase property value.
+                Custom solar systems for homeowners with flexible financing options including Buy Out, Lease, and PPA.
               </p>
               <Link to="/services/markets/residential" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                 Learn More <span className="ml-1">→</span>
@@ -105,8 +130,12 @@ const HomePage: React.FC = () => {
                 <Building2 className="w-8 h-8 text-primary-600" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Commercial Solutions</h3>
+              <div className="bg-gray-50 p-3 rounded-lg mb-4">
+                <div className="text-sm text-gray-600">System Size Range</div>
+                <div className="text-lg font-semibold text-primary-700">50kW - 500kW</div>
+              </div>
               <p className="text-gray-600 mb-4">
-                Scalable solar solutions for businesses looking to reduce operating costs and achieve sustainability goals.
+                Scalable solar solutions for businesses with innovative financing to reduce operating costs and achieve sustainability goals.
               </p>
               <Link to="/services/markets/commercial" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                 Learn More <span className="ml-1">→</span>
@@ -115,13 +144,17 @@ const HomePage: React.FC = () => {
 
             <motion.div variants={fadeIn} className="card group hover:border-primary-500 hover:border hover:-translate-y-1">
               <div className="p-4 bg-primary-50 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-primary-100">
-                <Landmark className="w-8 h-8 text-primary-600" />
+                <Heart className="w-8 h-8 text-primary-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Government Solutions</h3>
+              <h3 className="text-xl font-semibold mb-3">Non-Profit Organizations</h3>
+              <div className="bg-gray-50 p-3 rounded-lg mb-4">
+                <div className="text-sm text-gray-600">System Size Range</div>
+                <div className="text-lg font-semibold text-primary-700">250kW - 1MW</div>
+              </div>
               <p className="text-gray-600 mb-4">
-                Helping public institutions achieve energy independence and meet renewable energy mandates.
+                Specialized financing solutions for non-profit organizations to achieve energy independence and redirect savings to mission-critical activities.
               </p>
-              <Link to="/services/markets/government" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+              <Link to="/services/markets/nonprofit" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                 Learn More <span className="ml-1">→</span>
               </Link>
             </motion.div>
@@ -151,12 +184,24 @@ const HomePage: React.FC = () => {
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent-100 text-accent-600 mb-4">
                   <span className="text-xl font-bold">1</span>
                 </div>
-                <h3 className="text-xl font-semibold">Buy Out</h3>
+                <h3 className="text-xl font-semibold">Solar Buy Out</h3>
+              </div>
+              <div className="bg-primary-50 p-4 rounded-lg mb-4">
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div><strong>Upfront Cost:</strong> Full system cost</div>
+                  <div><strong>Payback:</strong> 6-7 years</div>
+                  <div><strong>Tax Benefits:</strong> ✓ Yes</div>
+                  <div><strong>Bill Reduction:</strong> Up to 100%</div>
+                </div>
               </div>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
                   <span>Complete system ownership</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-500 mr-2">✓</span>
+                  <span>Immediate Tax Credit (ITC)</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
@@ -166,12 +211,8 @@ const HomePage: React.FC = () => {
                   <span className="text-green-500 mr-2">✓</span>
                   <span>Increased property value</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>Full tax incentive eligibility</span>
-                </li>
               </ul>
-              <Link to="/services/buyout" className="btn btn-primary w-full">Learn More</Link>
+              <Link to="/services/options/buyout" className="btn btn-primary w-full">Learn More</Link>
             </motion.div>
 
             <motion.div variants={fadeIn} className="card hover:shadow-xl">
@@ -179,7 +220,15 @@ const HomePage: React.FC = () => {
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent-100 text-accent-600 mb-4">
                   <span className="text-xl font-bold">2</span>
                 </div>
-                <h3 className="text-xl font-semibold">Lease</h3>
+                <h3 className="text-xl font-semibold">Solar Lease</h3>
+              </div>
+              <div className="bg-primary-50 p-4 rounded-lg mb-4">
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div><strong>Upfront Cost:</strong> $0</div>
+                  <div><strong>Term:</strong> 20-25 years</div>
+                  <div><strong>O&M:</strong> ✓ Included</div>
+                  <div><strong>Bill Reduction:</strong> 25%</div>
+                </div>
               </div>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start">
@@ -188,7 +237,7 @@ const HomePage: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
-                  <span>Fixed monthly payments</span>
+                  <span>25% discount to current bill</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
@@ -196,10 +245,10 @@ const HomePage: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
-                  <span>25-40% electric bill reduction</span>
+                  <span>Fixed monthly payments</span>
                 </li>
               </ul>
-              <Link to="/services/lease" className="btn btn-primary w-full">Learn More</Link>
+              <Link to="/services/options/lease" className="btn btn-primary w-full">Learn More</Link>
             </motion.div>
 
             <motion.div variants={fadeIn} className="card hover:shadow-xl">
@@ -208,6 +257,14 @@ const HomePage: React.FC = () => {
                   <span className="text-xl font-bold">3</span>
                 </div>
                 <h3 className="text-xl font-semibold">Power Purchase Agreement</h3>
+              </div>
+              <div className="bg-primary-50 p-4 rounded-lg mb-4">
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div><strong>Upfront Cost:</strong> $0</div>
+                  <div><strong>Term:</strong> 20-25 years</div>
+                  <div><strong>O&M:</strong> ✓ Included</div>
+                  <div><strong>Escalation:</strong> Up to 2%</div>
+                </div>
               </div>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start">
@@ -227,9 +284,71 @@ const HomePage: React.FC = () => {
                   <span>No maintenance responsibilities</span>
                 </li>
               </ul>
-              <Link to="/services/ppa" className="btn btn-primary w-full">Learn More</Link>
+              <Link to="/services/options/ppa" className="btn btn-primary w-full">Learn More</Link>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* System Example Section */}
+      <section className="section bg-white">
+        <div className="container-custom">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Residential System Example</h2>
+            <p className="text-lg text-gray-600">
+              See how our financing options work with a real 10kW residential system.
+            </p>
+          </div>
+
+          <div className="bg-gray-50 rounded-xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-semibold mb-6 text-center">10kW Residential System</h3>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div className="bg-white p-4 rounded-lg text-center">
+                <div className="text-sm text-gray-500">System Size</div>
+                <div className="text-xl font-semibold">10kW</div>
+              </div>
+              <div className="bg-white p-4 rounded-lg text-center">
+                <div className="text-sm text-gray-500">Cost</div>
+                <div className="text-xl font-semibold">$35,000</div>
+              </div>
+              <div className="bg-white p-4 rounded-lg text-center">
+                <div className="text-sm text-gray-500">Annual Generation</div>
+                <div className="text-xl font-semibold">12,000 kWh</div>
+              </div>
+              <div className="bg-white p-4 rounded-lg text-center">
+                <div className="text-sm text-gray-500">Annual Savings</div>
+                <div className="text-xl font-semibold">$2,500</div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white p-6 rounded-lg border border-gray-200">
+                <h4 className="text-lg font-semibold mb-3 text-primary-600">Purchase Option</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><strong>Solar ITC:</strong> $10,500</li>
+                  <li><strong>Net Investment:</strong> $24,500</li>
+                  <li><strong>Payback:</strong> Up to 10 years</li>
+                </ul>
+              </div>
+              <div className="bg-white p-6 rounded-lg border border-gray-200">
+                <h4 className="text-lg font-semibold mb-3 text-primary-600">Lease Option</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><strong>Annual Saving:</strong> $600/year</li>
+                  <li><strong>Total Savings:</strong> $15,000</li>
+                  <li><strong>O&M Cost:</strong> $0</li>
+                </ul>
+              </div>
+              <div className="bg-white p-6 rounded-lg border border-gray-200">
+                <h4 className="text-lg font-semibold mb-3 text-primary-600">PPA Option</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><strong>Annual Saving:</strong> $600/year</li>
+                  <li><strong>Total Savings:</strong> $15,000</li>
+                  <li><strong>Escalation:</strong> Up to 2%</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -274,44 +393,6 @@ const HomePage: React.FC = () => {
               </div>
               <p className="text-lg opacity-90">Metric Tons CO₂ Offset</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Territory */}
-      <section className="section bg-white">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Service Territory</h2>
-            <p className="text-lg text-gray-600">
-              We currently serve customers in these states with plans for continued expansion.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {territories.map((territory) => (
-              <div key={territory.id} className="card hover:shadow-lg transition-all">
-                <h3 className="text-xl font-semibold mb-2">{territory.name}</h3>
-                <p className="text-gray-600 mb-4">{territory.description}</p>
-                <div className="mb-4">
-                  <div className="flex items-center mb-1">
-                    <span className="text-sm font-medium">Average Payback: </span>
-                    <span className="ml-auto text-sm font-semibold text-primary-700">
-                      {territory.paybackPeriod.residential.medium} years
-                    </span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-primary-500 h-2 rounded-full" 
-                      style={{ width: `${(territory.paybackPeriod.residential.medium / 10) * 100}%` }}
-                    ></div>
-                  </div>
-                </div>
-                <Link to={`/about?territory=${territory.id}`} className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
-                  View Details <span className="ml-1">→</span>
-                </Link>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -393,7 +474,7 @@ const HomePage: React.FC = () => {
               <div>
                 <h3 className="text-xl font-semibold mb-2">Battery Backup Solutions</h3>
                 <p className="text-gray-600 mb-4">
-                  Integrated battery systems to power your home during outages and charge your EV efficiently.
+                  EV charger and backup power solutions that seamlessly integrate with your solar system for maximum energy independence.
                 </p>
                 <Link to="/services/options/battery" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                   Learn More <span className="ml-1">→</span>
@@ -414,7 +495,7 @@ const HomePage: React.FC = () => {
               <div>
                 <h3 className="text-xl font-semibold mb-2">Tax Credit Investments</h3>
                 <p className="text-gray-600 mb-4">
-                  Maximize tax benefits and potentially recover paid taxes through strategic solar investments.
+                  For those who paid 5-6 figures in taxes: Solar can be a powerful vehicle for tax reduction and potentially recovering paid taxes.
                 </p>
                 <Link to="/tax-credits" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                   Learn More <span className="ml-1">→</span>
@@ -433,11 +514,11 @@ const HomePage: React.FC = () => {
                 <Zap className="w-10 h-10 text-primary-600" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Passive Income Opportunities</h3>
+                <h3 className="text-xl font-semibold mb-2">EPC Collaborations</h3>
                 <p className="text-gray-600 mb-4">
-                  Generate passive income and reduce tax liability through solar investments and incentives.
+                  We finance solar purchase, PPA, and solar leasing for existing EPC companies, helping maximize tax benefits and project success.
                 </p>
-                <Link to="/tax-credits#passive-income" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                <Link to="/services/options/collaborations" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                   Learn More <span className="ml-1">→</span>
                 </Link>
               </div>
@@ -454,11 +535,11 @@ const HomePage: React.FC = () => {
                 <Sun className="w-10 h-10 text-primary-600" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">EPC Collaborations</h3>
+                <h3 className="text-xl font-semibold mb-2">Extra Income Opportunity</h3>
                 <p className="text-gray-600 mb-4">
-                  Strategic partnerships with existing solar EPC companies to maximize tax benefits and project success.
+                  Join our sales team as an independent representative. The more you involve yourself, the more you get paid.
                 </p>
-                <Link to="/services/options/collaborations" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                <Link to="/sales-rep" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                   Learn More <span className="ml-1">→</span>
                 </Link>
               </div>
@@ -479,14 +560,14 @@ const HomePage: React.FC = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Harness the Power of the Sun?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Contact us today for a free consultation and discover how much you can save with H&D Solar Solutions.
+              Contact us today for a free consultation and discover how our innovative financing solutions can work for you.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/contact" className="btn bg-white text-primary-700 hover:bg-gray-100">
                 Get a Free Quote
               </Link>
               <Link to="/sales-rep" className="btn bg-transparent border border-white hover:bg-white/10">
-                Become a Sales Representative
+                Explore Extra Income Opportunity
               </Link>
             </div>
           </motion.div>

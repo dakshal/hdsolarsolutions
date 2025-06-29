@@ -1,4 +1,4 @@
-import { Home, Building2, Landmark } from 'lucide-react';
+import { Home, Building2, Heart } from 'lucide-react';
 
 export type MarketSegment = {
   id: string;
@@ -7,7 +7,12 @@ export type MarketSegment = {
   summary: string;
   features: string[];
   details: Detail;
+  systemLimits: {
+    min: string;
+    max: string;
+  };
 };
+
 export type Detail = {
   imageUrl: string;
   title: string;
@@ -21,17 +26,21 @@ export type KeyOffering = {
 };
 
 export const marketSegments: MarketSegment[] = [
-   {
+  {
     id: 'residential',
     name: 'Residential',
     icon: Home,
     summary: 'Custom solar solutions for homeowners that reduce electricity bills and increase property value while contributing to a sustainable future.',
     features: [
-      'Systems sized from 5kW to 15kW',
+      'Systems sized from 5kW to 10kW',
       'Rooftop and ground mount options',
       'Battery backup available',
-      'Average payback period: 5-8 years'
+      'Average payback period: 5-7 years'
     ],
+    systemLimits: {
+      min: '5kW',
+      max: '10kW'
+    },
     details: {
       imageUrl: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       title: 'Power Your Home with Clean Energy',
@@ -50,11 +59,15 @@ export const marketSegments: MarketSegment[] = [
     icon: Building2,
     summary: 'Scalable solar solutions for businesses looking to reduce operating costs, achieve sustainability goals, and enhance brand reputation.',
     features: [
-      'Systems from 50kW to 1MW+',
+      'Systems from 50kW to 500kW',
       'Rooftop, ground mount, and carport options',
       'Customized energy storage solutions',
       'Average payback period: 4-7 years'
     ],
+    systemLimits: {
+      min: '50kW',
+      max: '500kW'
+    },
     details: {
       imageUrl: 'https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       title: 'Smart Energy for Your Business',
@@ -68,25 +81,29 @@ export const marketSegments: MarketSegment[] = [
     }
   },
   {
-    id: 'government',
-    name: 'Government',
-    icon: Landmark,
-    summary: 'Helping public institutions achieve energy independence, meet renewable energy mandates, and save taxpayer dollars on energy costs.',
+    id: 'nonprofit',
+    name: 'Non-Profit Organizations',
+    icon: Heart,
+    summary: 'Specialized financing solutions for non-profit organizations to achieve energy independence, reduce operating costs, and redirect savings to mission-critical activities.',
     features: [
-      'Systems sized for municipal needs',
-      'Innovative financing options for public entities',
-      'Microgrid and resilience solutions',
+      'Systems sized from 250kW to 1MW',
+      'Innovative financing options for non-profits',
+      'Mission-aligned sustainability solutions',
       'Average payback period: 5-10 years'
     ],
+    systemLimits: {
+      min: '250kW',
+      max: '1MW'
+    },
     details: {
       imageUrl: 'https://d3i6fh83elv35t.cloudfront.net/static/2023/12/pentagon-1024x683.jpg',
-      title: 'Resilient and Sustainable Public Infrastructure',
-      description: 'We partner with federal, state, and local government entities to deploy reliable and cost-effective solar energy solutions. Our projects help public institutions reduce their carbon footprint, achieve energy security, and redirect budget savings to essential public services. We are experienced in navigating government procurement processes and securing specialized financing.',
+      title: 'Sustainable Solutions for Non-Profit Organizations',
+      description: 'We partner with non-profit organizations to deploy reliable and cost-effective solar energy solutions that align with their mission and values. Our specialized financing options help non-profits reduce their carbon footprint, achieve energy security, and redirect budget savings to essential programs and services. We understand the unique challenges non-profits face and provide tailored solutions.',
       keyOfferings: [
-        { name: 'Power Purchase Agreements (PPAs)', description: 'Install solar with no upfront capital expenditure and simply purchase the clean energy at a reduced rate.' },
-        { name: 'Energy Resilience', description: 'Incorporate battery storage and microgrids to ensure critical facilities remain powered during grid outages.' },
-        { name:'Regulatory Compliance', description: 'Meet clean energy mandates and sustainability goals with verifiable renewable energy projects.' },
-        { name: 'Community Solar Programs', description: 'Develop projects that allow local residents and businesses to benefit from clean energy savings.' },
+        { name: 'Mission-Aligned Financing', description: 'Specialized financing structures designed specifically for non-profit organizations and their unique constraints.' },
+        { name: 'Energy Cost Reduction', description: 'Significant reduction in energy costs allows more resources to be directed toward mission-critical activities.' },
+        { name: 'Sustainability Leadership', description: 'Demonstrate environmental stewardship and attract donors who value sustainability initiatives.' },
+        { name: 'Community Impact Programs', description: 'Develop projects that can serve as educational tools and community engagement opportunities.' },
       ]
     }
   }

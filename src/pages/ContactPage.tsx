@@ -128,7 +128,8 @@ const ContactPage: React.FC = () => {
               <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
                 <h3 className="font-semibold mb-3">Service Areas</h3>
                 <p className="text-gray-600 mb-4">
-                  We currently serve customers in the following states:
+                  <strong>We are open to doing projects anywhere in the U.S.</strong><br />
+                  Our primary focus is in these 6 states:
                 </p>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {territories.map((territory) => (
@@ -267,6 +268,7 @@ const ContactPage: React.FC = () => {
                               {territory.name}
                             </option>
                           ))}
+                          <option value="other">Other (Outside Primary Focus Area)</option>
                         </select>
                       </div>
                       
@@ -288,8 +290,10 @@ const ContactPage: React.FC = () => {
                           <option value="ppa">Power Purchase Agreement</option>
                           <option value="residential">Residential Solar</option>
                           <option value="commercial">Commercial Solar</option>
+                          <option value="nonprofit">Non-Profit Solar</option>
                           <option value="battery">Battery Backup</option>
-                          <option value="taxcredits">Tax Credits</option>
+                          <option value="taxcredits">Tax Credits & Investment</option>
+                          <option value="epc">EPC Collaboration</option>
                           <option value="other">Other</option>
                         </select>
                       </div>
@@ -306,6 +310,7 @@ const ContactPage: React.FC = () => {
                         onChange={handleChange}
                         rows={4}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500"
+                        placeholder="Tell us about your project, tax situation, or any specific questions you have..."
                       ></textarea>
                     </div>
                     
@@ -348,6 +353,10 @@ const ContactPage: React.FC = () => {
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-center">
                   <span className="text-primary-600 mr-2">•</span>
+                  <span><strong>3 years of tax returns</strong></span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-primary-600 mr-2">•</span>
                   <span>Proof of property ownership</span>
                 </li>
                 <li className="flex items-center">
@@ -362,10 +371,6 @@ const ContactPage: React.FC = () => {
                   <span className="text-primary-600 mr-2">•</span>
                   <span>Tax information for credit applications</span>
                 </li>
-                <li className="flex items-center">
-                  <span className="text-primary-600 mr-2">•</span>
-                  <span>Roof information (age, material)</span>
-                </li>
               </ul>
             </motion.div>
 
@@ -378,6 +383,10 @@ const ContactPage: React.FC = () => {
             >
               <h3 className="text-xl font-semibold mb-4">For Lease</h3>
               <ul className="space-y-3 text-gray-600">
+                <li className="flex items-center">
+                  <span className="text-primary-600 mr-2">•</span>
+                  <span><strong>3 years of tax returns</strong></span>
+                </li>
                 <li className="flex items-center">
                   <span className="text-primary-600 mr-2">•</span>
                   <span>Proof of property ownership</span>
@@ -412,6 +421,10 @@ const ContactPage: React.FC = () => {
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-center">
                   <span className="text-primary-600 mr-2">•</span>
+                  <span><strong>3 years of tax returns</strong></span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-primary-600 mr-2">•</span>
                   <span>Proof of property ownership</span>
                 </li>
                 <li className="flex items-center">
@@ -425,10 +438,6 @@ const ContactPage: React.FC = () => {
                 <li className="flex items-center">
                   <span className="text-primary-600 mr-2">•</span>
                   <span>Credit check authorization</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary-600 mr-2">•</span>
-                  <span>Roof information (age, material)</span>
                 </li>
               </ul>
             </motion.div>

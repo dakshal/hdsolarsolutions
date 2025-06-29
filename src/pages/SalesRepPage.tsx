@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Users, TrendingUp, Award, DollarSign, Clock, CheckCircle2 } from 'lucide-react';
+import { Users, TrendingUp, Award, DollarSign, Clock, CheckCircle2, Target, Zap } from 'lucide-react';
 
 const SalesRepPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -63,12 +63,38 @@ const SalesRepPage: React.FC = () => {
         <div className="container-custom">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Join Our Sales Team
+              Independent Sales Representative Wanted
             </h1>
             <p className="text-xl mb-8 text-gray-100">
-              Become an independent sales representative and help drive the renewable energy revolution while earning competitive commissions.
+              Join our team as an independent sales representative and earn extra income in the booming solar market. The more you involve yourself, the more you get paid.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Key Principle Section */}
+      <section className="section bg-primary-50">
+        <div className="container-custom">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-primary-500">
+              <div className="flex items-center justify-center mb-6">
+                <Target className="w-12 h-12 text-primary-600 mr-4" />
+                <h2 className="text-3xl font-bold text-primary-700">Our Core Principle</h2>
+              </div>
+              <p className="text-xl text-gray-700 mb-4">
+                <strong>"The more you involve yourself, the more you get paid."</strong>
+              </p>
+              <p className="text-lg text-gray-600">
+                This opportunity is designed for motivated individuals looking for <strong>extra income</strong> through flexible, performance-based compensation in the rapidly growing solar industry.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -76,9 +102,9 @@ const SalesRepPage: React.FC = () => {
       <section className="section bg-white">
         <div className="container-custom">
           <div className="max-w-3xl mb-16">
-            <h2 className="text-3xl font-bold mb-4">The Opportunity</h2>
+            <h2 className="text-3xl font-bold mb-4">The Extra Income Opportunity</h2>
             <p className="text-lg text-gray-600">
-              Join our team as an independent sales representative and tap into the booming solar market. The more you engage, the more you earn.
+              Join our team as an independent sales representative and tap into the booming solar market while earning extra income on your own schedule.
             </p>
           </div>
 
@@ -98,7 +124,7 @@ const SalesRepPage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-3">Growing Industry</h3>
               <p className="text-gray-600">
-                The solar industry is projected to grow 25% annually over the next decade, creating massive opportunities for sales representatives.
+                The solar industry is projected to grow 25% annually over the next decade, creating massive opportunities for extra income through sales.
               </p>
             </motion.div>
 
@@ -109,9 +135,9 @@ const SalesRepPage: React.FC = () => {
               <div className="p-4 bg-primary-50 rounded-full w-16 h-16 flex items-center justify-center mb-6">
                 <DollarSign className="w-8 h-8 text-primary-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Lucrative Commissions</h3>
+              <h3 className="text-xl font-semibold mb-3">Performance-Based Earnings</h3>
               <p className="text-gray-600">
-                Earn competitive commissions ranging from 2-8% on system sales, with the potential to make six figures annually as a full-time representative.
+                Earn competitive commissions ranging from 2-8% on system sales. The more you involve yourself, the more extra income you can generate.
               </p>
             </motion.div>
 
@@ -124,20 +150,20 @@ const SalesRepPage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-3">Flexible Schedule</h3>
               <p className="text-gray-600">
-                Work as much or as little as you want. This opportunity is perfect for both full-time professionals and those looking for supplemental income.
+                Work as much or as little as you want. Perfect for those looking for extra income alongside their current commitments.
               </p>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Ideal Candidate */}
+      {/* Ideal Candidate Profile */}
       <section className="section bg-gray-50">
         <div className="container-custom">
           <div className="max-w-3xl mb-16">
-            <h2 className="text-3xl font-bold mb-4">The Ideal Candidate</h2>
+            <h2 className="text-3xl font-bold mb-4">Profile of Our Ideal Sales Representative</h2>
             <p className="text-lg text-gray-600">
-              We're looking for motivated individuals with the following qualities and experience.
+              We're looking for motivated individuals with the following qualities and experience who want to earn extra income.
             </p>
           </div>
 
@@ -158,7 +184,7 @@ const SalesRepPage: React.FC = () => {
                   <li className="flex items-start">
                     <CheckCircle2 className="w-5 h-5 text-primary-600 mr-3 mt-0.5" />
                     <span className="text-gray-600">
-                      <strong>Self-Motivated:</strong> Ability to work independently and stay driven without direct supervision
+                      <strong>Self-Motivated:</strong> Ability to work independently and stay driven without direct supervision - essential for earning extra income
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -170,7 +196,7 @@ const SalesRepPage: React.FC = () => {
                   <li className="flex items-start">
                     <CheckCircle2 className="w-5 h-5 text-primary-600 mr-3 mt-0.5" />
                     <span className="text-gray-600">
-                      <strong>Networking Skills:</strong> Ability to build and maintain a network of potential customers
+                      <strong>Networking Skills:</strong> Ability to build and maintain a network of potential customers for consistent extra income
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -229,7 +255,7 @@ const SalesRepPage: React.FC = () => {
                   <li className="flex items-start">
                     <CheckCircle2 className="w-5 h-5 text-primary-600 mr-3 mt-0.5" />
                     <span className="text-gray-600">
-                      <strong>Entrepreneurial Spirit:</strong> Experience running your own business or working in a commission-based role
+                      <strong>Entrepreneurial Spirit:</strong> Experience running your own business or working in a commission-based role for extra income
                     </span>
                   </li>
                 </ul>
@@ -243,9 +269,9 @@ const SalesRepPage: React.FC = () => {
       <section className="section bg-white">
         <div className="container-custom">
           <div className="max-w-3xl mb-16">
-            <h2 className="text-3xl font-bold mb-4">Commission Structure</h2>
+            <h2 className="text-3xl font-bold mb-4">Extra Income Commission Structure</h2>
             <p className="text-lg text-gray-600">
-              Our tiered commission structure rewards performance and encourages growth.
+              Our tiered commission structure rewards performance and encourages growth. The more you involve yourself, the more you get paid.
             </p>
           </div>
 
@@ -258,6 +284,7 @@ const SalesRepPage: React.FC = () => {
           >
             <div className="bg-primary-600 text-white p-6">
               <h3 className="text-2xl font-semibold text-center">Commission Tiers</h3>
+              <p className="text-center mt-2 opacity-90">The more you involve yourself, the higher your earnings</p>
             </div>
             
             <div className="p-6">
@@ -307,7 +334,7 @@ const SalesRepPage: React.FC = () => {
               </div>
               
               <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <h4 className="font-semibold mb-2">Additional Incentives:</h4>
+                <h4 className="font-semibold mb-2">Additional Extra Income Opportunities:</h4>
                 <ul className="space-y-2 text-gray-600">
                   <li>• Quarterly bonuses for exceeding targets</li>
                   <li>• Referral bonuses for recruiting new sales representatives</li>
@@ -324,9 +351,9 @@ const SalesRepPage: React.FC = () => {
       <section className="section bg-gray-50">
         <div className="container-custom">
           <div className="max-w-3xl mb-16">
-            <h2 className="text-3xl font-bold mb-4">Apply Today</h2>
+            <h2 className="text-3xl font-bold mb-4">Apply for Extra Income Opportunity</h2>
             <p className="text-lg text-gray-600">
-              Ready to start your career as a solar sales representative? Complete the application form below.
+              Ready to start earning extra income as a solar sales representative? Complete the application form below.
             </p>
           </div>
 
@@ -343,7 +370,7 @@ const SalesRepPage: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-green-700 mb-4">Application Received!</h3>
                 <p className="text-gray-600 mb-6">
-                  Thank you for your interest in joining our sales team. We'll review your application and contact you within 2-3 business days to discuss next steps.
+                  Thank you for your interest in our extra income opportunity. We'll review your application and contact you within 2-3 business days to discuss next steps.
                 </p>
                 <button 
                   onClick={() => setFormSubmitted(false)}
@@ -459,7 +486,7 @@ const SalesRepPage: React.FC = () => {
                   
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                      Why are you interested in this position? *
+                      Why are you interested in this extra income opportunity? *
                     </label>
                     <textarea
                       id="message"
@@ -469,6 +496,7 @@ const SalesRepPage: React.FC = () => {
                       required
                       rows={4}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500"
+                      placeholder="Tell us about your motivation for earning extra income and how much time you can dedicate..."
                     ></textarea>
                   </div>
                   
@@ -479,7 +507,7 @@ const SalesRepPage: React.FC = () => {
                   </div>
                   
                   <p className="text-sm text-gray-500">
-                    By submitting this application, you consent to our review of your information for employment consideration.
+                    By submitting this application, you consent to our review of your information for this extra income opportunity.
                   </p>
                 </form>
               </motion.div>
@@ -494,7 +522,7 @@ const SalesRepPage: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
             <p className="text-lg text-gray-600">
-              Get answers to common questions about the sales representative opportunity.
+              Get answers to common questions about the extra income sales representative opportunity.
             </p>
           </div>
 
@@ -509,7 +537,7 @@ const SalesRepPage: React.FC = () => {
               >
                 <h3 className="text-lg font-semibold mb-2">Is this a full-time position?</h3>
                 <p className="text-gray-600">
-                  This is an independent contractor position with flexible hours. You can work as much or as little as you want, making it suitable for both full-time professionals and those looking for supplemental income.
+                  This is an independent contractor position designed for <strong>extra income</strong> with flexible hours. You can work as much or as little as you want, making it perfect for those seeking additional income alongside their current commitments.
                 </p>
               </motion.div>
               
@@ -520,9 +548,9 @@ const SalesRepPage: React.FC = () => {
                 transition={{ duration: 0.4, delay: 0.1 }}
                 className="bg-white rounded-lg border border-gray-200 p-6"
               >
-                <h3 className="text-lg font-semibold mb-2">Do I need prior solar experience?</h3>
+                <h3 className="text-lg font-semibold mb-2">How much extra income can I realistically earn?</h3>
                 <p className="text-gray-600">
-                  No prior solar experience is required. We provide comprehensive training on our products, solar technology, and sales techniques. However, previous sales experience is beneficial.
+                  Your extra income depends on how much you involve yourself. Part-time representatives typically earn $500-$2,000 monthly, while those who involve themselves more can earn $3,000-$10,000+ monthly. Remember: the more you involve yourself, the more you get paid.
                 </p>
               </motion.div>
               
@@ -533,9 +561,9 @@ const SalesRepPage: React.FC = () => {
                 transition={{ duration: 0.4, delay: 0.2 }}
                 className="bg-white rounded-lg border border-gray-200 p-6"
               >
-                <h3 className="text-lg font-semibold mb-2">How is commission paid?</h3>
+                <h3 className="text-lg font-semibold mb-2">Do I need prior solar experience?</h3>
                 <p className="text-gray-600">
-                  Commissions are paid monthly based on installed sales. The commission is calculated as a percentage of the total system cost and increases as your sales volume grows.
+                  No prior solar experience is required. We provide comprehensive training on our products, solar technology, and sales techniques. However, previous sales experience is beneficial for maximizing your extra income potential.
                 </p>
               </motion.div>
               
@@ -546,9 +574,9 @@ const SalesRepPage: React.FC = () => {
                 transition={{ duration: 0.4, delay: 0.3 }}
                 className="bg-white rounded-lg border border-gray-200 p-6"
               >
-                <h3 className="text-lg font-semibold mb-2">What territories are available?</h3>
+                <h3 className="text-lg font-semibold mb-2">How is commission paid?</h3>
                 <p className="text-gray-600">
-                  We currently have territories available in all seven states where we operate. During the application process, we'll discuss available territories in your area.
+                  Commissions are paid monthly based on installed sales. The commission is calculated as a percentage of the total system cost and increases as your sales volume grows, allowing for greater extra income as you involve yourself more.
                 </p>
               </motion.div>
               
@@ -561,7 +589,7 @@ const SalesRepPage: React.FC = () => {
               >
                 <h3 className="text-lg font-semibold mb-2">What support will I receive?</h3>
                 <p className="text-gray-600">
-                  You'll receive comprehensive training, marketing materials, lead generation support, and access to our sales tools and CRM system. You'll also be assigned a dedicated sales manager for ongoing support.
+                  You'll receive comprehensive training, marketing materials, lead generation support, and access to our sales tools and CRM system. You'll also be assigned a dedicated sales manager for ongoing support to help maximize your extra income potential.
                 </p>
               </motion.div>
             </div>
@@ -579,12 +607,12 @@ const SalesRepPage: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl font-bold mb-6">Ready to Grow Your Career in Solar?</h2>
+            <h2 className="text-3xl font-bold mb-6">Ready to Start Earning Extra Income?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Apply today to join our team of motivated sales professionals and help drive the renewable energy revolution.
+              Apply today to join our team and start earning extra income in the solar industry. Remember: the more you involve yourself, the more you get paid.
             </p>
             <a href="#application-form" className="btn bg-white text-primary-700 hover:bg-gray-100">
-              Apply Now
+              Apply for Extra Income Opportunity
             </a>
           </motion.div>
         </div>

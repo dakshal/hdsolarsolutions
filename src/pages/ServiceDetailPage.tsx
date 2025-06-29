@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { serviceOptions, ProcessStep } from '../data/serviceOptions';
 import { motion } from 'framer-motion';
-import { FileText, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import { FileText, Clock, CheckCircle, AlertCircle, XCircle, DollarSign, Calendar, Shield } from 'lucide-react';
 
 const ServiceDetailPage: React.FC = () => {
   const { serviceType } = useParams<{ serviceType: string }>();
@@ -12,7 +12,7 @@ const ServiceDetailPage: React.FC = () => {
     return (
       <div className="pt-32 pb-16">
         <div className="container-custom">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-2xl mx-auto">
+          <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-2xl mx-auto text-center">
             <h1 className="text-2xl font-semibold text-red-700 mb-4">Service Not Found</h1>
             <p className="text-gray-600 mb-6">
               The service you're looking for doesn't exist or may have been moved.
@@ -35,6 +35,15 @@ const ServiceDetailPage: React.FC = () => {
     }
   };
 
+  const totalWeeks = service.process.reduce((total, step) => {
+    if (step.leadTime) {
+      const weeks = step.leadTime.includes('week') ? 
+        parseInt(step.leadTime.split('-')[1] || step.leadTime.split(' ')[0]) : 0;
+      return total + weeks;
+    }
+    return total;
+  }, 0);
+
   return (
     <>
       {/* Hero Section */}
@@ -54,8 +63,83 @@ const ServiceDetailPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Service Overview */}
       <section className="section bg-white">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="flex items-center mb-3">
+                <DollarSign className="w-6 h-6 text-primary-600 mr-2" />
+                <h3 className="text-lg font-semibold">Upfront Cost</h3>
+              </div>
+              <p className="text-2xl font-bold text-primary-700">{service.upfrontCost}</p>
+            </div>
+
+            {service.paybackPeriod && (
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <div className="flex items-center mb-3">
+                  <Calendar className="w-6 h-6 text-primary-600 mr-2" />
+                  <h3 className="text-lg font-semibold">Payback Period</h3>
+                </div>
+                <p className="text-2xl font-bold text-primary-700">{service.paybackPeriod}</p>
+              </div>
+            )}
+
+            {service.termLength && (
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <div className="flex items-center mb-3">
+                  <Calendar className="w-6 h-6 text-primary-600 mr-2" />
+                  <h3 className="text-lg font-semibold">Term Length</h3>
+                </div>
+                <p className="text-2xl font-bold text-primary-700">{service.termLength}</p>
+              </div>
+            )}
+
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="flex items-center mb-3">
+                <Shield className="w-6 h-6 text-primary-600 mr-2" />
+                <h3 className="text-lg font-semibold">Tax Benefits</h3>
+              </div>
+              <div className="flex items-center">
+                {service.taxBenefits ? (
+                  <>
+                    <CheckCircle className="w-6 h-6 text-green-500 mr-2" />
+                    <span className="text-green-700 font-medium">Included</span>
+                  </>
+                ) : (
+                  <>
+                    <XCircle className="w-6 h-6 text-red-500 mr-2" />
+                    <span className="text-red-700 font-medium">Not Available</span>
+                  </>
+                )}
+              </div>
+            </div>
+
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="flex items-center mb-3">
+                <Shield className="w-6 h-6 text-primary-600 mr-2" />
+                <h3 className="text-lg font-semibold">O&M Included</h3>
+              </div>
+              <div className="flex items-center">
+                {service.maintenanceIncluded ? (
+                  <>
+                    <CheckCircle className="w-6 h-6 text-green-500 mr-2" />
+                    <span className="text-green-700 font-medium">Yes</span>
+                  </>
+                ) : (
+                  <>
+                    <XCircle className="w-6 h-6 text-red-500 mr-2" />
+                    <span className="text-red-700 font-medium">Separate</span>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="section bg-gray-50">
         <div className="container-custom">
           <div className="max-w-3xl mb-12">
             <h2 className="text-3xl font-bold mb-4">Key Benefits</h2>
@@ -86,7 +170,7 @@ const ServiceDetailPage: React.FC = () => {
       </section>
 
       {/* Bill Reduction */}
-      <section className="section bg-gray-50">
+      <section className="section bg-white">
         <div className="container-custom">
           <div className="max-w-3xl mb-12">
             <h2 className="text-3xl font-bold mb-4">Electricity Bill Reduction</h2>
@@ -99,15 +183,21 @@ const ServiceDetailPage: React.FC = () => {
             <div className="mb-8">
               <div className="flex justify-between mb-2">
                 <span className="font-medium">Expected Bill Reduction:</span>
-                <span className="font-bold text-primary-700">{service.reduction.min}% - {service.reduction.max}%</span>
+                <span className="font-bold text-primary-700">
+                  {service.reduction.min === service.reduction.max 
+                    ? `${service.reduction.min}%` 
+                    : `${service.reduction.min}% - ${service.reduction.max}%`}
+                </span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-4">
                 <div 
                   className="bg-primary-600 h-4 rounded-full relative"
                   style={{ width: `${service.reduction.max}%` }}
                 >
-                  <div className="absolute left-0 top-0 bottom-0 border-r-2 border-white border-dashed"
-                    style={{ left: `${service.reduction.min}%` }}></div>
+                  {service.reduction.min !== service.reduction.max && (
+                    <div className="absolute left-0 top-0 bottom-0 border-r-2 border-white border-dashed"
+                      style={{ left: `${service.reduction.min}%` }}></div>
+                  )}
                 </div>
               </div>
               <div className="flex justify-between mt-1 text-sm text-gray-500">
@@ -132,12 +222,12 @@ const ServiceDetailPage: React.FC = () => {
       </section>
 
       {/* Process Flow */}
-      <section className="section bg-white">
+      <section className="section bg-gray-50">
         <div className="container-custom">
           <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl font-bold mb-4">The Process</h2>
+            <h2 className="text-3xl font-bold mb-4">The Installation Process</h2>
             <p className="text-lg text-gray-600">
-              Here's what to expect when you choose our {service.name.toLowerCase()} option.
+              Here's what to expect when you choose our {service.name.toLowerCase()} option. Total installation time: 14-18 weeks.
             </p>
           </div>
 
@@ -163,7 +253,7 @@ const ServiceDetailPage: React.FC = () => {
                     {step.leadTime && (
                       <div className="flex items-center text-sm text-gray-500">
                         <Clock className="w-4 h-4 mr-1" />
-                        <span>Typical lead time: {step.leadTime}</span>
+                        <span>Lead time: {step.leadTime}</span>
                       </div>
                     )}
                   </div>
@@ -181,7 +271,7 @@ const ServiceDetailPage: React.FC = () => {
       </section>
 
       {/* Documentation Requirements */}
-      <section className="section bg-gray-50">
+      <section className="section bg-white">
         <div className="container-custom">
           <div className="max-w-3xl mb-12">
             <h2 className="text-3xl font-bold mb-4">Required Documentation</h2>
@@ -210,7 +300,7 @@ const ServiceDetailPage: React.FC = () => {
       </section>
 
       {/* Sample Contract */}
-      <section className="section bg-white">
+      <section className="section bg-gray-50">
         <div className="container-custom">
           <div className="max-w-3xl mb-12">
             <h2 className="text-3xl font-bold mb-4">Sample Contract</h2>
@@ -219,7 +309,7 @@ const ServiceDetailPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 max-w-3xl mx-auto">
+          <div className="bg-white border border-gray-200 rounded-xl p-8 max-w-3xl mx-auto">
             <div className="mb-6 text-center">
               <h3 className="text-xl font-bold mb-1">SAMPLE {service.name.toUpperCase()} AGREEMENT</h3>
               <p className="text-sm text-gray-500">For illustrative purposes only</p>
@@ -229,7 +319,7 @@ const ServiceDetailPage: React.FC = () => {
               <div>
                 <h4 className="font-semibold mb-2">1. Parties</h4>
                 <p className="text-sm text-gray-600">
-                  This Agreement is entered into between SolarEnergy Solutions ("Provider") and the property owner ("Customer").
+                  This Agreement is entered into between H&D Solar Solutions ("Provider") and the property owner ("Customer").
                 </p>
               </div>
 
@@ -241,7 +331,9 @@ const ServiceDetailPage: React.FC = () => {
                       ? 'sell and install' 
                       : service.id === 'lease'
                         ? 'lease and install'
-                        : 'install and maintain'
+                        : service.id === 'ppa'
+                          ? 'install and maintain'
+                          : 'provide'
                   } a solar PV system ("System") at Customer's property.
                 </p>
               </div>
@@ -251,7 +343,9 @@ const ServiceDetailPage: React.FC = () => {
                 <p className="text-sm text-gray-600">
                   {service.id === 'buyout' 
                     ? 'The sales agreement is effective upon signing and payment terms are outlined in Section 4.'
-                    : `The ${service.id} term is [20/25] years from the date of system activation.`
+                    : service.termLength 
+                      ? `The ${service.id} term is ${service.termLength} from the date of system activation.`
+                      : 'The agreement term will be specified based on the selected service option.'
                   }
                 </p>
               </div>
@@ -263,7 +357,9 @@ const ServiceDetailPage: React.FC = () => {
                     ? 'Customer agrees to pay the total system price according to the payment schedule.'
                     : service.id === 'lease'
                       ? 'Customer agrees to make monthly lease payments as specified in Schedule A.'
-                      : 'Customer agrees to purchase all electricity generated by the System at rates specified in Schedule A.'
+                      : service.id === 'ppa'
+                        ? 'Customer agrees to purchase all electricity generated by the System at rates specified in Schedule A with annual escalation up to 2%.'
+                        : 'Payment terms will be specified based on the selected service option.'
                   }
                 </p>
               </div>
@@ -281,9 +377,9 @@ const ServiceDetailPage: React.FC = () => {
               <div>
                 <h4 className="font-semibold mb-2">6. Maintenance & Warranties</h4>
                 <p className="text-sm text-gray-600">
-                  {service.id === 'buyout' 
-                    ? 'System includes manufacturer warranties as detailed in Schedule B. Extended service plans available separately.'
-                    : 'Provider shall maintain the System and ensure its proper functioning throughout the term of the Agreement.'
+                  {service.maintenanceIncluded
+                    ? 'Provider shall maintain the System and ensure its proper functioning throughout the term of the Agreement.'
+                    : 'System includes manufacturer warranties as detailed in Schedule B. Extended service plans available separately.'
                   }
                 </p>
               </div>
@@ -293,6 +389,12 @@ const ServiceDetailPage: React.FC = () => {
               <p className="text-sm text-gray-700">
                 This is a simplified sample only. Actual contracts are comprehensive legal documents that our team will review with you in detail before signing.
               </p>
+            </div>
+
+            <div className="mt-6 text-center">
+              <Link to="/contact" className="btn btn-primary">
+                Request Sample Contract
+              </Link>
             </div>
           </div>
         </div>
