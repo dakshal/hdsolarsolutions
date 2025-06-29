@@ -171,7 +171,6 @@ export const serviceOptions: ServiceOption[] = [
       'Operation & Maintenance (O&M) included',
       'No maintenance responsibilities',
       'Performance guarantees',
-      'Annual escalation up to 2%',
       'Predictable energy costs'
     ],
     process: [
