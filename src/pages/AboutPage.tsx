@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
 import { territories } from '../data/territoryData';
+import { aboutData } from '../data/aboutData';
 import { MapPin, Sun, Award, Users, Clock, Target, Lightbulb, Shield, Globe } from 'lucide-react';
 
 const AboutPage: React.FC = () => {
@@ -64,15 +65,9 @@ const AboutPage: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
+              <h2 className="text-3xl font-bold mb-6">{aboutData.mission.title}</h2>
               <p className="text-lg text-gray-600 mb-6">
-                H&D Solar Solutions is a solar developer with a special focus on innovative solar financing. We believe that no project is too small, and we're equipped to handle projects of all sizes - from residential installations to large-scale commercial projects up to 2MW.
-              </p>
-              <p className="text-lg text-gray-600 mb-6">
-                We specialize in providing comprehensive solar solutions for non-profit organizations, using innovative financing solutions including cash purchases, Power Purchase Agreements (PPAs), and solar leasing solutions.
-              </p>
-              <p className="text-lg text-gray-600">
-                Our comprehensive approach means we design, engineer, construct, own, and operate solar systems throughout their entire lifespan, ensuring optimal performance and maximum value for our clients.
+                {aboutData.mission.content}
               </p>
             </motion.div>
            
@@ -174,14 +169,14 @@ const AboutPage: React.FC = () => {
       <section className="section bg-white">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold mb-4">Our Service Territory</h2>
+            <h2 className="text-3xl font-bold mb-4">{aboutData.serviceTerritory.title}</h2>
             <div className="bg-primary-50 p-6 rounded-lg border border-primary-100 mb-8">
               <div className="flex items-center justify-center mb-4">
                 <Globe className="w-8 h-8 text-primary-600 mr-3" />
-                <h3 className="text-xl font-semibold text-primary-700">We are open to doing projects anywhere in the U.S.</h3>
+                <h3 className="text-xl font-semibold text-primary-700">{aboutData.serviceTerritory.primaryMessage}</h3>
               </div>
               <p className="text-lg text-gray-700">
-                Our primary focus is in these 6 states: Maryland, New Jersey, Pennsylvania, Washington DC, Delaware, and Virginia.
+                {aboutData.serviceTerritory.focusMessage} {aboutData.serviceTerritory.states.join(', ')}.
               </p>
             </div>
           </div>
@@ -334,8 +329,26 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Company History */}
+      {/* Project Capacity */}
       <section className="section bg-gray-50">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4">{aboutData.projectCapacity.title}</h2>
+            <div className="bg-white rounded-xl shadow-md p-8">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary-100 text-primary-600 mb-6">
+                <Sun className="w-10 h-10" />
+              </div>
+              <h3 className="text-2xl font-semibold mb-4">Up to {aboutData.projectCapacity.range}</h3>
+              <p className="text-lg text-gray-600">
+                {aboutData.projectCapacity.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Company History */}
+      <section className="section bg-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-bold mb-4 text-center">Our Journey</h2>
@@ -431,7 +444,7 @@ const AboutPage: React.FC = () => {
                   <div className="font-bold text-primary-600 mb-2">Today</div>
                   <h3 className="text-xl font-semibold mb-2">Comprehensive Solar Developer</h3>
                   <p className="text-gray-600">
-                    Now operating as a full-service solar developer, designing, engineering, constructing, owning, and operating systems up to 2MW throughout their entire lifespan.
+                    Now operating as a full-service solar developer, designing, engineering, constructing, owning, and operating systems up to {aboutData.projectCapacity.range} throughout their entire lifespan.
                   </p>
                 </div>
               </div>

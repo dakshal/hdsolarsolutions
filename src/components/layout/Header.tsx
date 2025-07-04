@@ -30,6 +30,7 @@ const Header: React.FC = () => {
     { name: 'Projects', path: '/projects' },
     { name: 'Calculator', path: '/calculator' },
     { name: 'Tax Credits', path: '/tax-credits' },
+    { name: 'Investments', path: '/investment-opportunities' },
     { name: 'Sales Rep', path: '/sales-rep' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -47,13 +48,13 @@ const Header: React.FC = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden lg:flex items-center space-x-4">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
               to={link.path}
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-primary-600 ${
+                `text-sm font-medium transition-colors hover:text-primary-600 px-2 py-1 rounded ${
                   isActive ? 'text-primary-600' : 'text-gray-400'
                 }`
               }
@@ -61,14 +62,14 @@ const Header: React.FC = () => {
               {link.name}
             </NavLink>
           ))}
-          <Link to="/contact" className="btn btn-primary">
+          <Link to="/contact" className="btn btn-primary ml-4">
             Get Quote
           </Link>
         </nav>
 
         {/* Mobile Navigation Toggle */}
         <button
-          className="md:hidden text-gray-400 hover:text-primary-600 focus:outline-none"
+          className="lg:hidden text-gray-400 hover:text-primary-600 focus:outline-none"
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
@@ -78,7 +79,7 @@ const Header: React.FC = () => {
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <nav className="md:hidden bg-white border-t py-4 absolute w-full shadow-md">
+        <nav className="lg:hidden bg-white border-t py-4 absolute w-full shadow-md">
           <div className="container-custom flex flex-col space-y-4">
             {navLinks.map((link) => (
               <NavLink

@@ -318,7 +318,7 @@ const HomePage: React.FC = () => {
               </div>
               <div className="bg-white p-4 rounded-lg text-center">
                 <div className="text-sm text-gray-500">Annual Savings</div>
-                <div className="text-xl font-semibold">$2,500</div>
+                <div className="text-xl font-semibold">$2,400</div>
               </div>
             </div>
 

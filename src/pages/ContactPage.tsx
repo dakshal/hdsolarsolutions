@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, Upload } from 'lucide-react';
 import { territories } from '../data/territoryData';
 
 const ContactPage: React.FC = () => {
@@ -15,6 +15,7 @@ const ContactPage: React.FC = () => {
     monthlyBill: '',
   });
 
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -22,12 +23,21 @@ const ContactPage: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files);
+      setUploadedFiles(prev => [...prev, ...newFiles]);
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setUploadedFiles(prev => prev.filter((_, i) => i !== index));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would normally send the form data to your backend
-    console.log('Form submitted:', formData);
+    console.log('Form submitted:', formData, 'Files:', uploadedFiles);
     setFormSubmitted(true);
-    // Reset form after submission
     setFormData({
       name: '',
       email: '',
@@ -38,7 +48,7 @@ const ContactPage: React.FC = () => {
       message: '',
       monthlyBill: '',
     });
-    // In a real app, you'd handle the form submission to your backend here
+    setUploadedFiles([]);
   };
 
   return (
@@ -297,6 +307,58 @@ const ContactPage: React.FC = () => {
                           <option value="other">Other</option>
                         </select>
                       </div>
+                    </div>
+
+                    {/* Document Upload Section */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Upload Your Documents for Faster Processing
+                      </label>
+                      <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-4">
+                        <p className="text-sm text-gray-600 mb-3">Please upload the following documents:</p>
+                        <ul className="text-sm text-gray-600 space-y-1 mb-4">
+                          <li>• Past 6 months of your property's utility bills</li>
+                          <li>• Your last 3 years of federal and state tax returns (for business/investor verification)</li>
+                          <li>• Proof of property ownership (e.g., deed or title document)</li>
+                        </ul>
+                        <div className="flex items-center justify-center w-full">
+                          <label htmlFor="file-upload" className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                              <Upload className="w-8 h-8 mb-4 text-gray-500" />
+                              <p className="mb-2 text-sm text-gray-500">
+                                <span className="font-semibold">Click to upload</span> or drag and drop
+                              </p>
+                              <p className="text-xs text-gray-500">PDF, DOC, DOCX, JPG, PNG (MAX. 10MB each)</p>
+                            </div>
+                            <input 
+                              id="file-upload" 
+                              type="file" 
+                              className="hidden" 
+                              multiple
+                              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                              onChange={handleFileUpload}
+                            />
+                          </label>
+                        </div>
+                      </div>
+                      
+                      {uploadedFiles.length > 0 && (
+                        <div className="space-y-2">
+                          <p className="text-sm font-medium text-gray-700">Uploaded Files:</p>
+                          {uploadedFiles.map((file, index) => (
+                            <div key={index} className="flex items-center justify-between bg-white p-2 rounded border border-gray-200">
+                              <span className="text-sm text-gray-600">{file.name}</span>
+                              <button
+                                type="button"
+                                onClick={() => removeFile(index)}
+                                className="text-red-500 hover:text-red-700 text-sm"
+                              >
+                                Remove
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                     
                     <div>

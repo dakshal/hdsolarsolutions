@@ -11,6 +11,7 @@ import TaxCreditsPage from './pages/TaxCreditsPage';
 import SalesRepPage from './pages/SalesRepPage';
 import ContactPage from './pages/ContactPage';
 import CalculatorPage from './pages/CalculatorPage';
+import InvestmentOpportunitiesPage from './pages/InvestmentOpportunitiesPage';
 import ScrollToTop from './components/utils/ScrollToTop';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/sales-rep" element={<SalesRepPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/calculator" element={<CalculatorPage />} />
+          <Route path="/investment-opportunities" element={<InvestmentOpportunitiesPage />} />
         </Routes>
       </Layout>
     </>

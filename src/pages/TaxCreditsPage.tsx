@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Calculator, TrendingUp, Landmark, FileText, DollarSign, PiggyBank, Building, Users, AlertTriangle, Target } from 'lucide-react';
+import { Calculator, TrendingUp, Landmark, FileText, DollarSign, PiggyBank, Building, Users, AlertTriangle, Target, ExternalLink, Download } from 'lucide-react';
 
 const TaxCreditsPage: React.FC = () => {
   const fadeIn = {
@@ -29,8 +29,175 @@ const TaxCreditsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Tax Credit Overview */}
+      {/* The $100k+ Tax Problem */}
+      <section className="section bg-red-50 border-t-4 border-red-500">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+            >
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-red-100 text-red-600 mb-6">
+                <AlertTriangle className="w-10 h-10" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-red-700">
+                Do You Pay Annual Taxes in Five or Six Figures?
+              </h2>
+              <h3 className="text-2xl font-semibold mb-8 text-gray-800">
+                Turn Your Tax Liability into a High-Yield Passive Income Vehicle
+              </h3>
+              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                Stop seeing taxes as a sunk cost. For individuals and businesses with an annual tax bill exceeding $100,000, solar energy represents a powerful and strategic financial tool. Instead of simply paying the IRS, you can redirect those funds into a tangible asset that generates passive income, offers substantial tax advantages, and delivers a secure return on investment. This isn't just about saving money; it's about transforming a liability into a lucrative income stream.
+              </p>
+              <Link to="/contact" className="btn btn-primary text-lg px-8 py-4">
+                Transform Your Tax Strategy Today
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Investment & Savings Section */}
       <section className="section bg-white">
+        <div className="container-custom">
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-3xl font-bold mb-4">Investment & Savings Strategy</h2>
+            <p className="text-lg text-gray-600">
+              Detailed financial mechanisms that make solar a compelling investment, using a 100kW commercial solar project as our example.
+            </p>
+          </div>
+
+          {/* Secure Solar Investment Strategy */}
+          <div className="mb-16">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              className="bg-green-50 rounded-xl p-8 border border-green-200"
+            >
+              <h3 className="text-2xl font-bold mb-6 text-green-700">A 60-70% Secure Investment from Day One</h3>
+              <p className="text-lg text-gray-700 mb-8">
+                Investing in a commercial solar project is one of the most financially secure decisions you can make. A combination of federal tax credits and accelerated depreciation allows you to recoup 60-70% of your initial investment almost immediately.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h4 className="text-xl font-semibold mb-3 text-primary-600">30% Federal Investment Tax Credit (ITC)</h4>
+                  <p className="text-gray-600">
+                    The federal government offers a dollar-for-dollar tax credit equal to 30% of the total system cost. This is a direct reduction of your federal tax liability.
+                  </p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h4 className="text-xl font-semibold mb-3 text-primary-600">Accelerated Depreciation (MACRS)</h4>
+                  <p className="text-gray-600">
+                    Solar energy property qualifies for the Modified Accelerated Cost Recovery System (MACRS). This allows you to deduct 85% of the project's value from your taxable income over an accelerated 5-year schedule. The immediate tax savings from this depreciation can account for an additional 30-40% of the project cost, depending on your tax bracket.
+                  </p>
+                </div>
+              </div>
+
+              {/* Investment Security Graphic */}
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h4 className="text-xl font-semibold mb-6 text-center">How Your Investment is Secured</h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <div className="text-3xl font-bold text-blue-600 mb-2">30%</div>
+                    <div className="text-sm text-gray-600">Federal ITC</div>
+                  </div>
+                  <div className="p-4 bg-green-50 rounded-lg">
+                    <div className="text-3xl font-bold text-green-600 mb-2">30-40%</div>
+                    <div className="text-sm text-gray-600">Depreciation Savings</div>
+                  </div>
+                  <div className="p-4 bg-orange-50 rounded-lg">
+                    <div className="text-3xl font-bold text-orange-600 mb-2">30-40%</div>
+                    <div className="text-sm text-gray-600">Remaining Investment</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Rapid Payback */}
+          <div className="mb-16">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              className="bg-primary-50 rounded-xl p-8 border border-primary-200"
+            >
+              <h3 className="text-2xl font-bold mb-6 text-primary-700">Recoup the Remaining 40% in Under 5 Years with Minimal Overhead</h3>
+              <p className="text-lg text-gray-700">
+                The remaining portion of your investment is typically paid back in less than five years through a combination of energy savings and passive income streams. Solar projects have minimal operating expenses, consisting mainly of routine cleaning and occasional maintenance, making them a predictable and reliable asset.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Passive Income Streams */}
+          <div>
+            <h3 className="text-2xl font-bold mb-8">Building Passive Income Streams</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                className="card"
+              >
+                <h4 className="text-xl font-semibold mb-4 text-primary-600">Power Purchase Agreements (PPAs)</h4>
+                <p className="text-gray-600 mb-4">
+                  Secure a long-term contract (typically 15-25 years) with a creditworthy entity that agrees to purchase the electricity your solar system generates at a predetermined rate. This creates a steady, predictable revenue stream.
+                </p>
+                <a 
+                  href="https://seia.org/wp-content/uploads/2024/09/SEIA-CI-PPA-v2.0.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Download Sample Commercial PPA from SEIA
+                  <ExternalLink className="w-4 h-4 ml-1" />
+                </a>
+              </motion.div>
+
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ delay: 0.2 }}
+                className="card"
+              >
+                <h4 className="text-xl font-semibold mb-4 text-primary-600">Solar Leases</h4>
+                <p className="text-gray-600">
+                  Lease your solar equipment to a property owner. You receive fixed monthly lease payments, while the lessee benefits from reduced energy costs. This offers a hands-off, consistent income.
+                </p>
+              </motion.div>
+
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ delay: 0.4 }}
+                className="card"
+              >
+                <h4 className="text-xl font-semibold mb-4 text-primary-600">Solar Renewable Energy Credits (SRECs)</h4>
+                <p className="text-gray-600">
+                  In certain markets, you earn one SREC for every megawatt-hour (MWh) of electricity your system produces. These credits can be sold to utilities that need to meet state-mandated renewable energy targets, providing an additional source of passive income.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tax Credit Overview */}
+      <section className="section bg-gray-50">
         <div className="container-custom">
           <div className="max-w-3xl mb-16">
             <h2 className="text-3xl font-bold mb-4">Federal Investment Tax Credit (ITC)</h2>
@@ -139,118 +306,58 @@ const TaxCreditsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Passive Income Section */}
-      <section id="passive-income" className="section bg-gray-50">
+      {/* Turn Tax Liability into High-Yield Asset */}
+      <section className="section bg-white">
         <div className="container-custom">
-          <div className="max-w-3xl mb-16">
-            <h2 className="text-3xl font-bold mb-4">Solar as a Tax Reduction & Passive Income Vehicle</h2>
-            <p className="text-lg text-gray-600">
-              For individuals who paid $50,000 to $600,000+ in taxes, solar investments can provide powerful tax reduction strategies and potentially recover paid taxes while generating passive income.
-            </p>
-          </div>
-
-          <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-12 max-w-4xl mx-auto">
-            <div className="flex items-start">
-              <AlertTriangle className="w-6 h-6 text-red-600 mr-3 mt-1" />
-              <div>
-                <h3 className="text-lg font-semibold text-red-700 mb-2">High-Value Tax Strategy Opportunity</h3>
-                <p className="text-red-700">
-                  <strong>Are you someone who paid 5 to 6 figures in taxes?</strong> Solar investment through our Buy Out option can be a powerful vehicle for tax reduction and potentially recovering paid taxes. Contact us for a personalized consultation to explore how solar can transform your tax strategy.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="card flex"
-            >
-              <div className="mr-4">
-                <TrendingUp className="w-10 h-10 text-primary-600" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Tax Reduction Strategy</h3>
-                <p className="text-gray-600">
-                  Strategic solar investments can offset high tax liabilities, especially for individuals who paid significant amounts in taxes. This approach allows you to redirect funds that would otherwise go to taxes into wealth-building assets that provide returns for 25+ years.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="card flex"
-            >
-              <div className="mr-4">
-                <PiggyBank className="w-10 h-10 text-primary-600" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Recover Paid Taxes</h3>
-                <p className="text-gray-600">
-                  Through advanced tax strategies involving solar investments, it's possible to recover a portion of taxes you've already paid, creating a powerful cash flow opportunity and potential for passive income generation.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-white rounded-xl shadow-md p-8 max-w-4xl mx-auto"
+            variants={fadeIn}
+            className="max-w-4xl mx-auto"
           >
-            <h3 className="text-2xl font-semibold mb-6 text-center">High-Income Tax Strategy Example</h3>
-            
-            <div className="mb-8">
-              <div className="flex flex-col md:flex-row md:items-center mb-6">
-                <div className="md:w-1/2 p-4">
-                  <h4 className="font-semibold mb-3">Scenario:</h4>
-                  <ul className="space-y-2 text-gray-600">
-                    <li>• Annual Income: $500,000</li>
-                    <li>• Federal Tax Liability: $150,000</li>
-                    <li>• State Tax Liability: $40,000</li>
-                    <li>• Total Tax Burden: $190,000</li>
-                  </ul>
-                </div>
-                <div className="md:w-1/2 p-4">
-                  <h4 className="font-semibold mb-3">With Strategic Solar Investment:</h4>
-                  <ul className="space-y-2 text-gray-600">
-                    <li>• Solar Investment: $300,000</li>
-                    <li>• Federal ITC (30%): $90,000</li>
-                    <li>• Depreciation Benefits: ~$70,000</li>
-                    <li>• Total Tax Savings: ~$160,000</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div className="bg-green-50 p-4 rounded-lg border border-green-100">
-                <p className="text-center text-gray-700">
-                  <strong>Result:</strong> Instead of paying $190,000 in taxes, you've redirected $160,000 into an income-generating asset that provides returns for 25+ years while potentially recovering previously paid taxes.
-                </p>
-              </div>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Have a Tax Liability Over $200,000? Stop Paying. Start Investing.
+              </h2>
             </div>
             
-            <div className="text-center">
-              <p className="text-gray-600 mb-6">
-                This is a simplified example. Our tax specialists can provide a detailed analysis based on your specific financial situation.
+            <div className="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-xl p-8 border border-primary-200">
+              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                For businesses and high-net-worth individuals, a significant tax bill is a recurring liability. H&D Solar Solution offers a powerful strategy to convert this liability into a secure, income-generating asset. We specialize in developing solar projects across the Northeast (NJ, NY, MD, DC, VA, PA) that provide substantial, government-backed tax advantages and consistent long-term returns.
               </p>
-              <Link to="/contact" className="btn btn-primary">
-                Schedule a Tax Strategy Consultation
-              </Link>
+              
+              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                The 2022 Inflation Reduction Act has extended and enhanced the federal incentives available for solar energy, making now the perfect time to invest. Our solution allows you to:
+              </p>
+              
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-start">
+                  <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
+                  <span className="text-gray-700">Claim a 30% Federal Investment Tax Credit (ITC), a dollar-for-dollar reduction of your federal taxes.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
+                  <span className="text-gray-700">Utilize Accelerated Depreciation (MACRS) to significantly lower your taxable income in the first year.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
+                  <span className="text-gray-700">Generate Passive Income through Power Purchase Agreements (PPAs), Solar Leases, and the sale of Solar Renewable Energy Credits (SRECs).</span>
+                </li>
+              </ul>
+              
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <p className="text-lg font-semibold text-center text-primary-700">
+                  Combining the ITC and depreciation benefits can secure 60-70% of your total project cost within the first year. The remaining "at-risk" capital is often paid back in under 5 years, delivering a secure and profitable investment.
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* EPC Collaboration Section */}
-      <section className="section bg-white">
+      <section className="section bg-gray-50">
         <div className="container-custom">
           <div className="max-w-3xl mb-16">
             <h2 className="text-3xl font-bold mb-4">How Our Tax Credit Investment Can Help You</h2>
@@ -369,7 +476,7 @@ const TaxCreditsPage: React.FC = () => {
       </section>
 
       {/* Financing Clarification Section */}
-      <section className="section bg-gray-50">
+      <section className="section bg-white">
         <div className="container-custom">
           <div className="max-w-3xl mb-16">
             <h2 className="text-3xl font-bold mb-4">Our Financing Approach</h2>
