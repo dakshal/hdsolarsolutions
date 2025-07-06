@@ -497,7 +497,7 @@ const HomePage: React.FC = () => {
                 <p className="text-gray-600 mb-4">
                   For those who paid 5-6 figures in taxes: Solar can be a powerful vehicle for tax reduction and potentially recovering paid taxes.
                 </p>
-                <Link to="/tax-credits" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                <Link to="/investment-opportunities" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                   Learn More <span className="ml-1">→</span>
                 </Link>
               </div>

@@ -7,7 +7,6 @@ import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import MarketSegmentDetails from './pages/MarketSegmentDetails';
 import ProjectsPage from './pages/ProjectsPage';
-import TaxCreditsPage from './pages/TaxCreditsPage';
 import SalesRepPage from './pages/SalesRepPage';
 import ContactPage from './pages/ContactPage';
 import CalculatorPage from './pages/CalculatorPage';
@@ -26,11 +25,10 @@ function App() {
           <Route path="/services/options/:serviceType" element={<ServiceDetailPage />} />
           <Route path="/services/markets/:segmentId" element={<MarketSegmentDetails />} />
           <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/tax-credits" element={<TaxCreditsPage />} />
+          <Route path="/investment-opportunities" element={<InvestmentOpportunitiesPage />} />
           <Route path="/sales-rep" element={<SalesRepPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/calculator" element={<CalculatorPage />} />
-          <Route path="/investment-opportunities" element={<InvestmentOpportunitiesPage />} />
         </Routes>
       </Layout>
     </>

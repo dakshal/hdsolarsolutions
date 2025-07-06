@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { DollarSign, MapPin, Calendar, TrendingUp, AlertTriangle, Building, Sun, Zap, Send, FileText } from 'lucide-react';
+import { DollarSign, MapPin, Calendar, TrendingUp, AlertTriangle, Building, Sun, Zap, Send, FileText, Calculator, Landmark, PiggyBank, Target, ExternalLink, Download, Shield } from 'lucide-react';
 
 interface InvestmentProject {
   id: string;
@@ -152,6 +152,222 @@ const InvestmentOpportunitiesPage: React.FC = () => {
     }
   };
 
+  // 100kW Project Financial Data
+  const project100kW = {
+    totalInvestment: 350000,
+    federalITC: 105000, // 30%
+    businessDepreciation: 140000, // 40%
+    stockIncome: 70000, // 20%
+    solarEarnings: 35000, // 10%
+    annualIncome: 18000, // PPA + SREC income
+    yearlyData: Array.from({ length: 25 }, (_, i) => ({
+      year: i + 1,
+      cumulativeIncome: (i + 1) * 18000,
+      netProfit: (i + 1) * 18000 - (i === 0 ? 105000 : 0) // Subtract remaining investment in year 1
+    }))
+  };
+
+  // Pie Chart Component
+  const PieChart = () => {
+    const data = [
+      { label: '30% Federal ITC', value: 30, amount: project100kW.federalITC, color: '#0ea5e9' },
+      { label: '40% Business Depreciation', value: 40, amount: project100kW.businessDepreciation, color: '#14b8a6' },
+      { label: '20% Stock Income', value: 20, amount: project100kW.stockIncome, color: '#f59e0b' },
+      { label: '10% Solar Earnings', value: 10, amount: project100kW.solarEarnings, color: '#8b5cf6' }
+    ];
+
+    const radius = 120;
+    const centerX = 150;
+    const centerY = 150;
+    let cumulativePercentage = 0;
+
+    return (
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <h3 className="text-xl font-semibold mb-4 text-center">100kW Project Investment Breakdown</h3>
+        <div className="flex items-center justify-center">
+          <div className="relative">
+            <svg width="300" height="300" className="transform -rotate-90">
+              {data.map((segment, index) => {
+                const startAngle = (cumulativePercentage / 100) * 360;
+                const endAngle = ((cumulativePercentage + segment.value) / 100) * 360;
+                const startAngleRad = (startAngle * Math.PI) / 180;
+                const endAngleRad = (endAngle * Math.PI) / 180;
+
+                const x1 = centerX + radius * Math.cos(startAngleRad);
+                const y1 = centerY + radius * Math.sin(startAngleRad);
+                const x2 = centerX + radius * Math.cos(endAngleRad);
+                const y2 = centerY + radius * Math.sin(endAngleRad);
+
+                const largeArcFlag = segment.value > 50 ? 1 : 0;
+
+                const pathData = [
+                  `M ${centerX} ${centerY}`,
+                  `L ${x1} ${y1}`,
+                  `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
+                  'Z'
+                ].join(' ');
+
+                cumulativePercentage += segment.value;
+
+                return (
+                  <path
+                    key={index}
+                    d={pathData}
+                    fill={segment.color}
+                    stroke="white"
+                    strokeWidth="2"
+                  />
+                );
+              })}
+            </svg>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center">
+                <div className="text-2xl font-bold">{formatCurrency(project100kW.totalInvestment)}</div>
+                <div className="text-sm text-gray-600">Total Investment</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="mt-6 grid grid-cols-2 gap-4">
+          {data.map((segment, index) => (
+            <div key={index} className="flex items-center">
+              <div 
+                className="w-4 h-4 rounded mr-2" 
+                style={{ backgroundColor: segment.color }}
+              ></div>
+              <div className="text-sm">
+                <div className="font-medium">{segment.label}</div>
+                <div className="text-gray-600">{formatCurrency(segment.amount)}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  // Line Chart Component for Yearly Income vs Investment
+  const IncomeChart = () => {
+    const maxIncome = Math.max(...project100kW.yearlyData.map(d => d.cumulativeIncome));
+    const chartHeight = 300;
+    const chartWidth = 600;
+    const padding = 40;
+
+    return (
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <h3 className="text-xl font-semibold mb-4 text-center">25-Year Cumulative Income vs Investment</h3>
+        <div className="overflow-x-auto">
+          <svg width={chartWidth + padding * 2} height={chartHeight + padding * 2}>
+            {/* Grid lines */}
+            {[0, 5, 10, 15, 20, 25].map(year => (
+              <line
+                key={year}
+                x1={padding + (year / 25) * chartWidth}
+                y1={padding}
+                x2={padding + (year / 25) * chartWidth}
+                y2={chartHeight + padding}
+                stroke="#e5e7eb"
+                strokeWidth="1"
+              />
+            ))}
+            
+            {/* Investment line (horizontal) */}
+            <line
+              x1={padding}
+              y1={padding + chartHeight - (105000 / maxIncome) * chartHeight}
+              x2={chartWidth + padding}
+              y2={padding + chartHeight - (105000 / maxIncome) * chartHeight}
+              stroke="#ef4444"
+              strokeWidth="3"
+              strokeDasharray="5,5"
+            />
+            
+            {/* Income curve */}
+            <polyline
+              fill="none"
+              stroke="#14b8a6"
+              strokeWidth="3"
+              points={project100kW.yearlyData.map((d, i) => 
+                `${padding + (i / 24) * chartWidth},${padding + chartHeight - (d.cumulativeIncome / maxIncome) * chartHeight}`
+              ).join(' ')}
+            />
+            
+            {/* Breakeven point */}
+            <circle
+              cx={padding + (6 / 25) * chartWidth}
+              cy={padding + chartHeight - (108000 / maxIncome) * chartHeight}
+              r="6"
+              fill="#f59e0b"
+              stroke="white"
+              strokeWidth="2"
+            />
+            
+            {/* X-axis labels */}
+            {[0, 5, 10, 15, 20, 25].map(year => (
+              <text
+                key={year}
+                x={padding + (year / 25) * chartWidth}
+                y={chartHeight + padding + 20}
+                textAnchor="middle"
+                className="text-sm fill-gray-600"
+              >
+                {year}
+              </text>
+            ))}
+            
+            {/* Y-axis labels */}
+            {[0, 100000, 200000, 300000, 400000].map(amount => (
+              <text
+                key={amount}
+                x={padding - 10}
+                y={padding + chartHeight - (amount / maxIncome) * chartHeight + 5}
+                textAnchor="end"
+                className="text-sm fill-gray-600"
+              >
+                {formatCurrency(amount)}
+              </text>
+            ))}
+            
+            {/* Axis labels */}
+            <text
+              x={chartWidth / 2 + padding}
+              y={chartHeight + padding + 50}
+              textAnchor="middle"
+              className="text-sm font-medium fill-gray-700"
+            >
+              Years
+            </text>
+            
+            <text
+              x={20}
+              y={chartHeight / 2 + padding}
+              textAnchor="middle"
+              className="text-sm font-medium fill-gray-700"
+              transform={`rotate(-90, 20, ${chartHeight / 2 + padding})`}
+            >
+              Cumulative Income
+            </text>
+          </svg>
+        </div>
+        
+        <div className="mt-4 flex justify-center space-x-6 text-sm">
+          <div className="flex items-center">
+            <div className="w-4 h-1 bg-primary-600 mr-2"></div>
+            <span>Cumulative Income</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-1 bg-red-500 border-dashed border-t-2 mr-2"></div>
+            <span>Remaining Investment</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-3 h-3 bg-accent-500 rounded-full mr-2"></div>
+            <span>Breakeven Point (~6 years)</span>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -159,18 +375,377 @@ const InvestmentOpportunitiesPage: React.FC = () => {
         <div className="container-custom">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Current Investment Opportunities
+              Solar Tax Credits & Investment Opportunities
             </h1>
             <p className="text-xl mb-8 text-gray-100">
-              Below is a list of our current solar investment opportunities. These projects offer significant tax benefits and strong potential for returns. Please note that all financial figures are approximate.
+              Transform your tax liability into a high-yield passive income vehicle. For those paying 5-6 figures in taxes annually, solar represents a powerful wealth-building strategy.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Investment Projects Grid */}
+      {/* The $100k+ Tax Problem */}
+      <section className="section bg-red-50 border-t-4 border-red-500">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+            >
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-red-100 text-red-600 mb-6">
+                <AlertTriangle className="w-10 h-10" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-red-700">
+                Do You Pay Annual Taxes in Five or Six Figures?
+              </h2>
+              <h3 className="text-2xl font-semibold mb-8 text-gray-800">
+                Turn Your Tax Liability into a High-Yield Passive Income Vehicle
+              </h3>
+              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                Stop seeing taxes as a sunk cost. For individuals and businesses with an annual tax bill exceeding $100,000, solar energy represents a powerful and strategic financial tool. Instead of simply paying the IRS, you can redirect those funds into a tangible asset that generates passive income, offers substantial tax advantages, and delivers a secure return on investment. This isn't just about saving money; it's about transforming a liability into a lucrative income stream.
+              </p>
+              <Link to="#contact-form" className="btn btn-primary text-lg px-8 py-4">
+                Transform Your Tax Strategy Today
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 100kW Tax Credit Example */}
+      <section className="section bg-white">
+        <div className="container-custom">
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-3xl font-bold mb-4">100kW Commercial Project: Tax Credit Example</h2>
+            <p className="text-lg text-gray-600">
+              See how a $350,000 investment in a 100kW commercial solar project can provide immediate tax benefits and long-term passive income.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <PieChart />
+            <IncomeChart />
+          </div>
+
+          {/* Financial Breakdown */}
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-8 border border-green-200 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold mb-6 text-center">100kW Project Financial Summary</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h4 className="text-xl font-semibold mb-4 text-primary-600">Investment Details</h4>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span>Total Investment:</span>
+                    <span className="font-medium">{formatCurrency(project100kW.totalInvestment)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>System Size:</span>
+                    <span className="font-medium">100kW</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Annual Production:</span>
+                    <span className="font-medium">120,000 kWh</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Annual Income:</span>
+                    <span className="font-medium">{formatCurrency(project100kW.annualIncome)}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h4 className="text-xl font-semibold mb-4 text-green-600">Tax Benefits (Year 1)</h4>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span>Federal ITC (30%):</span>
+                    <span className="font-medium text-green-600">{formatCurrency(project100kW.federalITC)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Business Depreciation (40%):</span>
+                    <span className="font-medium text-green-600">{formatCurrency(project100kW.businessDepreciation)}</span>
+                  </div>
+                  <div className="flex justify-between border-t pt-3">
+                    <span className="font-semibold">Total Tax Benefits:</span>
+                    <span className="font-semibold text-green-600">{formatCurrency(project100kW.federalITC + project100kW.businessDepreciation)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-semibold">Remaining Investment:</span>
+                    <span className="font-semibold">{formatCurrency(project100kW.stockIncome + project100kW.solarEarnings)}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h4 className="text-xl font-semibold mb-4 text-center">Key Investment Metrics</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <div className="text-3xl font-bold text-primary-600 mb-2">70%</div>
+                  <div className="text-sm text-gray-600">Secured in Year 1</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-green-600 mb-2">~6 Years</div>
+                  <div className="text-sm text-gray-600">Payback Period</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-accent-600 mb-2">$450k+</div>
+                  <div className="text-sm text-gray-600">25-Year Net Profit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Investment Strategy */}
       <section className="section bg-gray-50">
         <div className="container-custom">
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-3xl font-bold mb-4">The Secure Solar Investment Strategy</h2>
+            <p className="text-lg text-gray-600">
+              Detailed financial mechanisms that make solar a compelling investment for high-income earners and businesses.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              className="bg-white rounded-xl shadow-md p-8"
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mb-6">
+                <Shield className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">60-70% Secured Day One</h3>
+              <p className="text-gray-600 mb-4">
+                Federal tax credits and accelerated depreciation allow you to recoup 60-70% of your initial investment almost immediately.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>• 30% Federal Investment Tax Credit (ITC)</li>
+                <li>• 30-40% from MACRS depreciation savings</li>
+                <li>• Dollar-for-dollar tax liability reduction</li>
+              </ul>
+            </motion.div>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-xl shadow-md p-8"
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-600 mb-6">
+                <TrendingUp className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Rapid Payback</h3>
+              <p className="text-gray-600 mb-4">
+                The remaining 30-40% investment is typically recovered in under 5 years through energy savings and passive income.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>• Power Purchase Agreements (PPAs)</li>
+                <li>• Solar Renewable Energy Credits (SRECs)</li>
+                <li>• Minimal operating expenses</li>
+              </ul>
+            </motion.div>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              transition={{ delay: 0.4 }}
+              className="bg-white rounded-xl shadow-md p-8"
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent-100 text-accent-600 mb-6">
+                <PiggyBank className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Long-term Wealth</h3>
+              <p className="text-gray-600 mb-4">
+                After payback, enjoy 15-20 years of pure passive income with minimal maintenance requirements.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>• 25-year system lifespan</li>
+                <li>• Predictable revenue streams</li>
+                <li>• Inflation-protected returns</li>
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Passive Income Streams */}
+          <div className="bg-white rounded-xl shadow-md p-8">
+            <h3 className="text-2xl font-semibold mb-8 text-center">Building Passive Income Streams</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-100 text-primary-600 mb-4">
+                  <FileText className="w-8 h-8" />
+                </div>
+                <h4 className="text-lg font-semibold mb-3">Power Purchase Agreements</h4>
+                <p className="text-gray-600 mb-4">
+                  Secure 15-25 year contracts with creditworthy entities for steady, predictable revenue streams.
+                </p>
+                <a 
+                  href="https://seia.org/wp-content/uploads/2024/09/SEIA-CI-PPA-v2.0.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium text-sm"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Sample Commercial PPA
+                  <ExternalLink className="w-4 h-4 ml-1" />
+                </a>
+              </div>
+
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary-100 text-secondary-600 mb-4">
+                  <Building className="w-8 h-8" />
+                </div>
+                <h4 className="text-lg font-semibold mb-3">Solar Leases</h4>
+                <p className="text-gray-600">
+                  Lease equipment to property owners for fixed monthly payments while they benefit from reduced energy costs.
+                </p>
+              </div>
+
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent-100 text-accent-600 mb-4">
+                  <Zap className="w-8 h-8" />
+                </div>
+                <h4 className="text-lg font-semibold mb-3">Solar Credits (SRECs)</h4>
+                <p className="text-gray-600">
+                  Earn tradeable credits for every MWh produced, sold to utilities meeting renewable energy mandates.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Federal ITC Details */}
+      <section className="section bg-white">
+        <div className="container-custom">
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-3xl font-bold mb-4">Federal Investment Tax Credit (ITC)</h2>
+            <p className="text-lg text-gray-600">
+              The Federal Solar Investment Tax Credit is one of the most significant financial incentives for solar energy adoption, especially powerful for Solar Buy Out options.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+            >
+              <div className="bg-white rounded-xl shadow-md p-8">
+                <h3 className="text-2xl font-semibold mb-6 flex items-center">
+                  <Calculator className="w-6 h-6 text-primary-600 mr-2" />
+                  How It Works
+                </h3>
+                
+                <p className="text-gray-600 mb-6">
+                  The Federal ITC allows you to deduct 30% of the cost of installing a solar energy system from your federal taxes. This immediate tax credit applies to Solar Buy Out purchases with no cap on its value.
+                </p>
+                
+                <div className="bg-gray-50 p-6 rounded-lg mb-6">
+                  <h4 className="font-semibold mb-3">100kW Commercial Example:</h4>
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <span>System Cost:</span>
+                      <span className="font-medium">$350,000</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Federal Tax Credit (30%):</span>
+                      <span className="font-medium text-green-600">-$105,000</span>
+                    </div>
+                    <div className="flex justify-between border-t pt-2 mt-2">
+                      <span className="font-semibold">After ITC Benefit:</span>
+                      <span className="font-semibold">$245,000</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-primary-50 p-4 rounded-lg border border-primary-100">
+                  <p className="text-sm text-gray-700">
+                    <strong>Important:</strong> The ITC was recently extended through 2032 at 30%, then phases down to 26% in 2033 and 22% in 2034 before expiring in 2035.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="bg-white rounded-xl shadow-md p-8">
+                <h3 className="text-2xl font-semibold mb-6 flex items-center">
+                  <FileText className="w-6 h-6 text-primary-600 mr-2" />
+                  Eligibility Requirements
+                </h3>
+                
+                <ul className="space-y-4 mb-6">
+                  <li className="flex items-start">
+                    <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
+                    <span className="text-gray-600">
+                      <strong>System Ownership:</strong> You must own the solar system (Buy Out option only - not lease or PPA)
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
+                    <span className="text-gray-600">
+                      <strong>Tax Liability:</strong> You must have sufficient tax liability to claim the credit
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
+                    <span className="text-gray-600">
+                      <strong>Business Property:</strong> For commercial systems on business property
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
+                    <span className="text-gray-600">
+                      <strong>Original Installation:</strong> System must be new (not used)
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary-600 mr-2 text-xl leading-none">•</span>
+                    <span className="text-gray-600">
+                      <strong>Timing:</strong> System must be placed in service during the tax year for which the credit is claimed
+                    </span>
+                  </li>
+                </ul>
+                
+                <div className="bg-accent-50 p-4 rounded-lg border border-accent-100">
+                  <p className="text-sm text-gray-700">
+                    <strong>Pro Tip:</strong> If your tax liability is less than your available credit in a given year, you can carry the unused portion forward to the next tax year.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Current Investment Projects */}
+      <section className="section bg-gray-50">
+        <div className="container-custom">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold mb-4">Current Investment Opportunities</h2>
+            <p className="text-lg text-gray-600">
+              Below is a list of our current solar investment opportunities. These projects offer significant tax benefits and strong potential for returns. Please note that all financial figures are approximate.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {investmentProjects.map((project) => (
               <motion.div
@@ -375,7 +950,7 @@ const InvestmentOpportunitiesPage: React.FC = () => {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Connect with Us</h2>
               <p className="text-lg text-gray-600">
-                Interested in one of our investment opportunities? Fill out the form below and we'll get back to you within 24 hours.
+                Interested in transforming your tax liability into a profitable solar investment? Fill out the form below and we'll get back to you within 24 hours.
               </p>
             </div>
 
@@ -474,7 +1049,7 @@ const InvestmentOpportunitiesPage: React.FC = () => {
                       required
                       rows={4}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500"
-                      placeholder="Tell us about your investment goals, timeline, and any specific questions about the project..."
+                      placeholder="Tell us about your investment goals, annual tax liability, and any specific questions about solar tax benefits..."
                     ></textarea>
                   </div>
                   
@@ -504,16 +1079,16 @@ const InvestmentOpportunitiesPage: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl font-bold mb-6">Ready to Invest in Solar?</h2>
+            <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Tax Strategy?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Don't miss out on these limited investment opportunities. Contact us today to learn more about how solar can transform your tax strategy and generate passive income.
+              If you paid 5 to 6 figures in taxes, contact our specialists today to explore how solar can become a powerful part of your wealth-building and tax reduction strategy.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a href="#contact-form" className="btn bg-white text-primary-700 hover:bg-gray-100">
-                Get More Information
+                Schedule a Tax Strategy Consultation
               </a>
-              <Link to="/tax-credits" className="btn bg-transparent border border-white hover:bg-white/10">
-                Learn About Tax Benefits
+              <Link to="/services/options/collaborations" className="btn bg-transparent border border-white hover:bg-white/10">
+                Explore EPC Partnerships
               </Link>
             </div>
           </motion.div>

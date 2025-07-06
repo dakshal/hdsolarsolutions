@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
           <div>
             <div className="flex items-center mb-6">
               <Sun className="w-8 h-8 text-primary-400 mr-2" />
-              <span className="font-bold text-xl">H&amp;D Solar Solutions</span>
+              <span className="font-bold text-xl">H&D Solar Solutions</span>
             </div>
             <p className="mb-6 text-gray-300">
               Providing sustainable solar solutions for residential, commercial, and government needs since 2024.
@@ -57,8 +57,8 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/tax-credits" className="text-gray-300 hover:text-primary-400 transition-colors">
-                  Tax Credits
+                <Link to="/investment-opportunities" className="text-gray-300 hover:text-primary-400 transition-colors">
+                  Tax & Investment
                 </Link>
               </li>
               <li>
@@ -133,7 +133,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-          <p>&copy; {new Date().getFullYear()} H&amp;D Solar Solutions. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} H&D Solar Solutions. All rights reserved.</p>
         </div>
       </div>
     </footer>
