@@ -33,6 +33,7 @@ export const serviceOptions: ServiceOption[] = [
     taxBenefits: true,
     maintenanceIncluded: false,
     pdfUrl: 'https://seia.org/wp-content/uploads/2024/09/SEIA-CI-PPA-v2.0.pdf',
+    contractEnabled: true,
     benefits: [
       'Complete ownership of your solar system',
       'Maximum long-term savings and future cost savings',
@@ -100,6 +101,7 @@ export const serviceOptions: ServiceOption[] = [
     taxBenefits: false,
     maintenanceIncluded: true,
     pdfUrl: 'https://www.seia.org/sites/default/files/2019-09/SEIA-Third-Party-Solar-Financing-Guide.pdf',
+    contractEnabled: true,
     benefits: [
       '$0 upfront costs',
       'Fixed monthly payments',
@@ -168,6 +170,7 @@ export const serviceOptions: ServiceOption[] = [
     taxBenefits: false,
     maintenanceIncluded: true,
     pdfUrl: 'https://seia.org/wp-content/uploads/2024/09/SEIA-CI-PPA-v2.0.pdf',
+    contractEnabled: true,
     benefits: [
       '$0 upfront costs',
       'Pay only if the power produced',
@@ -235,6 +238,7 @@ export const serviceOptions: ServiceOption[] = [
     taxBenefits: true,
     maintenanceIncluded: true,
     pdfUrl: 'https://seia.org/wp-content/uploads/2024/08/SEIA-Solar-Lease-Disclosure-3.22.2017.pdf',
+    contractEnabled: false,
     benefits: [
       'EV car charging solutions',
       'Backup power during grid outages for essential appliances',
@@ -301,6 +305,7 @@ export const serviceOptions: ServiceOption[] = [
     taxBenefits: true,
     maintenanceIncluded: false,
     pdfUrl: 'https://www.nrel.gov/docs/fy20osti/74846.pdf',
+    contractEnabled: false,
     benefits: [
       'We finance solar purchase, PPA, and solar leasing',
       'Unlock project financing through specialized tax equity partnerships',
