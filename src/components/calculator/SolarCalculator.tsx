@@ -51,12 +51,12 @@ const SolarCalculator: React.FC = () => {
   };
 
   const stateSrecIncome = {
-    maryland: 70,
+    maryland: 60,
     newjersey: 85,
-    pennsylvania: 45,
+    pennsylvania: 40,
     dc: 400,
     delaware: 167,
-    virginia: 40
+    virginia: 30
   }
 
   const calculateCosts = () => {
