@@ -167,7 +167,7 @@ export const serviceOptions: ServiceOption[] = [
     termLength: 'upto 25 years',
     taxBenefits: false,
     maintenanceIncluded: true,
-    pdfUrl: 'https://www.nrel.gov/docs/fy10osti/46668.pdf',
+    pdfUrl: 'https://seia.org/wp-content/uploads/2024/09/SEIA-CI-PPA-v2.0.pdf',
     benefits: [
       '$0 upfront costs',
       'Pay only if the power produced',
@@ -234,7 +234,7 @@ export const serviceOptions: ServiceOption[] = [
     upfrontCost: 'Varies by system size',
     taxBenefits: true,
     maintenanceIncluded: true,
-    pdfUrl: 'https://www.energy.gov/sites/default/files/2019/08/f65/Storage%20Cost%20and%20Performance%20Database.pdf',
+    pdfUrl: 'https://seia.org/wp-content/uploads/2024/08/SEIA-Solar-Lease-Disclosure-3.22.2017.pdf',
     benefits: [
       'EV car charging solutions',
       'Backup power during grid outages for essential appliances',
