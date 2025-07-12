@@ -111,6 +111,7 @@ const SolarCalculator: React.FC = () => {
       grossCost,
       federalITC,
       stateIncentives,
+      srecIncome,
       netCost,
       annualSavings,
       paybackPeriod
