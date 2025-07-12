@@ -11,7 +11,7 @@ export const aboutData = {
   },
   projectCapacity: {
     title: "Project Capacity",
-    range: "2-5MW",
-    description: "We handle projects of all sizes, from residential installations to large-scale commercial projects up to 2-5MW."
+    range: "5MW",
+    description: "We handle projects of all sizes, from residential installations to large-scale commercial projects up to 5MW."
   }
 };
