@@ -90,7 +90,7 @@ const SolarCalculator: React.FC = () => {
     const stateRate = stateIncentiveRates[inputs.state as keyof typeof stateIncentiveRates] || 0.05;
     const stateIncentives = grossCost * stateRate;
 
-    const srecIncome = input.systemSize * 1.2 * 25 * ( stateSrecIncome[inputs.state as keyof typeof stateSrecIncome] || 40); // SREC income per MWh per year
+    const srecIncome = inputs.systemSize * 1.2 * 25 * ( stateSrecIncome[inputs.state as keyof typeof stateSrecIncome] || 40); // SREC income per MWh per year
 
     
     const netCost = grossCost - federalITC - stateIncentives - srecIncome;
