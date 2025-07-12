@@ -326,8 +326,8 @@ const ServiceDetailPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-xl p-8 max-w-3xl mx-auto">
-            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden max-w-6xl mx-auto">
+          <div className="bg-white border border-gray-200 rounded-xl p-8 max-auto mx-auto">
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden max-auto mx-auto">
               <div className="bg-gray-50 p-4 border-b border-gray-200 flex items-center justify-between">
                 <div className="flex items-center">
                   <FileText className="w-9 h-5 text-primary-600 mr-2" />
