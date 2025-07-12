@@ -32,7 +32,7 @@ export const serviceOptions: ServiceOption[] = [
     paybackPeriod: '6-7 years',
     taxBenefits: true,
     maintenanceIncluded: false,
-    pdfUrl: 'https://www.energy.gov/sites/default/files/2021/05/f84/Guide%20to%20Federal%20Tax%20Credit%20for%20Solar%20PV.pdf',
+    pdfUrl: 'https://seia.org/wp-content/uploads/2024/09/SEIA-CI-PPA-v2.0.pdf',
     benefits: [
       'Complete ownership of your solar system',
       'Maximum long-term savings and future cost savings',
