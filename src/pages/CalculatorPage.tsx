@@ -163,6 +163,10 @@ const CalculatorPage: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-600 mr-2">•</span>
+                  <span><strong>SREC Income:</strong> SREC income generated per MWh/year</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">•</span>
                   <span><strong>Annual Savings:</strong> Reduced electricity bills</span>
                 </li>
                 <li className="flex items-start">
