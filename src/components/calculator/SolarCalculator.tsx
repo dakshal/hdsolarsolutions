@@ -50,6 +50,15 @@ const SolarCalculator: React.FC = () => {
     virginia: 0.05
   };
 
+  const stateSrecIncome = {
+    maryland: 70,
+    newjersey: 85,
+    pennsylvania: 45,
+    dc: 400,
+    delaware: 167,
+    virginia: 40
+  }
+
   const calculateCosts = () => {
     const baseSystemCost = inputs.systemSize * 3500; // $3500/kW
     
@@ -80,8 +89,11 @@ const SolarCalculator: React.FC = () => {
     // State incentives
     const stateRate = stateIncentiveRates[inputs.state as keyof typeof stateIncentiveRates] || 0.05;
     const stateIncentives = grossCost * stateRate;
+
+    const srecIncome = input.systemSize * 1.2 * 25 * ( stateSrecIncome[inputs.state as keyof typeof stateSrecIncome] || 40); // SREC income per MWh per year
+
     
-    const netCost = grossCost - federalITC - stateIncentives;
+    const netCost = grossCost - federalITC - stateIncentives - srecIncome;
     
     // Annual savings calculation
     const annualGeneration = inputs.systemSize * 1200; // kWh per year per kW
@@ -318,6 +330,10 @@ const SolarCalculator: React.FC = () => {
                   <div className="flex justify-between">
                     <span>State Incentives:</span>
                     <span className="font-medium text-green-600">-{formatCurrency(results.stateIncentives)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>SREC Income:</span>
+                    <span className="font-medium text-green-600">-{formatCurrency(results.srecIncome)}</span>
                   </div>
                   <div className="border-t pt-3 flex justify-between text-lg font-semibold">
                     <span>Net Cost After Incentives:</span>
