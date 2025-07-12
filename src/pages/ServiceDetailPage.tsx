@@ -363,15 +363,16 @@ const ServiceDetailPage: React.FC = () => {
           </div>
         </div>
       </section>
+      )}
+
 
       {/* PDF Document Viewer */}
-      {service.pdfUrl && (
+      {(service.pdfUrl && service.contractEnabled)  && (
         <section className="section bg-white">
           <div className="container-custom">
 
           </div>
         </section>
-      )}
       )}
 
       {/* CTA Section */}
