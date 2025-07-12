@@ -62,14 +62,14 @@ const SolarCalculator: React.FC = () => {
   const installationCost = {
     maryland: 3200,
     newjersey: 3300,
-    pennsylvania: 3100,
+    pennsylvania: 3150,
     dc: 3500,
     delaware: 3250,
-    virginia: 3050
+    virginia: 3100
   }
 
   const calculateCosts = () => {
-    const baseSystemCost = inputs.systemSize * 3500; // $3500/kW
+    const baseSystemCost = inputs.systemSize * (installationCost[inputs.state as keyof typeof installationCost] || 3500); // $3500/kW
     
     // Equipment (70% of base cost)
     const equipment = baseSystemCost * 0.70;
