@@ -65,7 +65,7 @@ const SolarCalculator: React.FC = () => {
     pennsylvania: 3100,
     dc: 3500,
     delaware: 3250,
-    virginia: 3150
+    virginia: 3050
   }
 
   const calculateCosts = () => {
