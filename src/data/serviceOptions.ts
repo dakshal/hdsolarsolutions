@@ -5,6 +5,7 @@ export type ServiceOption = {
   benefits: string[];
   process: ProcessStep[];
   documentation: string[];
+  pdfUrl?: string;
   reduction: {
     min: number;
     max: number;
@@ -31,6 +32,7 @@ export const serviceOptions: ServiceOption[] = [
     paybackPeriod: '6-7 years',
     taxBenefits: true,
     maintenanceIncluded: false,
+    pdfUrl: 'https://www.energy.gov/sites/default/files/2021/05/f84/Guide%20to%20Federal%20Tax%20Credit%20for%20Solar%20PV.pdf',
     benefits: [
       'Complete ownership of your solar system',
       'Maximum long-term savings and future cost savings',
@@ -97,6 +99,7 @@ export const serviceOptions: ServiceOption[] = [
     termLength: 'upto 25 years',
     taxBenefits: false,
     maintenanceIncluded: true,
+    pdfUrl: 'https://www.seia.org/sites/default/files/2019-09/SEIA-Third-Party-Solar-Financing-Guide.pdf',
     benefits: [
       '$0 upfront costs',
       'Fixed monthly payments',
@@ -164,6 +167,7 @@ export const serviceOptions: ServiceOption[] = [
     termLength: 'upto 25 years',
     taxBenefits: false,
     maintenanceIncluded: true,
+    pdfUrl: 'https://www.nrel.gov/docs/fy10osti/46668.pdf',
     benefits: [
       '$0 upfront costs',
       'Pay only if the power produced',
@@ -230,6 +234,7 @@ export const serviceOptions: ServiceOption[] = [
     upfrontCost: 'Varies by system size',
     taxBenefits: true,
     maintenanceIncluded: true,
+    pdfUrl: 'https://www.energy.gov/sites/default/files/2019/08/f65/Storage%20Cost%20and%20Performance%20Database.pdf',
     benefits: [
       'EV car charging solutions',
       'Backup power during grid outages for essential appliances',
@@ -295,6 +300,7 @@ export const serviceOptions: ServiceOption[] = [
     upfrontCost: 'Varies by project',
     taxBenefits: true,
     maintenanceIncluded: false,
+    pdfUrl: 'https://www.nrel.gov/docs/fy20osti/74846.pdf',
     benefits: [
       'We finance solar purchase, PPA, and solar leasing',
       'Unlock project financing through specialized tax equity partnerships',

@@ -417,91 +417,48 @@ const ServiceDetailPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Proposal Template Section */}
-      {proposalTemplate && (
+      {/* PDF Document Viewer */}
+      {service.pdfUrl && (
         <section className="section bg-white">
           <div className="container-custom">
             <div className="max-w-3xl mb-12">
-              <h2 className="text-3xl font-bold mb-4">Sample Proposal</h2>
+              <h2 className="text-3xl font-bold mb-4">Technical Documentation</h2>
               <p className="text-lg text-gray-600">
-                Here's an example of what a typical {service.name.toLowerCase()} proposal looks like for a residential customer.
+                View detailed technical documentation and guidelines for {service.name.toLowerCase()}.
               </p>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-xl p-8 max-w-4xl mx-auto">
-              <div className="mb-8 text-center">
-                <h3 className="text-2xl font-bold mb-2">{proposalTemplate.title}</h3>
-                <p className="text-gray-600">{proposalTemplate.audience}</p>
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden max-w-6xl mx-auto">
+              <div className="bg-gray-50 p-4 border-b border-gray-200 flex items-center justify-between">
+                <div className="flex items-center">
+                  <FileText className="w-5 h-5 text-primary-600 mr-2" />
+                  <h3 className="text-lg font-semibold">{service.name} Documentation</h3>
+                </div>
+                <a 
+                  href={service.pdfUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn btn-outline text-sm"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Open in New Tab
+                </a>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <h4 className="font-semibold mb-4">Project Details</h4>
-                  <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <span>System Size:</span>
-                      <span className="font-medium">{proposalTemplate.projectDetails.systemSize}</span>
-                    </div>
-                    {proposalTemplate.projectDetails.equipment && (
-                      <div className="flex justify-between">
-                        <span>Equipment:</span>
-                        <span className="font-medium">{proposalTemplate.projectDetails.equipment}</span>
-                      </div>
-                    )}
-                    <div className="flex justify-between">
-                      <span>Year 1 Production:</span>
-                      <span className="font-medium">{proposalTemplate.projectDetails.yearOneProduction.toLocaleString()} kWh</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-green-50 p-6 rounded-lg border border-green-200">
-                  <h4 className="font-semibold mb-4 text-green-700">Financial Summary</h4>
-                  <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <span>Gross Cost:</span>
-                      <span className="font-medium">${proposalTemplate.financialModel.grossCost.toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Federal ITC (30%):</span>
-                      <span className="font-medium text-green-600">-${proposalTemplate.financialModel.federalITC.toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between border-t pt-2">
-                      <span className="font-semibold">Net Cost:</span>
-                      <span className="font-semibold">${proposalTemplate.financialModel.netCost.toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Annual Savings:</span>
-                      <span className="font-medium">${proposalTemplate.financialModel.annualSavings.toLocaleString()}</span>
-                    </div>
-                  </div>
-                </div>
+              <div className="relative" style={{ height: '600px' }}>
+                <iframe
+                  src={service.pdfUrl}
+                  className="w-full h-full border-0"
+                  title={`${service.name} Documentation`}
+                  loading="lazy"
+                />
               </div>
 
-              <div className="bg-primary-50 p-6 rounded-lg border border-primary-200 mb-6">
-                <h4 className="font-semibold mb-3 text-primary-700">Key Metrics</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <span className="text-gray-600">Payback Period:</span>
-                    <span className="font-medium ml-2">{proposalTemplate.keyMetrics.paybackPeriod}</span>
-                  </div>
-                  <div>
-                    <span className="text-gray-600">25-Year Net Savings:</span>
-                    <span className="font-medium ml-2">{proposalTemplate.keyMetrics.netSavings}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+              <div className="p-4 bg-gray-50 border-t border-gray-200">
                 <p className="text-sm text-gray-700">
-                  <strong>Disclaimer:</strong> All financial figures are estimates for illustrative purposes. Actual incentives, tax benefits, and returns depend on your specific situation, final project details, and prevailing market conditions. Consult with your tax and legal professionals.
+                  <strong>Note:</strong> This document provides detailed technical information about {service.name.toLowerCase()}. 
+                  If you have trouble viewing the document, please try opening it in a new tab or contact us for assistance.
                 </p>
-              </div>
-
-              <div className="mt-6 text-center">
-                <Link to="/contact" className="btn btn-primary">
-                  Request Personalized Proposal
-                </Link>
               </div>
             </div>
           </div>
