@@ -144,11 +144,11 @@ const SalesRepPage: React.FC = () => {
                   <div>
                     <div className="text-sm text-gray-600">Total Project Cost: <span className="font-medium">$250,000</span></div>
                     <div className="text-sm text-gray-600">Commission @ 5%: <span className="font-medium text-green-600">$12,500</span></div>
-                    <div className="text-sm text-gray-600">Commission @ 10%: <span className="font-medium text-green-600">$25,000</span></div>
+                    <div className="text-sm text-gray-600">Commission @ 10%: <span className="font-medium text-green-600">$25,000*</span></div>
                   </div>
                   <div>
-                    <div className="text-sm text-gray-600">Quarterly Projects (4/year): <span className="font-medium">$50,000 - $100,000</span></div>
-                    <div className="text-sm text-gray-600">Annual Potential: <span className="font-medium text-green-600">$50,000 - $100,000+</span></div>
+                    <div className="text-sm text-gray-600">Quarterly Projects (4/year): <span className="font-medium">$50,000 - $150,000</span></div>
+                    <div className="text-sm text-gray-600">Annual Potential: <span className="font-medium text-green-600">$150,000 - $700,000+</span></div>
                   </div>
                 </div>
               </div>
@@ -172,42 +172,36 @@ const SalesRepPage: React.FC = () => {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-white">
-                    <th className="py-3 px-4 text-left font-semibold">Quarter</th>
-                    <th className="py-3 px-4 text-center font-semibold">Project Size</th>
+                    <th className="py-3 px-4 text-left font-semibold">Index</th>
+                    <th className="py-3 px-4 text-center font-semibold">Total Project Size</th>
                     <th className="py-3 px-4 text-center font-semibold">Commission Rate</th>
                     <th className="py-3 px-4 text-center font-semibold">Earnings</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="bg-white">
-                    <td className="py-3 px-4">Q1</td>
-                    <td className="py-3 px-4 text-center">50kW ($125,000)</td>
+                    <td className="py-3 px-4">1</td>
+                    <td className="py-3 px-4 text-center">50kW ($175,000)</td>
                     <td className="py-3 px-4 text-center">5%</td>
-                    <td className="py-3 px-4 text-center font-medium">$6,250</td>
+                    <td className="py-3 px-4 text-center font-medium">$8,650</td>
                   </tr>
                   <tr className="bg-gray-50">
-                    <td className="py-3 px-4">Q2</td>
-                    <td className="py-3 px-4 text-center">100kW ($250,000)</td>
-                    <td className="py-3 px-4 text-center">7%</td>
-                    <td className="py-3 px-4 text-center font-medium">$17,500</td>
+                    <td className="py-3 px-4">2</td>
+                    <td className="py-3 px-4 text-center">100kW ($350,000)</td>
+                    <td className="py-3 px-4 text-center">6%</td>
+                    <td className="py-3 px-4 text-center font-medium">21,000</td>
                   </tr>
                   <tr className="bg-white">
-                    <td className="py-3 px-4">Q3</td>
-                    <td className="py-3 px-4 text-center">150kW ($375,000)</td>
-                    <td className="py-3 px-4 text-center">8%</td>
-                    <td className="py-3 px-4 text-center font-medium">$30,000</td>
+                    <td className="py-3 px-4">3</td>
+                    <td className="py-3 px-4 text-center">500kW ($1,750,000)</td>
+                    <td className="py-3 px-4 text-center">7.5%</td>
+                    <td className="py-3 px-4 text-center font-medium">$131,250</td>
                   </tr>
                   <tr className="bg-gray-50">
-                    <td className="py-3 px-4">Q4</td>
-                    <td className="py-3 px-4 text-center">200kW ($500,000)</td>
+                    <td className="py-3 px-4">4</td>
+                    <td className="py-3 px-4 text-center">2MW or higher ($7,000,000)</td>
                     <td className="py-3 px-4 text-center">10%</td>
-                    <td className="py-3 px-4 text-center font-medium">$50,000</td>
-                  </tr>
-                  <tr className="bg-primary-100 font-semibold">
-                    <td className="py-3 px-4">Total</td>
-                    <td className="py-3 px-4 text-center">500kW ($1,250,000)</td>
-                    <td className="py-3 px-4 text-center">-</td>
-                    <td className="py-3 px-4 text-center">$103,750</td>
+                    <td className="py-3 px-4 text-center font-medium">$700,000</td>
                   </tr>
                 </tbody>
               </table>
