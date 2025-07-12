@@ -317,7 +317,7 @@ const ServiceDetailPage: React.FC = () => {
       </section>
 
       {/* Sample Contract */}
-      <section className="section bg-gray-50">
+      {service.contractEnabled && ( <section className="section bg-gray-50">
         <div className="container-custom">
           <div className="max-w-3xl mb-12">
             <h2 className="text-3xl font-bold mb-4">Sample Contract</h2>
@@ -371,6 +371,7 @@ const ServiceDetailPage: React.FC = () => {
 
           </div>
         </section>
+      )}
       )}
 
       {/* CTA Section */}
