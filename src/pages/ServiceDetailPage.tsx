@@ -330,7 +330,7 @@ const ServiceDetailPage: React.FC = () => {
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden max-w-6xl mx-auto">
               <div className="bg-gray-50 p-4 border-b border-gray-200 flex items-center justify-between">
                 <div className="flex items-center">
-                  <FileText className="w-5 h-5 text-primary-600 mr-2" />
+                  <FileText className="w-9 h-5 text-primary-600 mr-2" />
                   <h3 className="text-lg font-semibold">{service.name} Documentation</h3>
                 </div>
                 <a 
