@@ -344,7 +344,7 @@ const SolarCalculator: React.FC = () => {
                     <span className="font-medium text-green-600">-{formatCurrency(results.stateIncentives)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>SREC Income:</span>
+                    <span>SREC Income per year:</span>
                     <span className="font-medium text-green-600">-{formatCurrency(results.srecIncome)}</span>
                   </div>
                   <div className="border-t pt-3 flex justify-between text-lg font-semibold">
