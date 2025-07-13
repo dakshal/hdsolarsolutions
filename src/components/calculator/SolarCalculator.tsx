@@ -103,13 +103,15 @@ const SolarCalculator: React.FC = () => {
 
     
     const netCost = grossCost - federalITC - stateIncentives;
+
+    const multiplier = netCost / srecIncome;
     
     // Annual savings calculation
     const annualGeneration = inputs.systemSize * 1200; // kWh per year per kW
     const electricityRate = inputs.monthlyBill / (inputs.monthlyBill * 8); // Estimate kWh usage
     const annualSavings = Math.min(annualGeneration * 0.12, inputs.monthlyBill * 12 * 0.9);
     
-    const paybackPeriod = (netCost - srecIncome * 9) / annualSavings;
+    const paybackPeriod = ((netCost - srecIncome * multiplier) / annualSavings + multiplier) / 2;
 
     const breakdown: CostBreakdown = {
       equipment,
