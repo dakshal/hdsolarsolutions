@@ -51,12 +51,12 @@ const SolarCalculator: React.FC = () => {
   };
 
   const stateSrecIncome = {
-    maryland: 60,
+    maryland: 70,
     newjersey: 85,
-    pennsylvania: 40,
+    pennsylvania: 45,
     dc: 400,
     delaware: 167,
-    virginia: 30
+    virginia: 40
   }
 
   const installationCost = {
@@ -99,15 +99,15 @@ const SolarCalculator: React.FC = () => {
     const stateRate = stateIncentiveRates[inputs.state as keyof typeof stateIncentiveRates] || 0.05;
     const stateIncentives = grossCost * stateRate;
 
-    const srecIncome = inputs.systemSize * 1.2 * 25 * ( stateSrecIncome[inputs.state as keyof typeof stateSrecIncome] || 40); // SREC income per MWh per year
+    const srecIncome = inputs.systemSize * 1.2 * ( stateSrecIncome[inputs.state as keyof typeof stateSrecIncome] || 40); // SREC income per MWh per year
 
     
-    const netCost = grossCost - federalITC - stateIncentives - srecIncome;
+    const netCost = grossCost - federalITC - stateIncentives;
     
     // Annual savings calculation
     const annualGeneration = inputs.systemSize * 1200; // kWh per year per kW
     const electricityRate = inputs.monthlyBill / (inputs.monthlyBill * 8); // Estimate kWh usage
-    const annualSavings = Math.min(annualGeneration * 0.12, inputs.monthlyBill * 12 * 0.8);
+    const annualSavings = Math.min(annualGeneration * 0.12, inputs.monthlyBill * 12 * 0.9);
     
     const paybackPeriod = netCost / annualSavings;
 
