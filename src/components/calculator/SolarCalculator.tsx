@@ -107,7 +107,7 @@ const SolarCalculator: React.FC = () => {
     // Annual savings calculation
     const annualGeneration = inputs.systemSize * 1200; // kWh per year per kW
     const electricityRate = inputs.monthlyBill / (inputs.monthlyBill * 8); // Estimate kWh usage
-    const annualSavings = Math.min(annualGeneration * 0.12, inputs.monthlyBill * 12 * 0.9);
+    const annualSavings = Math.min(annualGeneration * 0.12, inputs.monthlyBill * 12 * 0.8);
     
     const paybackPeriod = netCost / annualSavings;
 
